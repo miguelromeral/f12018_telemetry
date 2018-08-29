@@ -35,16 +35,34 @@ public class SessionData_Thread extends Thread{
             CarStatusData car = controller.session.ownCar;
             PacketSessionData data = controller.session.data;
             
-            if(car != null){
-                // Flag
-                GUIFeatures.setFlagLabel(view.lab_flag, car.vehicleFiaFlags);
-            }
-            
             if(data != null){
                 // Weather Info
                 GUIFeatures.setWeatherImage(view.lab_weather, view.lab_weather.getWidth(), data.weather, data.trackId, data.isNightRace());
-                view.lab_weather_text.setText(data.getWeather());
+                view.lab_weather.setText(data.getWeather());
                 
+                view.lab_trackTemperature.setText(data.trackTemperature+" ºC");
+                view.lab_airTemperature.setText(data.airTemperature+" ºC");
+                
+                // Session Info
+                view.lab_type.setText(data.getSessionType());
+                
+                if(data.sessionType > 0 && data.sessionType < 10){
+                    view.lab_time_left.setText(data.getSessionTimeLeft());
+                }else{
+                    view.lab_time_left.setText("");
+                }
+                
+                // Track Info
+                GUIFeatures.setTrackImage(view.lab_track, view.lab_track.getWidth(), view.lab_track.getHeight(), data.trackId);
+                
+                view.lab_pitLimiter.setText(data.pitSpeedLimit+" Km/h");
+            }
+            
+            // Flag
+            if(car != null && data != null){
+                GUIFeatures.setFlagLabel(view.lab_flag, car.vehicleFiaFlags, data.getSafetyCarStatus());
+            }else{
+                GUIFeatures.setFlagLabel(view.lab_flag, car.vehicleFiaFlags, "");
             }
             
             paso.cerrar();

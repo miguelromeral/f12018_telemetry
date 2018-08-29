@@ -70,8 +70,9 @@ public class Controller {
                     //System.out.println(packet.toString());
                     session.setSessionData((PacketSessionData) packet);
                     break;
-                    
-                    
+                case 2:
+                    System.out.println(packet.toString());
+                    break;    
                 case 3:
                     //System.out.println(packet.toString());
                     session.setEventAction((PacketEventData) packet);

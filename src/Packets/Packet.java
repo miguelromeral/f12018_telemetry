@@ -3,6 +3,7 @@ package Packets;
 import classes.DataTypeUtilities;
 import java.math.BigInteger;
 import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
 
 /**
  *
@@ -33,12 +34,11 @@ public class Packet {
     // uint8 --> short (16)
     public short    playerCarIndex;        // Index of player's car in the array
     
-    public byte[]  content;            // All packet content
     public int     lenght;
             
     public Packet(byte[] content){
-        this.content = content;
         ByteBuffer bb = ByteBuffer.wrap(content);
+        bb.order(ByteOrder.LITTLE_ENDIAN);
         
         packetFormat = DataTypeUtilities.convert_uint16(bb.getShort());
         packetVersion = DataTypeUtilities.convert_uint8(bb.get());

@@ -30,9 +30,20 @@ public class SessionData extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         lab_flag = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
+        panelSession = new javax.swing.JPanel();
+        lab_type = new javax.swing.JLabel();
+        lab_time_left = new javax.swing.JLabel();
+        panelWeather = new javax.swing.JPanel();
         lab_weather = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        lab_airTemperature = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
         lab_weather_text = new javax.swing.JLabel();
+        lab_trackTemperature = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        lab_track = new javax.swing.JLabel();
+        lab_pitLimiter = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
 
         jLabel4.setText("jLabel4");
 
@@ -56,35 +67,95 @@ public class SessionData extends javax.swing.JFrame {
         lab_flag.setText("FLAG");
         lab_flag.setOpaque(true);
 
-        jPanel3.setBackground(new java.awt.Color(19, 19, 19));
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Weather", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(204, 204, 204))); // NOI18N
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panelSession.setBackground(new java.awt.Color(19, 19, 19));
+        panelSession.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Session", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(204, 204, 204))); // NOI18N
+        panelSession.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lab_type.setFont(new java.awt.Font("Formula1 Display Wide", 0, 24)); // NOI18N
+        lab_type.setForeground(new java.awt.Color(255, 255, 255));
+        lab_type.setText("Type");
+        panelSession.add(lab_type, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+
+        lab_time_left.setFont(new java.awt.Font("Formula1 Display Regular", 0, 24)); // NOI18N
+        lab_time_left.setForeground(new java.awt.Color(255, 255, 255));
+        lab_time_left.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lab_time_left.setText("TimeLeft");
+        panelSession.add(lab_time_left, new org.netbeans.lib.awtextra.AbsoluteConstraints(364, 20, 210, -1));
+
+        panelWeather.setBackground(new java.awt.Color(19, 19, 19));
+        panelWeather.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Weather", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(204, 204, 204))); // NOI18N
+        panelWeather.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lab_weather.setText("jLabel2");
-        jPanel3.add(lab_weather, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 60, 60));
+        panelWeather.add(lab_weather, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 60, 60));
+
+        jLabel12.setFont(new java.awt.Font("Formula1 Display Regular", 0, 18)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel12.setText("Air:");
+        panelWeather.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 60, -1));
+
+        lab_airTemperature.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lab_airTemperature.setForeground(new java.awt.Color(255, 255, 255));
+        lab_airTemperature.setText("Weather");
+        panelWeather.add(lab_airTemperature, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, -1, -1));
+
+        jLabel13.setFont(new java.awt.Font("Formula1 Display Regular", 0, 18)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel13.setText("Track:");
+        panelWeather.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, -1, -1));
 
         lab_weather_text.setFont(new java.awt.Font("Formula1 Display Regular", 0, 24)); // NOI18N
         lab_weather_text.setForeground(new java.awt.Color(255, 255, 255));
         lab_weather_text.setText("Weather");
-        jPanel3.add(lab_weather_text, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, -1, -1));
+        panelWeather.add(lab_weather_text, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, -1, -1));
+
+        lab_trackTemperature.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lab_trackTemperature.setForeground(new java.awt.Color(255, 255, 255));
+        lab_trackTemperature.setText("Weather");
+        panelWeather.add(lab_trackTemperature, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, -1, -1));
+
+        jPanel2.setBackground(new java.awt.Color(19, 19, 19));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Track", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(204, 204, 204))); // NOI18N
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lab_track.setText("Circuit");
+        jPanel2.add(lab_track, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 240, 190));
+
+        lab_pitLimiter.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lab_pitLimiter.setForeground(new java.awt.Color(255, 255, 255));
+        lab_pitLimiter.setText("Weather");
+        jPanel2.add(lab_pitLimiter, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, -1, -1));
+
+        jLabel14.setFont(new java.awt.Font("Formula1 Display Regular", 0, 18)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel14.setText("PL:");
+        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 60, -1));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lab_flag, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lab_flag, javax.swing.GroupLayout.DEFAULT_SIZE, 876, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(422, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelWeather, javax.swing.GroupLayout.DEFAULT_SIZE, 267, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(panelSession, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(lab_flag, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(368, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(panelWeather, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(panelSession, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -101,7 +172,7 @@ public class SessionData extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, 0)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23))
+                .addContainerGap())
         );
 
         pack();
@@ -113,13 +184,24 @@ public class SessionData extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosing
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JLabel jLabel12;
+    public javax.swing.JLabel jLabel13;
+    public javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField jTextField1;
+    public javax.swing.JLabel lab_airTemperature;
     public javax.swing.JLabel lab_flag;
+    public javax.swing.JLabel lab_pitLimiter;
+    public javax.swing.JLabel lab_time_left;
+    public javax.swing.JLabel lab_track;
+    public javax.swing.JLabel lab_trackTemperature;
+    public javax.swing.JLabel lab_type;
     public javax.swing.JLabel lab_weather;
     public javax.swing.JLabel lab_weather_text;
+    private javax.swing.JPanel panelSession;
+    private javax.swing.JPanel panelWeather;
     // End of variables declaration//GEN-END:variables
 }

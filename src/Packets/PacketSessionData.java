@@ -184,7 +184,7 @@ public class PacketSessionData extends Packet{
     
     public String getSafetyCarStatus(){
         switch(safetyCarStatus){
-            case 0: return "No SC";
+            case 0: return "";
             case 1: return "SAFETY CAR";
             case 2: return "VIRTUAL SC";
             default: return "** UNKNOWN **";

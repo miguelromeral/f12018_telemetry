@@ -106,7 +106,12 @@ public class Console_Thread extends Thread{
                 }
                 
                 // Flag
-                GUIFeatures.setFlagLabel(view.lab_flag, car.vehicleFiaFlags);
+                if(controller.session.data != null){
+                    GUIFeatures.setFlagLabel(view.lab_flag, car.vehicleFiaFlags, controller.session.data.getSafetyCarStatus());
+                }else{
+                    GUIFeatures.setFlagLabel(view.lab_flag, car.vehicleFiaFlags, "");
+                }
+                
             }
             if(tel != null){
                 // Speed

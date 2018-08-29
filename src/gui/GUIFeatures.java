@@ -13,7 +13,7 @@ import javax.swing.JProgressBar;
  */
 public class GUIFeatures {
     
-    public static void setFlagLabel(JLabel lab, int flag){
+    public static void setFlagLabel(JLabel lab, int flag, String sc){
         switch(flag){
             case -1: lab.setForeground(new Color(0,0,0));
                     lab.setBackground(new Color(255,255,255));
@@ -39,6 +39,41 @@ public class GUIFeatures {
                     lab.setBackground(new Color(255,0,0));
                     lab.setText("RED FLAG");
                 break;
+        }
+    }
+    
+    public static void setTrackImage(JLabel label, int sh, int sv, int track) {
+        try {
+            label.setText("");
+            String tr = null;
+            switch(track){
+                case 0: tr =  "australia"; break;
+                case 1: tr =  "france";break;
+                case 2: tr =  "china";break;
+                case 3: case 21: tr =  "barhain";break;
+                case 4: tr =  "spain";break;
+                case 5: tr =  "monaco";break;
+                case 6: tr =  "canada";break;
+                case 7: case 22: tr =  "greatbritain";break;
+                case 8: tr =  "germany";break;
+                case 9: tr =  "hungary";break;
+                case 10: tr =  "belgium";break;
+                case 11: tr =  "italy";break;
+                case 12: tr =  "singapore";break;
+                case 13: case 24: tr =  "japan";break;
+                case 14: tr =  "abudabi";break;
+                case 15: case 23: tr =  "usa";break;
+                case 16: tr =  "brasil";break;
+                case 17: tr =  "austria";break;
+                case 18: tr =  "russia";break;
+                case 19: tr =  "mexico";break;
+                case 20: tr =  "azerbaijan";break;
+            }
+            if(tr != null){
+                setImageIcon(label, sh, sv, "tracks/"+tr);
+            }
+        } catch (Exception e) {
+            System.out.println("Error en la imagen: " + e.toString());
         }
     }
     

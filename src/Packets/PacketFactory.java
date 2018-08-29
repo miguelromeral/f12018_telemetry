@@ -11,7 +11,7 @@ public class PacketFactory {
         switch(p.packetId){
             
             case 1: return new PacketSessionData(content);
-            
+            case 2: return new PacketLapData(content);
             case 3: return new PacketEventData(content);
             case 4: return new PacketParticipantsData(content);
             
