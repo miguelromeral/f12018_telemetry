@@ -3,8 +3,10 @@ package classes;
 import Packets.Packet;
 import Packets.PacketCarStatusData;
 import Packets.PacketCarTelemetryData;
+import Packets.PacketEventData;
 import Packets.PacketFactory;
 import Packets.PacketParticipantsData;
+import Packets.PacketSessionData;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -64,10 +66,22 @@ public class Controller {
             
             switch(packet.packetId){
             
+                case 1:
+                    //System.out.println(packet.toString());
+                    session.setSessionData((PacketSessionData) packet);
+                    break;
+                    
+                    
+                case 3:
+                    //System.out.println(packet.toString());
+                    session.setEventAction((PacketEventData) packet);
+                    break;
                 case 4:
                     //System.out.println(packet.toString());
                     session.setParticipantsData((PacketParticipantsData) packet);
                     break;
+                    
+                    
                 case 6:
                     //System.out.println(packet.toString());
                     session.setOwnCarTelemetryData((PacketCarTelemetryData) packet);

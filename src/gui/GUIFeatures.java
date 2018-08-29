@@ -13,6 +13,55 @@ import javax.swing.JProgressBar;
  */
 public class GUIFeatures {
     
+    public static void setFlagLabel(JLabel lab, int flag){
+        switch(flag){
+            case -1: lab.setForeground(new Color(0,0,0));
+                    lab.setBackground(new Color(255,255,255));
+                    lab.setText("WARNING FLAG");
+                break;
+            case 0: lab.setForeground(new Color(19,19,19));
+                    lab.setBackground(new Color(19,19,19));
+                    lab.setText("");
+                break;
+            case 1: lab.setForeground(new Color(0,0,0));
+                    lab.setBackground(new Color(102,255,51));
+                    lab.setText("GREEN FLAG");
+                break;
+            case 2: lab.setForeground(new Color(0,0,0));
+                    lab.setBackground(new Color(0,102,255));
+                    lab.setText("BLUE FLAG");
+                break;
+            case 3: lab.setForeground(new Color(0,0,0));
+                    lab.setBackground(new Color(255,255,0));
+                    lab.setText("YELLOW FLAG");
+                break;
+            case 4: lab.setForeground(new Color(255,255,255));
+                    lab.setBackground(new Color(255,0,0));
+                    lab.setText("RED FLAG");
+                break;
+        }
+    }
+    
+    public static void setWeatherImage(JLabel label, int size, int weather, int trak, boolean night) {
+        try {
+            label.setText("");
+            String we = null;
+            switch(weather){
+                case 0: we = (night ? "moon_clear" : "sunny_clear"); break;
+                case 1: we = (night ? "moon_light_cloud" : "sunny_light_cloud"); break;
+                case 2: we = "overcast"; break;
+                case 3: we = "light_rain"; break;
+                case 4: we = "heavy_rain"; break;
+                case 5: we = "storm"; break;
+                default:
+            }
+            if(we != null){
+                setImageIcon(label, size, size, "weather/"+we);
+            }
+        } catch (Exception e) {
+            System.out.println("Error en la imagen: " + e.toString());
+        }
+    }
     
     public static void setImageIcon(JLabel label, int sizehor, int sizever, String image){
         ImageIcon imagen = new ImageIcon("images/"+image+".png");

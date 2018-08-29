@@ -57,7 +57,7 @@ public class Console_Thread extends Thread{
                 view.lab_damageTC.setText("- %");           // Turbo Charger
                 view.lab_damageGearbox.setText(+car.gearBoxDamage+" %"); // Gear Box
                 
-                
+                // ERS Panel
                 float ersTotal = car.ersStoreEnergy;
                 float ersMGUK = car.ersHarvestedThisLapMGUK;
                 float ersMGUH = car.ersHarvestedThisLapMGUH;
@@ -75,12 +75,6 @@ public class Console_Thread extends Thread{
                 view.lab_ers_yellow.setText((int) yellow+"%");
                 view.lab_ers_blue.setText((int) blue+"%");
                 view.lab_ers_white.setText((int) white+"%");
-                
-                System.out.println("Yellow: "+yellow);
-                System.out.println("Blue: "+blue+", ersTotal: "+ersTotal+", max: "+max);
-                System.out.println("White: "+white+", ersLap: "+ersTotal+", max: "+max);
-                
-                // ERS Deployed This Lap
                 
                 
                 
@@ -112,33 +106,7 @@ public class Console_Thread extends Thread{
                 }
                 
                 // Flag
-                switch(car.vehicleFiaFlags){
-                    case -1: view.lab_flag.setForeground(new Color(0,0,0));
-                            view.lab_flag.setBackground(new Color(255,255,255));
-                            view.lab_flag.setText("WARNING FLAG");
-                        break;
-                    case 0: view.lab_flag.setForeground(new Color(19,19,19));
-                            view.lab_flag.setBackground(new Color(19,19,19));
-                            view.lab_flag.setText("");
-                        break;
-                    case 1: view.lab_flag.setForeground(new Color(0,0,0));
-                            view.lab_flag.setBackground(new Color(102,255,51));
-                            view.lab_flag.setText("GREEN FLAG");
-                        break;
-                    case 2: view.lab_flag.setForeground(new Color(0,0,0));
-                            view.lab_flag.setBackground(new Color(0,102,255));
-                            view.lab_flag.setText("BLUE FLAG");
-                        break;
-                    case 3: view.lab_flag.setForeground(new Color(0,0,0));
-                            view.lab_flag.setBackground(new Color(255,255,0));
-                            view.lab_flag.setText("YELLOW FLAG");
-                        break;
-                    case 4: view.lab_flag.setForeground(new Color(255,255,255));
-                            view.lab_flag.setBackground(new Color(255,0,0));
-                            view.lab_flag.setText("RED FLAG");
-                        break;
-                    default: 
-                }
+                GUIFeatures.setFlagLabel(view.lab_flag, car.vehicleFiaFlags);
             }
             if(tel != null){
                 // Speed

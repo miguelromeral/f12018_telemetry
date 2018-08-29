@@ -1,5 +1,6 @@
 package Packets;
 
+import static Packets.PacketEventData.LENGHT;
 import classes.DataTypeUtilities;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -10,7 +11,7 @@ import java.util.Arrays;
  *
  * @author miguelangel.garciar
  */
-public class ParticipantData {
+public class ParticipantData extends Packet {
     
     public static int SIZE = 53;
     
@@ -23,6 +24,9 @@ public class ParticipantData {
                                          // Will be truncated with … (U+2026) if too long
     
     public ParticipantData(byte[] content){
+        super(Arrays.copyOfRange(content, 0, Packet.HEADER_SIZE));
+        super.lenght = LENGHT;
+        
         ByteBuffer bb = ByteBuffer.wrap(content);
         bb.order(ByteOrder.LITTLE_ENDIAN);
         
