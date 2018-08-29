@@ -4,6 +4,7 @@ import Packets.Packet;
 import Packets.PacketCarStatusData;
 import Packets.PacketCarTelemetryData;
 import Packets.PacketFactory;
+import Packets.PacketParticipantsData;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -45,6 +46,7 @@ public class Controller {
         Packet packet = PacketFactory.getPacket(content);
         
         if(packet != null){
+            session.setUserIndex(packet.playerCarIndex);
             
             /*
             System.out.print("{");
@@ -62,7 +64,13 @@ public class Controller {
             
             switch(packet.packetId){
             
-                case 6: session.setOwnCarTelemetryData((PacketCarTelemetryData) packet);
+                case 4:
+                    //System.out.println(packet.toString());
+                    session.setParticipantsData((PacketParticipantsData) packet);
+                    break;
+                case 6:
+                    //System.out.println(packet.toString());
+                    session.setOwnCarTelemetryData((PacketCarTelemetryData) packet);
                     break;
                 case 7:
                     //System.out.println(packet.toString());
