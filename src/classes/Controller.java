@@ -5,6 +5,7 @@ import Packets.PacketCarStatusData;
 import Packets.PacketCarTelemetryData;
 import Packets.PacketEventData;
 import Packets.PacketFactory;
+import Packets.PacketLapData;
 import Packets.PacketParticipantsData;
 import Packets.PacketSessionData;
 import java.nio.ByteBuffer;
@@ -49,8 +50,8 @@ public class Controller {
         
         if(packet != null){
             session.setUserIndex(packet.playerCarIndex);
-            
             /*
+            
             System.out.print("{");
             for(byte b : content){
                 System.out.print(b+", ");
@@ -61,9 +62,6 @@ public class Controller {
            
           */
             
-            
-            
-            
             switch(packet.packetId){
             
                 case 1:
@@ -71,7 +69,8 @@ public class Controller {
                     session.setSessionData((PacketSessionData) packet);
                     break;
                 case 2:
-                    System.out.println(packet.toString());
+                    //System.out.println(packet.toString());
+                    session.setLapData((PacketLapData) packet);
                     break;    
                 case 3:
                     //System.out.println(packet.toString());
@@ -81,15 +80,13 @@ public class Controller {
                     //System.out.println(packet.toString());
                     session.setParticipantsData((PacketParticipantsData) packet);
                     break;
-                    
-                    
                 case 6:
                     //System.out.println(packet.toString());
-                    session.setOwnCarTelemetryData((PacketCarTelemetryData) packet);
+                    session.setCarTelemetryData((PacketCarTelemetryData) packet);
                     break;
                 case 7:
                     //System.out.println(packet.toString());
-                    session.setOwnCarStatusData((PacketCarStatusData) packet);
+                    session.setCarStatusData((PacketCarStatusData) packet);
                     break;
             }
             

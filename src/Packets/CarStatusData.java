@@ -76,8 +76,8 @@ public class CarStatusData {
         fuelMix = DataTypeUtilities.convert_uint8(bb.get());
         frontBrakeBias = DataTypeUtilities.convert_uint8(bb.get());
         pitLimiterStatus = DataTypeUtilities.convert_uint8(bb.get());
-        fuelInTank = DataTypeUtilities.convert_float(bb.getFloat());
-        fuelCapacity = DataTypeUtilities.convert_float(bb.getFloat());
+        fuelInTank = DataTypeUtilities.convert_float_vector(bb.getFloat());
+        fuelCapacity = DataTypeUtilities.convert_float_vector(bb.getFloat());
         maxRPM = DataTypeUtilities.convert_uint16(bb.getShort());
         idleRPM = DataTypeUtilities.convert_uint16(bb.getShort());
         maxGears = DataTypeUtilities.convert_uint8(bb.get());
@@ -100,11 +100,11 @@ public class CarStatusData {
         gearBoxDamage = DataTypeUtilities.convert_uint8(bb.get());
         exhaustDamage = DataTypeUtilities.convert_uint8(bb.get());
         vehicleFiaFlags = DataTypeUtilities.convert_uint8(bb.get());
-        ersStoreEnergy = DataTypeUtilities.convert_float(bb.getFloat());
+        ersStoreEnergy = DataTypeUtilities.convert_float_vector(bb.getFloat());
         ersDeployMode = DataTypeUtilities.convert_uint8(bb.get());
-        ersHarvestedThisLapMGUK = DataTypeUtilities.convert_float(bb.getFloat());
-        ersHarvestedThisLapMGUH = DataTypeUtilities.convert_float(bb.getFloat());
-        ersDeployedThisLap = DataTypeUtilities.convert_float(bb.getFloat());
+        ersHarvestedThisLapMGUK = DataTypeUtilities.convert_float_vector(bb.getFloat());
+        ersHarvestedThisLapMGUH = DataTypeUtilities.convert_float_vector(bb.getFloat());
+        ersDeployedThisLap = DataTypeUtilities.convert_float_vector(bb.getFloat());
     }
     
     public String getTractionControl(){

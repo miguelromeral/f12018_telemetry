@@ -19,7 +19,7 @@ public class MarshalZone {
         ByteBuffer bb = ByteBuffer.wrap(content);
         bb.order(ByteOrder.LITTLE_ENDIAN);
         
-        zoneStart = DataTypeUtilities.convert_float(bb.getFloat());
+        zoneStart = DataTypeUtilities.convert_float_vector(bb.getFloat());
         zoneStart = DataTypeUtilities.convert_uint8(bb.get());
     }
     

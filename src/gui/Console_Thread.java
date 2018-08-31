@@ -29,8 +29,8 @@ public class Console_Thread extends Thread{
         while (true)
         {
             paso.mirar();
-            CarStatusData car = controller.session.ownCar;
-            CarTelemetryData tel = controller.session.ownTelemetry;
+            CarStatusData car = controller.session.getUserDriver().carStatus;
+            CarTelemetryData tel = controller.session.getUserDriver().carTelemetry;
             
             boolean drsAllowed = false;
             boolean drsActivated = false;
@@ -116,6 +116,7 @@ public class Console_Thread extends Thread{
             if(tel != null){
                 // Speed
                 view.lab_speed.setText(""+tel.speed);
+
                 // Throttle %
                 view.pb_throttle.setValue((int) tel.throttle);
                 // Brake %
@@ -125,6 +126,7 @@ public class Console_Thread extends Thread{
                 
                 // Revs:
                 view.lab_revs.setText(""+tel.engineRPM);
+                view.pb_revs.setValue(tel.engineRPM);
                 
                 // Steer %
                 int steer = tel.steer;

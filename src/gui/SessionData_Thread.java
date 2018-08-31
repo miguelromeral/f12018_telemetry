@@ -32,13 +32,13 @@ public class SessionData_Thread extends Thread{
             paso.mirar();
             
             
-            CarStatusData car = controller.session.ownCar;
+            CarStatusData car = controller.session.getUserDriver().carStatus;
             PacketSessionData data = controller.session.data;
             
             if(data != null){
                 // Weather Info
                 GUIFeatures.setWeatherImage(view.lab_weather, view.lab_weather.getWidth(), data.weather, data.trackId, data.isNightRace());
-                view.lab_weather.setText(data.getWeather());
+                view.lab_weather_text.setText(data.getWeather());
                 
                 view.lab_trackTemperature.setText(data.trackTemperature+" ºC");
                 view.lab_airTemperature.setText(data.airTemperature+" ºC");
@@ -59,10 +59,15 @@ public class SessionData_Thread extends Thread{
             }
             
             // Flag
-            if(car != null && data != null){
+            if(car != null && 
+                    data != null){
                 GUIFeatures.setFlagLabel(view.lab_flag, car.vehicleFiaFlags, data.getSafetyCarStatus());
             }else{
-                GUIFeatures.setFlagLabel(view.lab_flag, car.vehicleFiaFlags, "");
+                if (car != null){
+                    GUIFeatures.setFlagLabel(view.lab_flag, car.vehicleFiaFlags, "");
+                }else{
+                    GUIFeatures.setFlagLabel(view.lab_flag, 0, "");
+                }
             }
             
             paso.cerrar();

@@ -35,7 +35,11 @@ public abstract class DataTypeUtilities {
         return b;
     }
     
-    public static float convert_float(float f){
+    public static float convert_float_normal(float f){
+        return f;
+    }
+    
+    public static float convert_float_vector(float f){
         return f / 32767.0f;
     }
     

@@ -61,10 +61,10 @@ public class CarTelemetryData {
         tyresInnerTemperature[3] = (int) DataTypeUtilities.convert_uint16(bb.getShort());
         engineTemperature = (int) DataTypeUtilities.convert_uint16(bb.getShort());
         tyresPressure = new float[4];
-        tyresPressure[0] = DataTypeUtilities.convert_float(bb.getFloat());
-        tyresPressure[1] = DataTypeUtilities.convert_float(bb.getFloat());
-        tyresPressure[2] = DataTypeUtilities.convert_float(bb.getFloat());
-        tyresPressure[3] = DataTypeUtilities.convert_float(bb.getFloat());
+        tyresPressure[0] = DataTypeUtilities.convert_float_vector(bb.getFloat());
+        tyresPressure[1] = DataTypeUtilities.convert_float_vector(bb.getFloat());
+        tyresPressure[2] = DataTypeUtilities.convert_float_vector(bb.getFloat());
+        tyresPressure[3] = DataTypeUtilities.convert_float_vector(bb.getFloat());
     }
     
     public String getDRS(){

@@ -1,7 +1,10 @@
 package gui;
 
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Image;
+import java.io.File;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -33,13 +36,31 @@ public class GUIFeatures {
                 break;
             case 3: lab.setForeground(new Color(0,0,0));
                     lab.setBackground(new Color(255,255,0));
-                    lab.setText("YELLOW FLAG");
+                    lab.setText("YELLOW FLAG "+sc);
                 break;
             case 4: lab.setForeground(new Color(255,255,255));
                     lab.setBackground(new Color(255,0,0));
                     lab.setText("RED FLAG");
                 break;
         }
+    }
+    
+    /**
+     * @param type 1 Worst Personal | 2 Best personal | 3 Best Session
+     */
+    public static Color getColorTiming(int type){
+        switch(type){
+            case 1: return new Color(255, 255, 0);
+            case 2: return new Color(0, 255, 0);
+            case 3: return new Color(255, 0, 255);
+            default: return Color.WHITE;
+        }
+    }
+    
+    public static void setSizeLabel(JLabel label, int w, int h){
+        label.setMinimumSize(new Dimension(w, h));
+        label.setPreferredSize(new Dimension(w, h));
+        label.setMaximumSize(new Dimension(w, h));
     }
     
     public static void setTrackImage(JLabel label, int sh, int sv, int track) {
@@ -74,6 +95,22 @@ public class GUIFeatures {
             }
         } catch (Exception e) {
             System.out.println("Error en la imagen: " + e.toString());
+        }
+    }
+    
+    public static Color getColorByTeam(int team){
+        switch(team){
+            case 0: return new Color(0, 210, 190);// Mercedes
+            case 1: return new Color(220, 0, 0);// Ferrari
+            case 2: return new Color(30, 65, 255);// RedBull
+            case 3: return new Color(255, 255, 255);// Williams
+            case 4: return new Color(245, 150, 200);// Force India
+            case 5: return new Color(255, 245, 0);// Renault
+            case 6: return new Color(70, 155, 255);// Toro Rosso
+            case 7: return new Color(130, 130, 130);// Haas
+            case 8: return new Color(255, 135, 0); // McLaren
+            case 9: return new Color(155, 0, 0);// Sauber
+            default: return Color.white;
         }
     }
     
