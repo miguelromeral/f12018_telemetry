@@ -63,12 +63,15 @@ public class LapData {
     }
     
     public static String formatSeconds(float seconds, boolean large){
-        if(seconds <= 0){
+        if(seconds <= 0 || seconds == Float.POSITIVE_INFINITY){
             return "";
         }
-        if(large){
+        if(large){  
             Date date = new Date((long)(seconds * 1000));
             return new SimpleDateFormat("m:ss.SSS").format(date);
+        }
+        if(seconds >= 60){
+            return ((int)(seconds / 60))+((int) seconds)+"."+(int) ((seconds * 10) % 10); 
         }
         return ((int) seconds)+"."+(int) ((seconds * 10) % 10); 
     }

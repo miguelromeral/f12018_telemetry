@@ -19,16 +19,26 @@ public class Driver {
     public LapData lap;
     public Session session;
     
-    public float bestS1 = Float.POSITIVE_INFINITY;
-    public float bestS2 = Float.POSITIVE_INFINITY;
-    public float bestS3 = Float.POSITIVE_INFINITY;
-    public float lastS1 = Float.POSITIVE_INFINITY;
-    public float lastS2 = Float.POSITIVE_INFINITY;
-    public float lastS3 = Float.POSITIVE_INFINITY;
+    public float bestS1;
+    public float bestS2;
+    public float bestS3;
+    public float lastS1;
+    public float lastS2;
+    public float lastS3;
     
     public Driver(ParticipantData pd, Session session){
         participant = pd;
         this.session = session;
+        initializeSectores();
+    }
+    
+    public void initializeSectores(){
+        bestS1 = Float.POSITIVE_INFINITY;
+        bestS2 = Float.POSITIVE_INFINITY;
+        bestS3 = Float.POSITIVE_INFINITY;
+        lastS1 = Float.POSITIVE_INFINITY;
+        lastS2 = Float.POSITIVE_INFINITY;
+        lastS3 = Float.POSITIVE_INFINITY;
     }
     
     public float getLastS1(){
@@ -57,18 +67,16 @@ public class Driver {
     
     public void setNewLap(LapData newLap){
         lap = newLap;
-        if(lap.getSector() != 1){
+        if(lap.getSector() != 1 && lap.sector1Time != 0f){
             lastS1 = lap.sector1Time;
             if(lastS1 < bestS1){
                 bestS1 = lastS1;
-                if(bestS1 <= session.bestS1 && !newLap.getCurrentLapInvalid()){
-                    //System.out.println("Best: "+session.bestS1);
-                    //System.out.println("Best Personal: "+bestS1);
+                if(bestS1 <= session.bestS1){
                     session.bestS1 = bestS1;
                 }
             }
         }
-        if(lap.getSector() == 3){
+        if(lap.getSector() == 3 && lap.sector1Time != 0f){
             lastS2 = lap.sector2Time;
             if(lastS2 < bestS2){
                 bestS2 = lastS2;
@@ -88,7 +96,6 @@ public class Driver {
         }
         if(lap.getSector() == 1){
             if(lap.lastLapTime != 0f && lap.lastLapTime == lap.bestLapTime && session.betterThanLap(lap.bestLapTime)){
-                System.out.println("Last lap time: "+lap.bestLapTime+", Session best: "+session.bestLap);
                 session.bestLap = lap.bestLapTime;
             }
         }

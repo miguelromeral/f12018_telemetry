@@ -81,7 +81,25 @@ public class LiveTiming extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         panelSession = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        lab_weather = new javax.swing.JLabel();
+        space = new javax.swing.JLabel();
+        lab_weather_text = new javax.swing.JLabel();
+        space1 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        space2 = new javax.swing.JLabel();
+        lab_trackTemperature = new javax.swing.JLabel();
+        space3 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        space4 = new javax.swing.JLabel();
+        lab_airTemperature = new javax.swing.JLabel();
+        space5 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        lab_bestS1 = new javax.swing.JLabel();
+        lab_bestS2 = new javax.swing.JLabel();
+        lab_bestS3 = new javax.swing.JLabel();
+        lab_bestTotal = new javax.swing.JLabel();
+        space6 = new javax.swing.JLabel();
+        lab_remaining = new javax.swing.JLabel();
         panelTiming = new javax.swing.JPanel();
         panel0 = new javax.swing.JPanel();
         labPos0 = new javax.swing.JLabel();
@@ -442,8 +460,108 @@ public class LiveTiming extends javax.swing.JFrame {
         panelSession.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Session", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(204, 204, 204))); // NOI18N
         panelSession.setLayout(new javax.swing.BoxLayout(panelSession, javax.swing.BoxLayout.LINE_AXIS));
 
-        jLabel1.setText("jLabel1");
-        panelSession.add(jLabel1);
+        lab_weather.setText("jLabel2");
+        lab_weather.setMaximumSize(new java.awt.Dimension(60, 60));
+        lab_weather.setMinimumSize(new java.awt.Dimension(60, 60));
+        panelSession.add(lab_weather);
+
+        space.setMaximumSize(new java.awt.Dimension(10, 0));
+        space.setMinimumSize(new java.awt.Dimension(10, 0));
+        panelSession.add(space);
+
+        lab_weather_text.setFont(new java.awt.Font("Formula1 Display Regular", 0, 24)); // NOI18N
+        lab_weather_text.setForeground(new java.awt.Color(255, 255, 255));
+        lab_weather_text.setText("Weather");
+        panelSession.add(lab_weather_text);
+
+        space1.setMaximumSize(new java.awt.Dimension(10, 0));
+        space1.setMinimumSize(new java.awt.Dimension(10, 0));
+        panelSession.add(space1);
+
+        jLabel13.setFont(new java.awt.Font("Formula1 Display Regular", 0, 18)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel13.setText("T:");
+        panelSession.add(jLabel13);
+
+        space2.setMaximumSize(new java.awt.Dimension(10, 0));
+        space2.setMinimumSize(new java.awt.Dimension(10, 0));
+        panelSession.add(space2);
+
+        lab_trackTemperature.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lab_trackTemperature.setForeground(new java.awt.Color(255, 255, 255));
+        lab_trackTemperature.setText("Weather");
+        panelSession.add(lab_trackTemperature);
+
+        space3.setMaximumSize(new java.awt.Dimension(10, 0));
+        space3.setMinimumSize(new java.awt.Dimension(10, 0));
+        panelSession.add(space3);
+
+        jLabel12.setFont(new java.awt.Font("Formula1 Display Regular", 0, 18)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel12.setText("A:");
+        panelSession.add(jLabel12);
+
+        space4.setMaximumSize(new java.awt.Dimension(10, 0));
+        space4.setMinimumSize(new java.awt.Dimension(10, 0));
+        panelSession.add(space4);
+
+        lab_airTemperature.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lab_airTemperature.setForeground(new java.awt.Color(255, 255, 255));
+        lab_airTemperature.setText("Weather");
+        panelSession.add(lab_airTemperature);
+
+        space5.setMaximumSize(new java.awt.Dimension(10, 0));
+        space5.setMinimumSize(new java.awt.Dimension(10, 0));
+        panelSession.add(space5);
+
+        jPanel2.setBackground(new java.awt.Color(19, 19, 19));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Best Time Session", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(204, 204, 204))); // NOI18N
+        jPanel2.setMaximumSize(new java.awt.Dimension(500, 50));
+        jPanel2.setPreferredSize(new java.awt.Dimension(500, 50));
+        jPanel2.setLayout(new javax.swing.BoxLayout(jPanel2, javax.swing.BoxLayout.LINE_AXIS));
+
+        lab_bestS1.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        lab_bestS1.setForeground(new java.awt.Color(255, 255, 255));
+        lab_bestS1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lab_bestS1.setMaximumSize(new java.awt.Dimension(100, 17));
+        lab_bestS1.setMinimumSize(new java.awt.Dimension(20, 17));
+        lab_bestS1.setPreferredSize(new java.awt.Dimension(50, 17));
+        jPanel2.add(lab_bestS1);
+
+        lab_bestS2.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        lab_bestS2.setForeground(new java.awt.Color(255, 255, 255));
+        lab_bestS2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lab_bestS2.setMaximumSize(new java.awt.Dimension(100, 17));
+        lab_bestS2.setMinimumSize(new java.awt.Dimension(20, 17));
+        lab_bestS2.setPreferredSize(new java.awt.Dimension(50, 17));
+        jPanel2.add(lab_bestS2);
+
+        lab_bestS3.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        lab_bestS3.setForeground(new java.awt.Color(255, 255, 255));
+        lab_bestS3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lab_bestS3.setMaximumSize(new java.awt.Dimension(100, 17));
+        lab_bestS3.setMinimumSize(new java.awt.Dimension(20, 17));
+        lab_bestS3.setPreferredSize(new java.awt.Dimension(50, 17));
+        jPanel2.add(lab_bestS3);
+
+        lab_bestTotal.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        lab_bestTotal.setForeground(new java.awt.Color(255, 255, 255));
+        lab_bestTotal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lab_bestTotal.setMaximumSize(new java.awt.Dimension(100, 17));
+        lab_bestTotal.setMinimumSize(new java.awt.Dimension(20, 17));
+        lab_bestTotal.setPreferredSize(new java.awt.Dimension(50, 17));
+        jPanel2.add(lab_bestTotal);
+
+        panelSession.add(jPanel2);
+
+        space6.setMaximumSize(new java.awt.Dimension(10, 0));
+        space6.setMinimumSize(new java.awt.Dimension(10, 0));
+        panelSession.add(space6);
+
+        lab_remaining.setFont(new java.awt.Font("Formula1 Display Regular", 0, 18)); // NOI18N
+        lab_remaining.setForeground(new java.awt.Color(204, 204, 204));
+        lab_remaining.setText("remaining");
+        panelSession.add(lab_remaining);
 
         panelTiming.setBackground(new java.awt.Color(19, 19, 19));
         panelTiming.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Timing", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(204, 204, 204))); // NOI18N
@@ -560,7 +678,6 @@ public class LiveTiming extends javax.swing.JFrame {
         labPit0.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labPit0.setText("PIT");
         labPit0.setMaximumSize(new java.awt.Dimension(40, 17));
-        labPit0.setMinimumSize(new java.awt.Dimension(20, 17));
         labPit0.setPreferredSize(new java.awt.Dimension(50, 17));
         panel0.add(labPit0);
 
@@ -3121,10 +3238,12 @@ public class LiveTiming extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosing
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    public javax.swing.JLabel jLabel12;
+    public javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel labBest0;
     private javax.swing.JLabel labBest1;
@@ -3441,6 +3560,15 @@ public class LiveTiming extends javax.swing.JFrame {
     private javax.swing.JLabel labTyre7;
     private javax.swing.JLabel labTyre8;
     private javax.swing.JLabel labTyre9;
+    public javax.swing.JLabel lab_airTemperature;
+    public javax.swing.JLabel lab_bestS1;
+    public javax.swing.JLabel lab_bestS2;
+    public javax.swing.JLabel lab_bestS3;
+    public javax.swing.JLabel lab_bestTotal;
+    public javax.swing.JLabel lab_remaining;
+    public javax.swing.JLabel lab_trackTemperature;
+    public javax.swing.JLabel lab_weather;
+    public javax.swing.JLabel lab_weather_text;
     private javax.swing.JPanel panel0;
     private javax.swing.JPanel panel1;
     private javax.swing.JPanel panel10;
@@ -3464,5 +3592,12 @@ public class LiveTiming extends javax.swing.JFrame {
     private javax.swing.JPanel panel9;
     private javax.swing.JPanel panelSession;
     public javax.swing.JPanel panelTiming;
+    private javax.swing.JLabel space;
+    private javax.swing.JLabel space1;
+    private javax.swing.JLabel space2;
+    private javax.swing.JLabel space3;
+    private javax.swing.JLabel space4;
+    private javax.swing.JLabel space5;
+    private javax.swing.JLabel space6;
     // End of variables declaration//GEN-END:variables
 }

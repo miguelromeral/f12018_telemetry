@@ -11,6 +11,8 @@ import Packets.PacketParticipantsData;
 import Packets.PacketSessionData;
 import Packets.ParticipantData;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
@@ -21,14 +23,28 @@ public class Session {
     public int userIndex;
     public PacketSessionData data;
     public ArrayList<Driver> drivers;
+    public ArrayList<LapData> laps;
     
-    public float bestS1 = Float.POSITIVE_INFINITY;
-    public float bestS2 = Float.POSITIVE_INFINITY;
-    public float bestS3 = Float.POSITIVE_INFINITY;
-    public float bestLap = Float.POSITIVE_INFINITY;
+    public float bestS1;
+    public float bestS2;
+    public float bestS3;
+    public float bestLap;
     
     public Session(){
-        drivers = new ArrayList<>();
+        initialize();
+    }
+    
+    public void initialize(){
+        bestS1 = Float.POSITIVE_INFINITY;
+        bestS2 = Float.POSITIVE_INFINITY;
+        bestS3 = Float.POSITIVE_INFINITY;
+        bestLap = Float.POSITIVE_INFINITY;
+        
+        if(drivers != null){
+            for(Driver d : drivers){
+                d.initializeSectores();
+            }
+        }
     }
     
     public ArrayList<Driver> getDrivers(){
@@ -43,7 +59,6 @@ public class Session {
     }
     
     public synchronized boolean betterThanS1(float sector){
-        //System.out.println("Best SECTOR: "+LapData.formatSeconds(bestS1, true)+", Matching: "+LapData.formatSeconds(sector, true)+", result: "+(sector <= bestS1));
         if(LapData.formatSeconds(sector, true) != null){
             return sector <= bestS1;
         }else{
@@ -80,67 +95,86 @@ public class Session {
     }
     
     public Driver getDriverByPosition(int pos){
-        for(Driver d : drivers){
-            if(d.lap != null){
-                if(d.lap.carPosition == pos){
-                    return d;
+        if(drivers != null){
+            for(Driver d : drivers){
+                if(d.lap != null){
+                    if(d.lap.carPosition == pos){
+                        return d;
+                    }
                 }
+                /*else{
+                    if(d.
+                }*/
             }
-            /*else{
-                if(d.
-            }*/
+            return null;
         }
         return null;
     }
     
     public void setCarStatusData(PacketCarStatusData packetCarStatusData){
-        if(!drivers.isEmpty()){
-            for(int i=0; i<drivers.size(); i++){
-                drivers.get(i).setNewCarStatus(packetCarStatusData.carStatusData.get(i));
+        if(drivers != null){
+            if(!drivers.isEmpty()){
+                for(int i=0; i<drivers.size(); i++){
+                    drivers.get(i).setNewCarStatus(packetCarStatusData.carStatusData.get(i));
+                }
             }
         }
     }
     
     public void setCarTelemetryData(PacketCarTelemetryData packetCarTelemetryData){
-        if(!drivers.isEmpty()){
-            for(int i=0; i<drivers.size(); i++){
-                drivers.get(i).setNewCarTelemetry(packetCarTelemetryData.carTelemetryData.get(i));
+        if(drivers != null){
+            if(!drivers.isEmpty()){
+                for(int i=0; i<drivers.size(); i++){
+                    drivers.get(i).setNewCarTelemetry(packetCarTelemetryData.carTelemetryData.get(i));
+                }
             }
         }
     }
     
     public void setParticipantsData(PacketParticipantsData packetParticipantsData){
-        if(drivers.isEmpty()){
+        if(drivers != null){
+            if(!drivers.isEmpty()){
+                HashMap<Short, ParticipantData> driversId = new HashMap<Short, ParticipantData>();
+
+                for(ParticipantData pd : packetParticipantsData.participants){
+                    driversId.put(pd.driverId, pd);
+                }
+                for(Driver d : drivers){
+                    ParticipantData pd = driversId.get(d.participant.driverId);
+                    if(pd != null){
+                        d.setNewParticipant(pd);
+                    }
+                }
+            }
+        }else{
+            drivers = new ArrayList<>();
             for(ParticipantData pd : packetParticipantsData.participants){
                 Driver d = new Driver(pd, this);
                 drivers.add(d);
-                
-                if(d.participant.driverId == 15){
-                    System.out.println("BOTTAS!");
-                }
             }
             System.out.println("SET PARTICIPANTS!");
-        }else{
-            
-            // Tratar aquí el cambio de pilotos
-            
-            for(int i=0; i<drivers.size(); i++){
-                drivers.get(i).setNewParticipant(packetParticipantsData.participants.get(i));
-            }
         }
     }
     
     
     public void setEventAction(PacketEventData packetEventData){
-       
+        if(packetEventData.eventStringCode.equals("SSTA")){
+            initialize();
+            drivers = null;
+            
+        }
     }
     
     
     public void setLapData(PacketLapData packetLapData){
-        if(!drivers.isEmpty()){
-            for(int i=0; i<drivers.size(); i++){
-                drivers.get(i).setNewLap(packetLapData.lapData.get(i));
+        if(drivers != null){
+            if(!drivers.isEmpty()){
+                for(int i=0; i<drivers.size(); i++){
+                    drivers.get(i).setNewLap(packetLapData.lapData.get(i));
+                }
             }
+
+            laps = packetLapData.lapData;
         }
     }
     

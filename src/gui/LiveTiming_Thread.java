@@ -2,6 +2,7 @@ package gui;
 
 import Packets.CarStatusData;
 import Packets.CarTelemetryData;
+import Packets.LapData;
 import Packets.PacketSessionData;
 import classes.Controller;
 import classes.Driver;
@@ -47,28 +48,69 @@ public class LiveTiming_Thread extends Thread{
     }
     
     public void killOtherThreads(){
-        for(LiveTiming_Driver_Thread l : threads){
-            l.delete();
-            l.interrupt();
-            l.stop();
+        try{
+            for(LiveTiming_Driver_Thread l : threads){
+                l.delete();
+                l.interrupt();
+                l.stop();
+                threads.remove(l);
+            }
+        }catch(Exception e){
+            
         }
     }
     
     public void run(){
-        createThreads();
         while (true)
         {
             paso.mirar();
+            if(threads.isEmpty()){
+                createThreads();
+            }
             
-            ArrayList<Driver> drivers = controller.session.getDrivers();
+            PacketSessionData data = controller.session.data;
             
-            if(!drivers.isEmpty()){
+            if(data != null){
+                // Weather Info
+                GUIFeatures.setWeatherImage(view.lab_weather, view.lab_weather.getWidth(), data.weather, data.trackId, data.isNightRace());
+                view.lab_weather_text.setText(data.getWeather());
                 
-                //System.out.println(drivers.get(1));
+                view.lab_trackTemperature.setText(data.trackTemperature+" ºC");
+                view.lab_airTemperature.setText(data.airTemperature+" ºC");
                 
-                for(int i=0; i<drivers.size(); i++){
-                    threads.get(i).setDriver(controller.session.getDriverByPosition(i + 1));
+                switch(data.sessionType){
+                    case 10: case 11: view.lab_remaining.setText("Laps: "+data.totalLaps);
+                        break;
+                    default: view.lab_remaining.setText("");
                 }
+            }
+            
+            if(controller.session.drivers != null){
+                ArrayList<Driver> drivers = controller.session.getDrivers();
+
+                if(!drivers.isEmpty()){
+
+                    if(drivers.size() != threads.size()){
+                        killOtherThreads();
+                        createThreads();
+                    }
+                    
+                    for(int i=0; i<drivers.size(); i++){
+                        threads.get(i).setDriver(controller.session.getDriverByPosition(i + 1));
+                    }
+                }
+
+                view.lab_bestS1.setText(LapData.formatSeconds(controller.session.bestS1, true));
+                view.lab_bestS2.setText(LapData.formatSeconds(controller.session.bestS2, true));
+                view.lab_bestS3.setText(LapData.formatSeconds(controller.session.bestS3, true));
+                view.lab_bestTotal.setText(LapData.formatSeconds(controller.session.bestS1 + controller.session.bestS2 + controller.session.bestS3, true));
+
+               /* System.out.print("S1 "+controller.session.bestS1+" | ");
+                System.out.print("S2 "+controller.session.bestS2+" | ");
+                System.out.print("S3 "+controller.session.bestS3+" | ");
+                System.out.println("Total "+(controller.session.bestS1 + controller.session.bestS2 + controller.session.bestS3));*/
+            }else{
+                killOtherThreads();
             }
             
             paso.cerrar();

@@ -46,7 +46,12 @@ public class LiveTiming_Driver_Thread extends Thread{
                 labs[2].setForeground(GUIFeatures.getColorByTeam(driver.participant.teamId));
                 labs[3].setText(driver.participant.getName().toUpperCase());
 
+                
+                
+                
+                
                 if(driver.lap.pitStatus == 0){
+                    labs[3].setForeground(Color.WHITE);
                     labs[4].setText(driver.lap.getCurrentLapTime(true));
                     
                     if(driver.lap.getCurrentLapInvalid()){
@@ -57,7 +62,9 @@ public class LiveTiming_Driver_Thread extends Thread{
                     
                     
                 }else{
+                    labs[3].setForeground(new Color(90,90,90));
                     labs[4].setText("");
+                    
                 }
 
                 // Sector 1
@@ -92,6 +99,9 @@ public class LiveTiming_Driver_Thread extends Thread{
                 
                 // Delta - 8
                 
+                labs[8].setText(LapData.formatSeconds(driver.lap.resultStatus, false));
+                
+                
                 labs[9].setText(driver.lap.getLastLapTime(true));
                 if(driver.session.betterThanLap(driver.lap.lastLapTime)){
                     labs[9].setForeground(GUIFeatures.getColorTiming(3));
@@ -110,7 +120,9 @@ public class LiveTiming_Driver_Thread extends Thread{
                 }
                 
                 labs[11].setText(driver.lap.currentLapNum+"");
-                GUIFeatures.getTyreImage(labs[12], labs[12].getHeight(), driver.carStatus.tyreCompound);
+                if(driver.carStatus != null){
+                    GUIFeatures.getTyreImage(labs[12], labs[12].getHeight(), driver.carStatus.tyreCompound);
+                }
                 labs[13].setText(driver.lap.getPitStatus());
                 labs[14].setText(driver.lap.penalties+"");
 

@@ -11,7 +11,7 @@ public class PacketEventData extends Packet{
     
     public static int LENGHT = 25; // Bytes
     
-    public String eventStringCode;           // Event string code, see above
+    public String eventStringCode;           // Event string code, SSTA, SEND
     
     public PacketEventData(byte[] content){
         super(Arrays.copyOfRange(content, 0, Packet.HEADER_SIZE));

@@ -64,7 +64,7 @@ public class Controller {
             
             switch(packet.packetId){
             
-                case 1:
+                case 1: // Session Data
                     //System.out.println(packet.toString());
                     session.setSessionData((PacketSessionData) packet);
                     break;

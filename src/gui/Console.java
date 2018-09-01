@@ -480,7 +480,7 @@ public class Console extends javax.swing.JFrame {
         );
 
         panelSteer1.setBackground(new java.awt.Color(19, 19, 19));
-        panelSteer1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Revs", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(204, 204, 204))); // NOI18N
+        panelSteer1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Revs (x1000)", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(204, 204, 204))); // NOI18N
         panelSteer1.setLayout(new java.awt.BorderLayout());
 
         panelSteerPercentage1.setBackground(new java.awt.Color(19, 19, 19));
@@ -493,31 +493,31 @@ public class Console extends javax.swing.JFrame {
 
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel2.setText("x3");
+        jLabel2.setText("3");
         jLabel2.setMaximumSize(new java.awt.Dimension(118, 14));
         jPanel3.add(jLabel2);
 
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel3.setText("x6");
+        jLabel3.setText("6");
         jLabel3.setMaximumSize(new java.awt.Dimension(118, 14));
         jPanel3.add(jLabel3);
 
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel7.setText("x9");
+        jLabel7.setText("9");
         jLabel7.setMaximumSize(new java.awt.Dimension(118, 14));
         jPanel3.add(jLabel7);
 
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel8.setText("x12");
+        jLabel8.setText("12");
         jLabel8.setMaximumSize(new java.awt.Dimension(118, 14));
         jPanel3.add(jLabel8);
 
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel9.setText("x15");
+        jLabel9.setText("15");
         jLabel9.setMaximumSize(new java.awt.Dimension(118, 14));
         jPanel3.add(jLabel9);
 
