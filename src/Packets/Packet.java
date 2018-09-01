@@ -20,7 +20,7 @@ public class Packet {
     //                           HEADER                           //
     //                                                            //
     ////////////////////////////////////////////////////////////////
-    // STATIC VALUES
+    
     /**
      * Header Size (bytes).
      */
@@ -30,7 +30,6 @@ public class Packet {
      */
     public static int PACKET_FORMAT = 2018;
 
-    // STRUCTURE ATTRIBUTES
     /**
      * 2018.
      */

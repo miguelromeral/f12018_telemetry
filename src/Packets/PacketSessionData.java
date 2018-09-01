@@ -1,6 +1,5 @@
 package Packets;
 
-import static Packets.PacketEventData.LENGHT;
 import classes.DataTypeUtilities;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -11,25 +10,31 @@ import java.util.Date;
 
 /**
  * Session Packet.
+ *
  * @author miguelangel.garciar
  * @author Codemasters
- * @see https://forums.codemasters.com/discussion/136948/f1-2018-udp-specification
+ * @see
+ * https://forums.codemasters.com/discussion/136948/f1-2018-udp-specification
  */
-public class PacketSessionData extends Packet{
-    
+public class PacketSessionData extends Packet {
+
     ////////////////////////////////////////////////////////////////
     //                                                            //
     //                     SESSION PACKET                         //
     //                                                            //
     ////////////////////////////////////////////////////////////////
-    
-    // STATIC VALUES
-    /** Packet Size in bytes (w/o header size). */
+    /**
+     * Packet Size in bytes (w/o header size).
+     */
     public static int LENGHT = 126; // Bytes
-    
-    /** Weather. */
-    public short    weather;
-    /** Track temp in degrees celsius. */
+
+    /**
+     * Weather.
+     */
+    public short weather;
+    /**
+     * Track temp in degrees celsius.
+     */
     public short trackTemperature;
     /**
      * Air temp in degrees celsius.
@@ -45,6 +50,18 @@ public class PacketSessionData extends Packet{
     public int trackLength;
     /**
      * Session type.
+     * 1 = FP1.
+     * 2 = FP2.
+     * 3 = FP3.
+     * 4 = Practice.
+     * 5 = Q1.
+     * 6 = Q2.
+     * 7 = Q3.
+     * 8 = Qualifying.
+     * 9 = OSQ.
+     * 10 = Race.
+     * 11 = R2.
+     * 12 = Time Trial.
      */
     public short sessionType;
     /**
@@ -63,28 +80,49 @@ public class PacketSessionData extends Packet{
      * Session duration in seconds.
      */
     public int sessionDuration;
-    /** Pit speed limit in kilometres per hour. */
-    public short    pitSpeedLimit;
-    /** Whether the game is paused. */
-    public short    gamePaused;
-    /** Whether the player is spectating. */
-    public short    isSpectating;
-    /** Index of the car being spectated. */
-    public short    spectatorCarIndex;
-    /** SLI Pro support. */
-    public short    sliProNativeSupport;
-    /** Number of marshal zones to follow. */
-    public short    numMarshalZones;
-    /** List of marshal zones – max 21. */
+    /**
+     * Pit speed limit in kilometres per hour.
+     */
+    public short pitSpeedLimit;
+    /**
+     * Whether the game is paused.
+     */
+    public short gamePaused;
+    /**
+     * Whether the player is spectating.
+     */
+    public short isSpectating;
+    /**
+     * Index of the car being spectated.
+     */
+    public short spectatorCarIndex;
+    /**
+     * SLI Pro support.
+     */
+    public short sliProNativeSupport;
+    /**
+     * Number of marshal zones to follow.
+     */
+    public short numMarshalZones;
+    /**
+     * List of marshal zones – max 21.
+     */
     public ArrayList<MarshalZone> marshalZones = new ArrayList<>();
-    /** Safety Car status. */
-    public short    safetyCarStatus;
-    /** Network game. */
-    public short    networkGame;
-    
+    /**
+     * Safety Car status.
+     * 0 = No SC.
+     * 1 = SC.
+     * 2 = VSC.
+     */
+    public short safetyCarStatus;
+    /**
+     * Network game.
+     */
+    public short networkGame;
+
     /**
      * Packet Session constructor.
-     * @param content All datagrama content in bytes.
+     * @param content All datagram content in bytes.
      */
     public PacketSessionData(byte[] content){
         super(Arrays.copyOfRange(content, 0, Packet.HEADER_SIZE));
@@ -131,7 +169,7 @@ public class PacketSessionData extends Packet{
     
     /**
      * Get weather based on <code>weather</code>.
-     * @return 0 - Clear | 1 - Light Cloud | 2 - Overcast | 3 - Light Rain | 4 - Heavy Rain | 5 - Storm | default: ""
+     * @return 0 = Clear | 1 = Light Cloud | 2 = Overcast | 3 = Light Rain | 4 = Heavy Rain | 5 = Storm | default: ""
      * 
      */
     public String getWeather(){
@@ -148,11 +186,11 @@ public class PacketSessionData extends Packet{
     
     /**
      * Name of the track based on <code>trackId</code>.
-     * @return 0 - Melbourne | 1 - Paul Ricard | 2 - Shanghai | 3 - Sakhir | 4 - Catalunya | 
-     *         5 - Monaco | 6 - Montreal | 7 - Silverstone | 8 - Hockenheim | 9 - Hungaroring | 
-     *         10 - Spa | 11 - Monza | 12 - Singapore | 13 - Suzuka | 14 - Abu Dhabi | 
-     *         15 - Texas | 16 - Brasil | 17 - Austria | 18 - Sochi | 19 - Mexico | 
-     *         20 - Baku | 21 - Sakhir (short) | 22 - Silverstone (short) | 23 - Texas (short) | 24 - Suzuka (short) | 
+     * @return 0 = Melbourne | 1 = Paul Ricard | 2 = Shanghai | 3 = Sakhir | 4 = Catalunya | 
+     *         5 = Monaco | 6 = Montreal | 7 = Silverstone | 8 = Hockenheim | 9 = Hungaroring | 
+     *         10 = Spa | 11 = Monza | 12 = Singapore | 13 = Suzuka | 14 = Abu Dhabi | 
+     *         15 = Texas | 16 = Brasil | 17 = Austria | 18 = Sochi | 19 = Mexico | 
+     *         20 = Baku | 21 = Sakhir (short) | 22 = Silverstone (short) | 23 = Texas (short) | 24 = Suzuka (short) | 
      *         default: ""
      */
     public String getTrack(){
@@ -188,9 +226,9 @@ public class PacketSessionData extends Packet{
     
     /**
      * Get Session Type based on <code>sessionType</code>.
-     * @return 1 - FP1 | 2 - FP2 | 3 - FP3 | 4 - Practice | 5 - Q1 | 
-     *         6 - Q2 | 7 - Q3 | 8 - Qualifying | 9 - OSQ | 10 - Race | 
-     *         11 - R2 | 12 - Time Trial | default: ""
+     * @return 1 = FP1 | 2 = FP2 | 3 = FP3 | 4 = Practice | 5 = Q1 | 
+     *         6 = Q2 | 7 = Q3 | 8 = Qualifying | 9 = OSQ | 10 = Race | 
+     *         11 = R2 | 12 = Time Trial | default: ""
      */
     public String getSessionType(){
         switch(sessionType){
@@ -212,7 +250,7 @@ public class PacketSessionData extends Packet{
     
     /**
      * Get era based on <code>era</code>.
-     * @return 0 - Modern | 1 - Classic | default: ""
+     * @return 0 = Modern | 1 = Classic | default: ""
      */
     public String getEra(){
         switch(era){
@@ -242,7 +280,7 @@ public class PacketSessionData extends Packet{
     
     /**
      * Get if user is spectating
-     * @return 0 - No | 1 - Yes
+     * @return 0 = No | 1 = Yes
      */
     public String getIsSpectating(){
         if(isSpectating == 1){
@@ -254,7 +292,7 @@ public class PacketSessionData extends Packet{
     
     /**
      * Get if user has SLI Pro Native support.
-     * @return 0 - No | 1 - Yes
+     * @return 0 = No | 1 = Yes
      */
     public String getSliProNativeSupport(){
         if(sliProNativeSupport == 1){
@@ -266,7 +304,7 @@ public class PacketSessionData extends Packet{
     
     /**
      * Get Safety Car status based on <code>safetyCarStatus</code>.
-     * @return 0 - No SC | 1 - SC | 2 - VSC | default: ""
+     * @return 0 = No SC | 1 = SC | 2 = VSC | default: ""
      */
     public String getSafetyCarStatus(){
         switch(safetyCarStatus){
@@ -279,7 +317,7 @@ public class PacketSessionData extends Packet{
     
     /**
      * Get network game.
-     * @return 0 - Offline | 1 - Online | default: ""
+     * @return 0 = Offline | 1 = Online | default: ""
      */
     public String getNetworkGame(){
         switch(networkGame){

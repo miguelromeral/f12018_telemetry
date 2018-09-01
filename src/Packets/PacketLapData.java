@@ -1,19 +1,37 @@
 package Packets;
 
-import static Packets.PacketCarStatusData.LENGHT;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
- *
+ * Lap Data Packet.
+ * 
  * @author miguelangel.garciar
+ * @author Codemasters
+ * @see
+ * https://forums.codemasters.com/discussion/136948/f1-2018-udp-specification
  */
 public class PacketLapData extends Packet{
     
-    public static int LENGHT = 841; // Bytes
-    
+    ////////////////////////////////////////////////////////////////
+    //                                                            //
+    //                      LAP DATA PACKET                       //
+    //                                                            //
+    ////////////////////////////////////////////////////////////////
+    // STATIC VALUES
+    /**
+     * Packet size in bytes (w/o header size).
+     */
+    public static int LENGHT = 841;
+    /**
+     * Lap data for all cars on track (20).
+     */
     public ArrayList<LapData> lapData = new ArrayList<>();
     
+    /**
+     * Packet Lap Data constructor.
+     * @param content All datagram content in bytes.
+     */
     public PacketLapData(byte[] content){
         super(Arrays.copyOfRange(content, 0, Packet.HEADER_SIZE));
         super.lenght = LENGHT;
@@ -33,6 +51,11 @@ public class PacketLapData extends Packet{
         }
     }
     
+    /**
+     * Get all data.
+     * @return 
+     */
+    @Override
     public String toString(){
         
         String ret = super.toString();
@@ -40,8 +63,6 @@ public class PacketLapData extends Packet{
         for(LapData lap : lapData){
             ret += "\n------------\n";
             ret += lap.toString();
-            
-            return ret;
         }
         
         return ret;
