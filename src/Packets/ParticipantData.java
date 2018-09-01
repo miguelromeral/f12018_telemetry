@@ -1,6 +1,5 @@
 package Packets;
 
-import static Packets.PacketEventData.LENGHT;
 import classes.DataTypeUtilities;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -8,21 +7,49 @@ import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 
 /**
+ * Participant Data structure.
  *
  * @author miguelangel.garciar
+ * @author Codemasters
+ * @see
+ * https://forums.codemasters.com/discussion/136948/f1-2018-udp-specification
  */
 public class ParticipantData extends Packet {
-    
-    public static int SIZE = 53;
-    
-    public short      aiControlled;           // Whether the vehicle is AI (1) or Human (0) controlled
-    public short      driverId;               // Driver id - see appendix
-    public short      teamId;                 // Team id - see appendix
-    public short      raceNumber;             // Race number of the car
-    public short      nationality;            // Nationality of the driver
-    public String              name;              // Name of participant in UTF-8 format – null terminated
-                                         // Will be truncated with … (U+2026) if too long
-    
+
+    /**
+     * Structure size in bytes.
+     */
+    public static int LENGHT = 53;
+    /**
+     * Whether the vehicle is AI (1) or Human (0) controlled.
+     */
+    public short aiControlled;
+    /**
+     * Driver ID.
+     */
+    public short driverId;
+    /**
+     * Team ID.
+     */
+    public short teamId;
+    /**
+     * Race number of the car.
+     */
+    public short raceNumber;
+    /**
+     * Nationality of the driver.
+     */
+    public short nationality;
+    /**
+     * Name of participant in UTF-8 format – null terminated Will be truncated
+     * with … (U+2026) if too long
+     */
+    public String name;
+
+    /**
+     * Participant Data structure constructor.
+     * @param content All datagram content in bytes.
+     */
     public ParticipantData(byte[] content){
         super(Arrays.copyOfRange(content, 0, Packet.HEADER_SIZE));
         super.lenght = LENGHT;
@@ -47,10 +74,14 @@ public class ParticipantData extends Packet {
         switch(aiControlled){
             case 0: return "Human";
             case 1: return "IA";
-            default: return "** UNKNOWN **";
+            default: return "";
         }
     }
     
+    /**
+     * Get driver name.
+     * @return 
+     */
     public String getDriver(){
         switch(driverId){
             case 0: return "Carlos SAINZ";
@@ -94,6 +125,10 @@ public class ParticipantData extends Packet {
         }
     }
     
+    /**
+     * Get team name.
+     * @return 
+     */
     public String getTeam(){
         switch(teamId){
             case 0: return "Mercedes";
@@ -130,6 +165,10 @@ public class ParticipantData extends Packet {
         }
     }
     
+    /**
+     * Get nationality acronim.
+     * @return 
+     */
     public String getNationality(){
         switch(nationality){
             case 1: return "USA";
@@ -223,10 +262,18 @@ public class ParticipantData extends Packet {
         }
     }
     
+    /**
+     * Get driver name.
+     * @return 
+     */
     public String getName(){
         return name.toString();
     }
     
+    /**
+     * Get all data.
+     * @return 
+     */
     public String toString(){
         String ret = "Controlled by: "+getAIControlled()+"\n";
         ret += "Driver: "+getDriver()+"\n";

@@ -8,65 +8,154 @@ import java.nio.ByteOrder;
 import sun.misc.FloatingDecimal;
 
 /**
+ * Car Status Data structure.
  *
  * @author miguelangel.garciar
+ * @author Codemasters
+ * @see
+ * https://forums.codemasters.com/discussion/136948/f1-2018-udp-specification
  */
 public class CarStatusData {
-    
-    public static int SIZE = 416 / 8;       // bits / (bits / Byte)
-    
-    // uint8 --> short
-    public short       tractionControl;            // 0 (off) - 2 (high)
-    // uint8 --> short
-    public short       antiLockBrakes;             // 0 (off) - 1 (on)
-    // uint8 --> short
-    public short       fuelMix;                    // Fuel mix - 0 = lean, 1 = standard, 2 = rich, 3 = max
-    // uint8 --> short
-    public short       frontBrakeBias;           // Front brake bias (percentage)
-    // uint8 --> short
-    public short       pitLimiterStatus;         // Pit limiter status - 0 = off, 1 = on
-    public float       fuelInTank;               // Current fuel mass
-    public float       fuelCapacity;             // Fuel capacity
-    // uint16 --> int (32)
-    public int         maxRPM;                   // Cars max RPM, point of rev limiter
-    // uint16 --> int (32)
-    public int         idleRPM;                  // Cars idle RPM
-    // uint8 --> short
-    public short       maxGears;                 // Maximum number of gears
-    // uint8 --> short
-    public short       drsAllowed;               // 0 = not allowed, 1 = allowed, -1 = unknown
-    // uint8 --> short
-    public short       tyresWear[]; // 4         // Tyre wear percentage
-    // uint8 --> short
-    public short       tyreCompound;             // Modern - 0 = hyper soft, 1 = ultra soft
-                                            // 2 = super soft, 3 = soft, 4 = medium, 5 = hard
-                                            // 6 = super hard, 7 = inter, 8 = wet
-                                            // Classic - 0-6 = dry, 7-8 = wet
-    // uint8 --> short
-    public short       tyresDamage[]; // 4       // Tyre damage (percentage)
-    // uint8 --> short
-    public short       frontLeftWingDamage;      // Front left wing damage (percentage)
-    // uint8 --> short
-    public short       frontRightWingDamage;     // Front right wing damage (percentage)
-    // uint8 --> short
-    public short       rearWingDamage;           // Rear wing damage (percentage)
-    // uint8 --> short
-    public short       engineDamage;             // Engine damage (percentage)
-    // uint8 --> short
-    public short       gearBoxDamage;            // Gear box damage (percentage)
-    // uint8 --> short
-    public short       exhaustDamage;            // Exhaust damage (percentage)
-    // int8 --> short
-    public short       vehicleFiaFlags;          // -1 = invalid/unknown, 0 = none, 1 = green
-                                            // 2 = blue, 3 = yellow, 4 = red
-    public float       ersStoreEnergy;           // ERS energy store in Joules
-    // uint8 --> short
-    public short       ersDeployMode;            // ERS deployment mode, 0 = none, 1 = low, 2 = medium
-                                            // 3 = high, 4 = overtake, 5 = hotlap
-    public float       ersHarvestedThisLapMGUK;  // ERS energy harvested this lap by MGU-K
-    public float        ersHarvestedThisLapMGUH;  // ERS energy harvested this lap by MGU-H
-    public float       ersDeployedThisLap;       // ERS energy deployed this lap
-    
+    /**
+     * Structure size in bytes.
+     */
+    public static int SIZE = 52;
+    /**
+     * 0 (off) - 2 (high).
+     */
+    public short tractionControl;
+    /**
+     * 0 (off) - 1 (on).
+     */
+    public short antiLockBrakes;
+    /**
+     * Fuel mix. 
+     * 0 = lean.
+     * 1 = standard.
+     * 2 = rich.
+     * 3 = max.
+     */
+    public short fuelMix;
+    /**
+     * Front brake bias (percentage).
+     */
+    public short frontBrakeBias;
+    /**
+     * Pit limiter status - 0 = off, 1 = on.
+     */
+    public short pitLimiterStatus;
+    /**
+     * Current fuel mass.
+     */
+    public float fuelInTank;
+    /**
+     * Fuel capacity.
+     */
+    public float fuelCapacity;
+    /**
+     * Cars max RPM, point of rev limiter.
+     */
+    public int maxRPM;
+    /**
+     * Cars idle RPM.
+     */
+    public int idleRPM;
+    /**
+     * Maximum number of gears.
+     */
+    public short maxGears;
+    /**
+     * 0 = not allowed, 1 = allowed, -1 = unknown.
+     */
+    public short drsAllowed;
+    /**
+     * Tyre wear percentage for the 4 tyres.
+     */
+    public short tyresWear[];
+    /**
+     * Modern.
+     * 0 = hyper soft.
+     * 1 = ultra soft.
+     * 2 = super soft.
+     * 3 = soft.
+     * 4 = medium.
+     * 5 = hard.
+     * 6 = super hard.
+     * 7 = inter.
+     * 8 = wet.
+     * Classic.
+     * 0-6 = dry.
+     * 7-8 = wet.
+     */
+    public short tyreCompound;
+    /**
+     * Tyre damage (percentage) for the 4 tyres.
+     */
+    public short tyresDamage[];
+    /**
+     * Front left wing damage (percentage).
+     */
+    public short frontLeftWingDamage;
+    /**
+     * Front right wing damage (percentage).
+     */
+    public short frontRightWingDamage;
+    /**
+     * Rear wing damage (percentage).
+     */
+    public short rearWingDamage;
+    /**
+     * Engine damage (percentage).
+     */
+    public short engineDamage;
+    /**
+     * Gear box damage (percentage).
+     */
+    public short gearBoxDamage;
+    /**
+     * Exhaust damage (percentage).
+     */
+    public short exhaustDamage;
+    /**
+     * -1 = invalid/unknown.
+     * 0 = none.
+     * 1 = green.
+     * 2 = blue.
+     * 3 = yellow.
+     * 4 = red.
+     */
+    public short vehicleFiaFlags;
+    /**
+     * ERS energy store in Joules.
+     */
+    public float ersStoreEnergy;
+    /**
+     * ERS deployment mode.
+     * 0 = none.
+     * 1 = low.
+     * 2 = medium.
+     * 3 = high.
+     * 4 = overtake.
+     * 5 = hotlap.
+     */
+    public short ersDeployMode;
+    /**
+     * ERS energy harvested this lap by MGU-K.
+     */
+    public float ersHarvestedThisLapMGUK;
+    /**
+     * ERS energy harvested this lap by MGU-H.
+     */
+    public float ersHarvestedThisLapMGUH;
+    /**
+     * ERS energy deployed this lap.
+     */
+    public float ersDeployedThisLap;
+
+    /**
+     * Car Status Data structure constructor.
+     * @param content Byte content for the structure.
+     */
     public CarStatusData(byte[] content) {
         ByteBuffer bb = ByteBuffer.wrap(content);
         bb.order(ByteOrder.LITTLE_ENDIAN);
@@ -112,7 +201,7 @@ public class CarStatusData {
             case 0: return "OFF";
             case 1: return "Medium";
             case 2: return "High";
-            default: return "** UNKNOWN **";
+            default: return "";
         }
     }
     
@@ -120,7 +209,7 @@ public class CarStatusData {
         switch(antiLockBrakes){
             case 0: return "OFF";
             case 1: return "ON";
-            default: return "** UNKNOWN **";
+            default: return "";
         }
     }
     
@@ -130,7 +219,7 @@ public class CarStatusData {
             case 1: return "Standard";
             case 2: return "Rich";
             case 3: return "MAX";
-            default: return "** UNKNOWN **";
+            default: return "";
         }
     }
     
@@ -138,7 +227,7 @@ public class CarStatusData {
         switch(pitLimiterStatus){
             case 0: return "OFF";
             case 1: return "ON";
-            default: return "** UNKNOWN **";
+            default: return "";
         }
     }
     
@@ -146,7 +235,7 @@ public class CarStatusData {
         switch(drsAllowed){
             case 0: return "NOT ALLOWED";
             case 1: return "ALLOWED";
-            default: return "** UNKNOWN **";
+            default: return "";
         }
     }
     
@@ -161,7 +250,7 @@ public class CarStatusData {
             case 6: return "SUPER HARD";
             case 7: return "INTER";
             case 8: return "WET";
-            default: return "** UNKNOWN **";
+            default: return "";
         }
     }
     
@@ -172,7 +261,7 @@ public class CarStatusData {
             case 2: return "BLUE";
             case 3: return "YELLOW";
             case 4: return "RED";
-            default: return "** UNKNOWN **";
+            default: return "";
         }
     }
     
@@ -184,10 +273,14 @@ public class CarStatusData {
             case 3: return "High";
             case 4: return "Overtake";
             case 5: return "Hotlap";
-            default: return "** UNKNOWN **";
+            default: return "";
         }
     }
     
+    /**
+     * Get all data.
+     * @return 
+     */
     public String toString(){
         String ret = "Traction control: "+getTractionControl()+"\n";
         ret += "AntiLock Brakes: "+getAntiLockBrakes()+"\n";

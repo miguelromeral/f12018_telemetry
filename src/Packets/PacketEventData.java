@@ -1,18 +1,35 @@
 package Packets;
 
-import static Packets.PacketParticipantsData.LENGHT;
 import java.util.Arrays;
 
 /**
+ * Event Packet.
  *
  * @author miguelangel.garciar
+ * @author Codemasters
+ * @see
+ * https://forums.codemasters.com/discussion/136948/f1-2018-udp-specification
  */
 public class PacketEventData extends Packet{
     
+    ////////////////////////////////////////////////////////////////
+    //                                                            //
+    //                       EVENT PACKET                         //
+    //                                                            //
+    ////////////////////////////////////////////////////////////////
+    /**
+     * Packet Size in bytes (w/o header size).
+     */    
     public static int LENGHT = 25; // Bytes
+    /**
+     * Event string code. SSTA or SEND.
+     */
+    public String eventStringCode;
     
-    public String eventStringCode;           // Event string code, SSTA, SEND
-    
+    /**
+     * Packet Event contructor.
+     * @param content All datagram content in bytes.
+     */
     public PacketEventData(byte[] content){
         super(Arrays.copyOfRange(content, 0, Packet.HEADER_SIZE));
         super.lenght = LENGHT;
@@ -20,11 +37,15 @@ public class PacketEventData extends Packet{
         try{
             eventStringCode = new String(Arrays.copyOfRange(content, 21, 25), "UTF-8");
         }catch(Exception e){
-            eventStringCode = "** UNKNOWN **";
+            eventStringCode = "";
         }
     }
     
-    
+    /**
+     * Get all data.
+     * @return 
+     */
+    @Override
     public String toString(){
         String ret = super.toString();
         

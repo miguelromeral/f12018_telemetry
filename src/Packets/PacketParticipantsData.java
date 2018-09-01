@@ -1,21 +1,41 @@
 package Packets;
 
-import static Packets.PacketCarTelemetryData.LENGHT;
 import classes.DataTypeUtilities;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
+ * Session Packet.
  *
  * @author miguelangel.garciar
+ * @author Codemasters
+ * @see
+ * https://forums.codemasters.com/discussion/136948/f1-2018-udp-specification
  */
 public class PacketParticipantsData extends Packet{
-    
-    public static int LENGHT = 1082; // Bytes
-    
-    public short numCars;           // Number of cars in the data
+        
+    ////////////////////////////////////////////////////////////////
+    //                                                            //
+    //                   PARTICIPANT PACKET                       //
+    //                                                            //
+    ////////////////////////////////////////////////////////////////
+    /**
+     * Packet Size in bytes (w/o header size).
+     */
+    public static int LENGHT = 1082;
+    /**
+     * Number of cars in the data.
+     */
+    public short numCars;
+    /**
+     * List of all participants in the packet.
+     */
     public ArrayList<ParticipantData> participants = new ArrayList<>();
     
+    /**
+     * Packet Participant constructor.
+     * @param content All datagram content in bytes.
+     */
     public PacketParticipantsData(byte[] content){
         super(Arrays.copyOfRange(content, 0, Packet.HEADER_SIZE));
         super.lenght = LENGHT;
@@ -27,7 +47,7 @@ public class PacketParticipantsData extends Packet{
         byte[] participant;
         int count = 0;
         while(count < numCars){
-            to = from + ParticipantData.SIZE;
+            to = from + ParticipantData.LENGHT;
 
             //System.out.println("["+count+"] -> From ("+from+") to ("+to+")");
             participant = Arrays.copyOfRange(content, from, to);
@@ -35,11 +55,15 @@ public class PacketParticipantsData extends Packet{
             ParticipantData par = new ParticipantData(participant);
             participants.add(par);
             
-            from += ParticipantData.SIZE;
+            from += ParticipantData.LENGHT;
             count ++;
         }
     }
     
+    /**
+     * Get all data.
+     * @return 
+     */
     @Override
     public String toString(){
         String ret = super.toString();
@@ -47,8 +71,6 @@ public class PacketParticipantsData extends Packet{
         for(ParticipantData par : participants){
             ret += "\n------------\n";
             ret += par.toString();
-            
-            //return ret;
         }
         
         return ret;

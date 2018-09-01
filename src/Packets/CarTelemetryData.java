@@ -9,28 +9,79 @@ import java.util.Arrays;
 import sun.misc.FloatingDecimal;
 
 /**
+ * Car Telemetry Data structure.
  *
  * @author miguelangel.garciar
+ * @author Codemasters
+ * @see
+ * https://forums.codemasters.com/discussion/136948/f1-2018-udp-specification
  */
 public class CarTelemetryData {
+    /**
+     * Structure size in bytes.
+     */
+    public static int SIZE = 53;
+    /**
+     * Speed of car in kilometres per hour.
+     */
+    public int      speed;
+    /**
+     * Amount of throttle applied (0 to 100).
+     */
+    public short throttle;
+    /**
+     * Steering (-100 (full lock left) to 100 (full lock right)).
+     */
+    public short steer;
+    /**
+     * Amount of brake applied (0 to 100).
+     */
+    public short brake;
+    /**
+     * Amount of clutch applied (0 to 100).
+     */
+    public short clutch;
+    /**
+     * Gear selected (1-8, N=0, R=-1).
+     */
+    public short gear;
+    /**
+     * Engine RPM.
+     */
+    public int engineRPM;
+    /**
+     * 0 = off, 1 = on.
+     */
+    public short drs;
+    /**
+     * Rev lights indicator (percentage).
+     */
+    public short revLightsPercent;
+    /**
+     * Brakes temperature (celsius) for the 4 tyres.
+     */
+    public int brakesTemperature[];
+    /**
+     * Tyres surface temperature (celsius) for the 4 tyres.
+     */
+    public int tyresSurfaceTemperature[];
+    /**
+     * Tyres inner temperature (celsius) for the 4 tyres.
+     */
+    public int tyresInnerTemperature[];
+    /**
+     * Engine temperature (celsius) for the 4 tyres.
+     */
+    public int engineTemperature;
+    /**
+     * Tyres pressure (PSI) for the 4 tyres.
+     */
+    public float tyresPressure[];
     
-    public static int SIZE = 53;       // bytes
-    
-    public int      speed;                      // Speed of car in kilometres per hour
-    public short    throttle;                   // Amount of throttle applied (0 to 100)
-    public short    steer;                      // Steering (-100 (full lock left) to 100 (full lock right))
-    public short    brake;                      // Amount of brake applied (0 to 100)
-    public short    clutch;                     // Amount of clutch applied (0 to 100)
-    public short    gear;                       // Gear selected (1-8, N=0, R=-1)
-    public int      engineRPM;                  // Engine RPM
-    public short    drs;                        // 0 = off, 1 = on
-    public short    revLightsPercent;           // Rev lights indicator (percentage)
-    public int      brakesTemperature[];        // Brakes temperature (celsius)
-    public int      tyresSurfaceTemperature[];  // Tyres surface temperature (celsius)
-    public int      tyresInnerTemperature[];    // Tyres inner temperature (celsius)
-    public int      engineTemperature;          // Engine temperature (celsius)
-    public float    tyresPressure[];            // Tyres pressure (PSI)
-    
+    /**
+     * Car Telemetry Data structure constructor.
+     * @param content All byte content for the car.
+     */
     public CarTelemetryData(byte[] content) {
         ByteBuffer bb = ByteBuffer.wrap(content);
         bb.order(ByteOrder.LITTLE_ENDIAN);
@@ -71,10 +122,14 @@ public class CarTelemetryData {
         switch(drs){
             case 0: return "OFF";
             case 1: return "ON";
-            default: return "** UNKNOWN **";
+            default: return "";
         }
     }
     
+    /**
+     * Print formatted gear.
+     * @return 
+     */
     public String getGear(){
         switch(gear){
             case -1: return "R";
@@ -91,6 +146,10 @@ public class CarTelemetryData {
         }
     }
     
+    /**
+     * Get all data.
+     * @return 
+     */
     public String toString(){
         String ret = "Speed: "+speed+" kpm\n";
         ret += "Throttle: "+throttle+"\n";

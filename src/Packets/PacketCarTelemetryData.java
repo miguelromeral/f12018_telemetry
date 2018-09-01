@@ -4,15 +4,33 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
+ * Session Packet.
  *
  * @author miguelangel.garciar
+ * @author Codemasters
+ * @see
+ * https://forums.codemasters.com/discussion/136948/f1-2018-udp-specification
  */
 public class PacketCarTelemetryData extends Packet{
     
-    public static int LENGHT = 1085; // Bytes
-    
+    ////////////////////////////////////////////////////////////////
+    //                                                            //
+    //                   CAR TELEMTRY PACKET                      //
+    //                                                            //
+    ////////////////////////////////////////////////////////////////
+    /**
+     * Packet Size in bytes (w/o header size).
+     */
+    public static int LENGHT = 1085;
+    /**
+     * List of all car telemetry data in session.
+     */
     public ArrayList<CarTelemetryData> carTelemetryData = new ArrayList<>();
     
+    /**
+     * Packet Car Telemetry constructor.
+     * @param content 
+     */
     public PacketCarTelemetryData(byte[] content){
         super(Arrays.copyOfRange(content, 0, Packet.HEADER_SIZE));
         super.lenght = LENGHT;
@@ -36,6 +54,10 @@ public class PacketCarTelemetryData extends Packet{
 
     }
     
+    /**
+     * Get all data.
+     * @return 
+     */
     public String toString(){
         String ret = super.toString();
                 
@@ -43,8 +65,6 @@ public class PacketCarTelemetryData extends Packet{
             ret += "\n------------\n";
             ret += " Car X\n";
             ret += car.toString();
-            
-            return ret;
         }
         
         return ret;
