@@ -26,7 +26,7 @@ public class PacketSessionData extends Packet {
     /**
      * Packet Size in bytes (w/o header size).
      */
-    public static int LENGHT = 126; // Bytes
+    public static int LENGHT = 126;
 
     /**
      * Weather.

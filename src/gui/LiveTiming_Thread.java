@@ -39,8 +39,8 @@ public class LiveTiming_Thread extends Thread{
         threads = new ArrayList<>();
     }
     
-    public void createThreads(){
-        for(int i=0; i<20; i++){
+    public void createThreads(int numDrivers){
+        for(int i=0; i<numDrivers; i++){
             LiveTiming_Driver_Thread l = new LiveTiming_Driver_Thread(this, view.labels[i]);
             threads.add(l);
             l.start();
@@ -64,35 +64,21 @@ public class LiveTiming_Thread extends Thread{
         while (true)
         {
             paso.mirar();
-            if(threads.isEmpty()){
-                createThreads();
-            }
             
-            PacketSessionData data = controller.session.data;
+            ArrayList<Driver> drivers = controller.session.getDrivers();
             
-            if(data != null){
-                // Weather Info
-                GUIFeatures.setWeatherImage(view.lab_weather, view.lab_weather.getWidth(), data.weather, data.trackId, data.isNightRace());
-                view.lab_weather_text.setText(data.getWeather());
+            if(drivers != null){
                 
-                view.lab_trackTemperature.setText(data.trackTemperature+" ºC");
-                view.lab_airTemperature.setText(data.airTemperature+" ºC");
-                
-                switch(data.sessionType){
-                    case 10: case 11: view.lab_remaining.setText("Laps: "+data.totalLaps);
-                        break;
-                    default: view.lab_remaining.setText("");
-                }
-            }
-            
-            if(controller.session.drivers != null){
-                ArrayList<Driver> drivers = controller.session.getDrivers();
-
                 if(!drivers.isEmpty()){
 
+                    
                     if(drivers.size() != threads.size()){
                         killOtherThreads();
-                        createThreads();
+                        createThreads(drivers.size());
+                    }else{
+                        if(threads.isEmpty()){
+                            createThreads(drivers.size());
+                        }
                     }
                     
                     for(int i=0; i<drivers.size(); i++){
@@ -111,6 +97,24 @@ public class LiveTiming_Thread extends Thread{
                 System.out.println("Total "+(controller.session.bestS1 + controller.session.bestS2 + controller.session.bestS3));*/
             }else{
                 killOtherThreads();
+            }
+            
+            
+            PacketSessionData data = controller.session.data;
+            
+            if(data != null){
+                // Weather Info
+                GUIFeatures.setWeatherImage(view.lab_weather, view.lab_weather.getWidth(), data.weather, data.trackId, data.isNightRace());
+                view.lab_weather_text.setText(data.getWeather());
+                
+                view.lab_trackTemperature.setText(data.trackTemperature+" ºC");
+                view.lab_airTemperature.setText(data.airTemperature+" ºC");
+                
+                switch(data.sessionType){
+                    case 10: case 11: view.lab_remaining.setText("Laps: "+data.totalLaps);
+                        break;
+                    default: view.lab_remaining.setText("");
+                }
             }
             
             paso.cerrar();

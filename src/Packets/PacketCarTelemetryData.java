@@ -29,7 +29,7 @@ public class PacketCarTelemetryData extends Packet{
     
     /**
      * Packet Car Telemetry constructor.
-     * @param content 
+     * @param content All byte content in datagram.
      */
     public PacketCarTelemetryData(byte[] content){
         super(Arrays.copyOfRange(content, 0, Packet.HEADER_SIZE));

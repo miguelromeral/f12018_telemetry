@@ -24,7 +24,7 @@ public class CarTelemetryData {
     /**
      * Speed of car in kilometres per hour.
      */
-    public int      speed;
+    public int speed;
     /**
      * Amount of throttle applied (0 to 100).
      */
@@ -77,7 +77,7 @@ public class CarTelemetryData {
      * Tyres pressure (PSI) for the 4 tyres.
      */
     public float tyresPressure[];
-    
+
     /**
      * Car Telemetry Data structure constructor.
      * @param content All byte content for the car.
@@ -112,10 +112,10 @@ public class CarTelemetryData {
         tyresInnerTemperature[3] = (int) DataTypeUtilities.convert_uint16(bb.getShort());
         engineTemperature = (int) DataTypeUtilities.convert_uint16(bb.getShort());
         tyresPressure = new float[4];
-        tyresPressure[0] = DataTypeUtilities.convert_float_vector(bb.getFloat());
-        tyresPressure[1] = DataTypeUtilities.convert_float_vector(bb.getFloat());
-        tyresPressure[2] = DataTypeUtilities.convert_float_vector(bb.getFloat());
-        tyresPressure[3] = DataTypeUtilities.convert_float_vector(bb.getFloat());
+        tyresPressure[0] = DataTypeUtilities.convert_float(bb.getFloat());
+        tyresPressure[1] = DataTypeUtilities.convert_float(bb.getFloat());
+        tyresPressure[2] = DataTypeUtilities.convert_float(bb.getFloat());
+        tyresPressure[3] = DataTypeUtilities.convert_float(bb.getFloat());
     }
     
     public String getDRS(){

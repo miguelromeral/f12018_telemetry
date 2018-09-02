@@ -7,6 +7,7 @@ import Packets.PacketCarStatusData;
 import Packets.PacketCarTelemetryData;
 import Packets.PacketEventData;
 import Packets.PacketLapData;
+import Packets.PacketMotionData;
 import Packets.PacketParticipantsData;
 import Packets.PacketSessionData;
 import Packets.ParticipantData;
@@ -22,6 +23,7 @@ public class Session {
     
     public int userIndex;
     public PacketSessionData data;
+    public PacketMotionData motion;
     public ArrayList<Driver> drivers;
     public ArrayList<LapData> laps;
     
@@ -48,11 +50,15 @@ public class Session {
     }
     
     public ArrayList<Driver> getDrivers(){
-        return drivers;
+        if(drivers != null){
+            return drivers;
+        }else{
+            return null;
+        }
     }
     
     public Driver getUserDriver(){
-        if(!drivers.isEmpty()){
+        if(drivers != null && !drivers.isEmpty()){
             return drivers.get(userIndex);
         }
         return null;
@@ -131,6 +137,10 @@ public class Session {
         }
     }
     
+    public void setMotionData(PacketMotionData pmd){
+        motion = pmd;
+    }
+    
     public void setParticipantsData(PacketParticipantsData packetParticipantsData){
         if(drivers != null){
             if(!drivers.isEmpty()){
@@ -161,7 +171,6 @@ public class Session {
         if(packetEventData.eventStringCode.equals("SSTA")){
             initialize();
             drivers = null;
-            
         }
     }
     

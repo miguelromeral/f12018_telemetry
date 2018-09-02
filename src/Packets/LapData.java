@@ -115,14 +115,14 @@ public class LapData {
         ByteBuffer bb = ByteBuffer.wrap(content);
         bb.order(ByteOrder.LITTLE_ENDIAN);
         
-        lastLapTime = DataTypeUtilities.convert_float_normal(bb.getFloat());
-        currentLapTime= DataTypeUtilities.convert_float_normal(bb.getFloat());  
-        bestLapTime= DataTypeUtilities.convert_float_normal(bb.getFloat());     
-        sector1Time= DataTypeUtilities.convert_float_normal(bb.getFloat());
-        sector2Time= DataTypeUtilities.convert_float_normal(bb.getFloat());      
-        lapDistance= DataTypeUtilities.convert_float_normal(bb.getFloat());      
-        totalDistance= DataTypeUtilities.convert_float_normal(bb.getFloat());    
-        safetyCarDelta= DataTypeUtilities.convert_float_normal(bb.getFloat());   
+        lastLapTime = DataTypeUtilities.convert_float(bb.getFloat());
+        currentLapTime= DataTypeUtilities.convert_float(bb.getFloat());  
+        bestLapTime= DataTypeUtilities.convert_float(bb.getFloat());     
+        sector1Time= DataTypeUtilities.convert_float(bb.getFloat());
+        sector2Time= DataTypeUtilities.convert_float(bb.getFloat());      
+        lapDistance= DataTypeUtilities.convert_float(bb.getFloat());      
+        totalDistance= DataTypeUtilities.convert_float(bb.getFloat());    
+        safetyCarDelta= DataTypeUtilities.convert_float(bb.getFloat());   
         
         carPosition= DataTypeUtilities.convert_uint8(bb.get());      
         currentLapNum= DataTypeUtilities.convert_uint8(bb.get());          

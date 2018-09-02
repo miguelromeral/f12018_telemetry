@@ -6,6 +6,7 @@ import Packets.PacketCarTelemetryData;
 import Packets.PacketEventData;
 import Packets.PacketFactory;
 import Packets.PacketLapData;
+import Packets.PacketMotionData;
 import Packets.PacketParticipantsData;
 import Packets.PacketSessionData;
 import java.nio.ByteBuffer;
@@ -64,6 +65,10 @@ public class Controller {
             
             switch(packet.packetId){
             
+                case 0: // Motion Packet
+                    //System.out.println(packet.toString());
+                    session.setMotionData((PacketMotionData) packet);
+                    break;
                 case 1: // Session Data
                     //System.out.println(packet.toString());
                     session.setSessionData((PacketSessionData) packet);
@@ -79,6 +84,12 @@ public class Controller {
                 case 4:
                     //System.out.println(packet.toString());
                     session.setParticipantsData((PacketParticipantsData) packet);
+                    break;
+                case 5:
+                    //System.out.println(packet.toString());
+                    
+                    
+                    
                     break;
                 case 6:
                     //System.out.println(packet.toString());

@@ -5,7 +5,14 @@ import Packets.CarTelemetryData;
 import classes.Controller;
 import classes.Paso;
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics2D;
+import java.awt.geom.AffineTransform;
+import java.awt.image.BufferedImage;
 import static java.lang.Thread.sleep;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.SwingUtilities;
 
 /**
@@ -29,6 +36,7 @@ public class Console_Thread extends Thread{
         while (true)
         {
             paso.mirar();
+            //Check for driver exists.
             CarStatusData car = controller.session.getUserDriver().carStatus;
             CarTelemetryData tel = controller.session.getUserDriver().carTelemetry;
             
@@ -76,7 +84,7 @@ public class Console_Thread extends Thread{
                 view.lab_ers_blue.setText((int) blue+"%");
                 view.lab_ers_white.setText((int) white+"%");
                 
-                
+               
                 
                 // ERS Deployed Mode 
                 view.lab_ersModeNumber.setText(""+car.ersDeployMode);
@@ -145,8 +153,33 @@ public class Console_Thread extends Thread{
                     view.lab_steer.setText("0%");
                 }
                 
+                
+                
+                
+                //GUIFeatures.setImageIcon(view.lab_wheel, 50, 50, "icons/wheel");
+                
+                
+                  
+                //view.lab_wheel.setR
+                
                 // Gear
                 view.lab_gear.setText(tel.getGear());
+                
+                try{
+                    BufferedImage original = ImageIO.read(getClass().getResource("images/icons/wheel.png"));
+                    JLabel label = new JLabel(new ImageIcon(original));
+                    label.setVisible(true);
+                    Dimension size = label.getPreferredSize();
+                    label.setBounds(90, 100, size.width, size.height);
+
+                }catch(Exception e){
+                    
+                }
+                
+                
+                
+                
+                
                 
                 // DRS Activated:
                 if(tel.drs == 1){
@@ -173,4 +206,29 @@ public class Console_Thread extends Thread{
         }
     }
     
+    
+    public BufferedImage rotate(BufferedImage image, Double degrees) {
+        // Calculate the new size of the image based on the angle of rotaion
+        double radians = Math.toRadians(degrees);
+        double sin = Math.abs(Math.sin(radians));
+        double cos = Math.abs(Math.cos(radians));
+        int newWidth = (int) Math.round(image.getWidth() * cos + image.getHeight() * sin);
+        int newHeight = (int) Math.round(image.getWidth() * sin + image.getHeight() * cos);
+
+        // Create a new image
+        BufferedImage rotate = new BufferedImage(newWidth, newHeight, BufferedImage.TYPE_INT_ARGB);
+        Graphics2D g2d = rotate.createGraphics();
+        // Calculate the "anchor" point around which the image will be rotated
+        int x = (newWidth - image.getWidth()) / 2;
+        int y = (newHeight - image.getHeight()) / 2;
+        // Transform the origin point around the anchor point
+        AffineTransform at = new AffineTransform();
+        at.setToRotation(radians, x + (image.getWidth() / 2), y + (image.getHeight() / 2));
+        at.translate(x, y);
+        g2d.setTransform(at);
+        // Paint the originl image
+        g2d.drawImage(image, 0, 0, null);
+        g2d.dispose();
+        return rotate;
+    }
 }
