@@ -1,8 +1,11 @@
 package classes;
 
+import Packets.CarMotionData;
 import Packets.CarStatusData;
 import Packets.CarTelemetryData;
+import Packets.ExtraCarMotionData;
 import Packets.LapData;
+import Packets.PacketCarSetupData;
 import Packets.PacketCarStatusData;
 import Packets.PacketCarTelemetryData;
 import Packets.PacketEventData;
@@ -23,9 +26,9 @@ public class Session {
     
     public int userIndex;
     public PacketSessionData data;
-    public PacketMotionData motion;
+    public ExtraCarMotionData extraMotionData;
     public ArrayList<Driver> drivers;
-    public ArrayList<LapData> laps;
+    public String status;
     
     public float bestS1;
     public float bestS2;
@@ -37,6 +40,7 @@ public class Session {
     }
     
     public void initialize(){
+        status = "SSTA";
         bestS1 = Float.POSITIVE_INFINITY;
         bestS2 = Float.POSITIVE_INFINITY;
         bestS3 = Float.POSITIVE_INFINITY;
@@ -49,7 +53,15 @@ public class Session {
         }
     }
     
-    public ArrayList<Driver> getDrivers(){
+    public boolean isInitialized(){
+        if(status.equals("SSTA") && drivers != null && data != null){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    
+    public ArrayList<Driver> getAllDrivers(){
         if(drivers != null){
             return drivers;
         }else{
@@ -107,62 +119,85 @@ public class Session {
                     if(d.lap.carPosition == pos){
                         return d;
                     }
+                }else{
+                    return null;
                 }
-                /*else{
-                    if(d.
-                }*/
             }
             return null;
         }
         return null;
     }
     
+    
+    public void createDrivers(PacketParticipantsData ppd){
+        if(drivers == null){
+            drivers = new ArrayList<>();
+            for(int i=0; i<ppd.participants.size(); i++){
+                Driver d = new Driver(ppd.participants.get(i), this);
+                drivers.add(d);
+            }
+        }
+    }
+    
+    public void setCarSetupData(PacketCarSetupData pcsd){
+        if(drivers != null && !drivers.isEmpty()){
+            for(int i=0; i<drivers.size(); i++){
+                drivers.get(i).setNewCarSetup(pcsd.carSetupData.get(i));
+            }
+        }
+    }
+    
     public void setCarStatusData(PacketCarStatusData packetCarStatusData){
-        if(drivers != null){
-            if(!drivers.isEmpty()){
-                for(int i=0; i<drivers.size(); i++){
-                    drivers.get(i).setNewCarStatus(packetCarStatusData.carStatusData.get(i));
-                }
+       /* if(drivers == null){
+            createDrivers(packetCarStatusData.carStatusData.size());
+        }*/
+        if(drivers != null && !drivers.isEmpty()){
+            for(int i=0; i<drivers.size(); i++){
+                drivers.get(i).setNewCarStatus(packetCarStatusData.carStatusData.get(i));
             }
         }
     }
     
     public void setCarTelemetryData(PacketCarTelemetryData packetCarTelemetryData){
-        if(drivers != null){
-            if(!drivers.isEmpty()){
-                for(int i=0; i<drivers.size(); i++){
-                    drivers.get(i).setNewCarTelemetry(packetCarTelemetryData.carTelemetryData.get(i));
-                }
+       /* if(drivers == null){
+            createDrivers(packetCarTelemetryData.carTelemetryData.size());
+        }*/
+        if(drivers != null && !drivers.isEmpty()){
+            for(int i=0; i<drivers.size(); i++){
+                drivers.get(i).setNewCarTelemetry(packetCarTelemetryData.carTelemetryData.get(i));
             }
         }
     }
     
     public void setMotionData(PacketMotionData pmd){
-        motion = pmd;
+      /*  if(drivers == null){
+            createDrivers(pmd.carMotionData.size());
+        }*/
+        if(drivers != null && !drivers.isEmpty()){
+            for(int i=0; i<drivers.size(); i++){
+                drivers.get(i).setNewCarMotion(pmd.carMotionData.get(i));
+            }
+        }
+        extraMotionData = pmd.extraCarMotionData;
     }
     
     public void setParticipantsData(PacketParticipantsData packetParticipantsData){
-        if(drivers != null){
-            if(!drivers.isEmpty()){
-                HashMap<Short, ParticipantData> driversId = new HashMap<Short, ParticipantData>();
+        if(drivers == null){
+            createDrivers(packetParticipantsData);
+        }
+        if(drivers != null && !drivers.isEmpty()){
+            HashMap<Short, ParticipantData> driversId = new HashMap<Short, ParticipantData>();
 
-                for(ParticipantData pd : packetParticipantsData.participants){
-                    driversId.put(pd.driverId, pd);
-                }
-                for(Driver d : drivers){
-                    ParticipantData pd = driversId.get(d.participant.driverId);
-                    if(pd != null){
-                        d.setNewParticipant(pd);
-                    }
-                }
-            }
-        }else{
-            drivers = new ArrayList<>();
             for(ParticipantData pd : packetParticipantsData.participants){
-                Driver d = new Driver(pd, this);
-                drivers.add(d);
+                driversId.put(pd.driverId, pd);
             }
-            System.out.println("SET PARTICIPANTS!");
+            for(Driver d : drivers){
+                ParticipantData pd = driversId.get(d.participant.driverId);
+                if(pd != null){
+                    d.setNewParticipant(pd);
+                }
+            }
+            //System.out.println("SET PARTICIPANTS! "+packetParticipantsData.participants.size());
         }
     }
     
@@ -171,19 +206,20 @@ public class Session {
         if(packetEventData.eventStringCode.equals("SSTA")){
             initialize();
             drivers = null;
+        }else{
+            status = "SEND";
         }
     }
     
     
     public void setLapData(PacketLapData packetLapData){
-        if(drivers != null){
-            if(!drivers.isEmpty()){
-                for(int i=0; i<drivers.size(); i++){
-                    drivers.get(i).setNewLap(packetLapData.lapData.get(i));
-                }
+     /*   if(drivers == null){
+            createDrivers(packetLapData.lapData.size());
+        }*/
+        if(drivers != null && !drivers.isEmpty()){
+            for(int i=0; i<drivers.size(); i++){
+                drivers.get(i).setNewLap(packetLapData.lapData.get(i));
             }
-
-            laps = packetLapData.lapData;
         }
     }
     

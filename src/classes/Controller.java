@@ -1,6 +1,7 @@
 package classes;
 
 import Packets.Packet;
+import Packets.PacketCarSetupData;
 import Packets.PacketCarStatusData;
 import Packets.PacketCarTelemetryData;
 import Packets.PacketEventData;
@@ -59,17 +60,17 @@ public class Controller {
             }
             System.out.println("}");
 
-            System.out.println("Length: "+packet.lenght+"\n---------------");
+            System.out.println("Length: "+packet.lenght+", Type: "+packet.packetId+"\n---------------");
            
           */
             
             switch(packet.packetId){
             
-                case 0: // Motion Packet
+                case 0:
                     //System.out.println(packet.toString());
                     session.setMotionData((PacketMotionData) packet);
                     break;
-                case 1: // Session Data
+                case 1:
                     //System.out.println(packet.toString());
                     session.setSessionData((PacketSessionData) packet);
                     break;
@@ -87,9 +88,7 @@ public class Controller {
                     break;
                 case 5:
                     //System.out.println(packet.toString());
-                    
-                    
-                    
+                    session.setCarSetupData((PacketCarSetupData) packet);
                     break;
                 case 6:
                     //System.out.println(packet.toString());

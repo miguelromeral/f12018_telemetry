@@ -21,6 +21,10 @@ public class CarStatusData {
      */
     public static int SIZE = 52;
     /**
+     * Max ERS Storage;
+     */
+    public static float MAX_ERS_STORAGE = 4000000f;
+    /**
      * 0 (off) - 2 (high).
      */
     public short tractionControl;

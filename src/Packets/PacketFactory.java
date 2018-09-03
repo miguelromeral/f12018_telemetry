@@ -19,7 +19,7 @@ public class PacketFactory {
             case 2: return new PacketLapData(content);
             case 3: return new PacketEventData(content);
             case 4: return new PacketParticipantsData(content);
-            case 5: return null;
+            case 5: return new PacketCarSetupData(content);
             case 6: return new PacketCarTelemetryData(content);
             case 7: return new PacketCarStatusData(content);
             default: return null;

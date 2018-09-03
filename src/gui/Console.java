@@ -462,7 +462,9 @@ public class Console extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(19, 19, 19));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Compound", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(204, 204, 204))); // NOI18N
 
+        lab_tyreCompound.setFont(new java.awt.Font("Formula1 Display Bold", 0, 14)); // NOI18N
         lab_tyreCompound.setForeground(new java.awt.Color(255, 255, 255));
+        lab_tyreCompound.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lab_tyreCompound.setText("Tyre");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);

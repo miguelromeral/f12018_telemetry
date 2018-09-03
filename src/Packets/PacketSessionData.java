@@ -265,7 +265,7 @@ public class PacketSessionData extends Packet {
      * @return 
      */
     public String getSessionTimeLeft(){
-        Date date = new Date((long)(sessionTimeLeft*1000));
+        Date date = new Date((long) sessionTimeLeft);
         return new SimpleDateFormat("H:mm:ss").format(date);
     }
     
@@ -274,7 +274,7 @@ public class PacketSessionData extends Packet {
      * @return 
      */
     public String getSessionDuration(){
-        Date date = new Date((long)(sessionDuration*1000));
+        Date date = new Date((long)(sessionDuration));
         return new SimpleDateFormat("H:mm:ss").format(date);
     }
     

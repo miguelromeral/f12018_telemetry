@@ -7,6 +7,7 @@ import Packets.PacketSessionData;
 import classes.Controller;
 import classes.Driver;
 import classes.Paso;
+import classes.Session;
 import java.awt.ComponentOrientation;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -51,13 +52,49 @@ public class LiveTiming_Thread extends Thread{
         try{
             for(LiveTiming_Driver_Thread l : threads){
                 l.delete();
-                l.interrupt();
-                l.stop();
+           /*     l.interrupt();
+                l.stop();*/
                 threads.remove(l);
+                
             }
         }catch(Exception e){
             
         }
+    }
+    
+    public String getOptionData(){
+        return (String) view.combo_data.getSelectedItem();
+    }
+    
+    private void printBestSectors(){
+        view.lab_bestS1.setText(LapData.formatSeconds(controller.session.bestS1, true));
+        view.lab_bestS2.setText(LapData.formatSeconds(controller.session.bestS2, true));
+        view.lab_bestS3.setText(LapData.formatSeconds(controller.session.bestS3, true));
+        view.lab_bestTotal.setText(LapData.formatSeconds(controller.session.bestS1 + controller.session.bestS2 + controller.session.bestS3, true));
+
+       /* System.out.print("S1 "+controller.session.bestS1+" | ");
+        System.out.print("S2 "+controller.session.bestS2+" | ");
+        System.out.print("S3 "+controller.session.bestS3+" | ");
+        System.out.println("Total "+(controller.session.bestS1 + controller.session.bestS2 + controller.session.bestS3));*/
+    }
+    
+    private void printRaceStatus(PacketSessionData data){
+        if(data.sessionType > 0 && data.sessionType < 9){
+            view.lab_remaining.setText(data.getSessionTimeLeft());
+        }else if(data.sessionType == 10 || data.sessionType == 11){
+            view.lab_remaining.setText("Laps: "+data.totalLaps);
+        }else{
+            view.lab_remaining.setText("");
+        }
+    }
+    
+    private void printWeather(PacketSessionData data){
+        // Weather Info
+        GUIFeatures.setWeatherImage(view.lab_weather, view.lab_weather.getWidth(), data.weather, data.trackId, data.isNightRace());
+        view.lab_weather_text.setText(data.getWeather());
+
+        view.lab_trackTemperature.setText(data.trackTemperature+" ºC");
+        view.lab_airTemperature.setText(data.airTemperature+" ºC");
     }
     
     public void run(){
@@ -65,57 +102,31 @@ public class LiveTiming_Thread extends Thread{
         {
             paso.mirar();
             
-            ArrayList<Driver> drivers = controller.session.getDrivers();
+            ArrayList<Driver> drivers = controller.session.getAllDrivers();
             
             if(drivers != null){
+                if(threads.isEmpty()){
+                    createThreads(20);
+                }
+                
+             //   System.out.println("Drivers: "+drivers.size()+", Threads: "+threads.size());
                 
                 if(!drivers.isEmpty()){
-
-                    
-                    if(drivers.size() != threads.size()){
-                        killOtherThreads();
-                        createThreads(drivers.size());
-                    }else{
-                        if(threads.isEmpty()){
-                            createThreads(drivers.size());
-                        }
-                    }
-                    
-                    for(int i=0; i<drivers.size(); i++){
+                    for(int i=0; i<threads.size(); i++){
                         threads.get(i).setDriver(controller.session.getDriverByPosition(i + 1));
                     }
                 }
 
-                view.lab_bestS1.setText(LapData.formatSeconds(controller.session.bestS1, true));
-                view.lab_bestS2.setText(LapData.formatSeconds(controller.session.bestS2, true));
-                view.lab_bestS3.setText(LapData.formatSeconds(controller.session.bestS3, true));
-                view.lab_bestTotal.setText(LapData.formatSeconds(controller.session.bestS1 + controller.session.bestS2 + controller.session.bestS3, true));
-
-               /* System.out.print("S1 "+controller.session.bestS1+" | ");
-                System.out.print("S2 "+controller.session.bestS2+" | ");
-                System.out.print("S3 "+controller.session.bestS3+" | ");
-                System.out.println("Total "+(controller.session.bestS1 + controller.session.bestS2 + controller.session.bestS3));*/
-            }else{
-                killOtherThreads();
             }
-            
             
             PacketSessionData data = controller.session.data;
             
             if(data != null){
-                // Weather Info
-                GUIFeatures.setWeatherImage(view.lab_weather, view.lab_weather.getWidth(), data.weather, data.trackId, data.isNightRace());
-                view.lab_weather_text.setText(data.getWeather());
-                
-                view.lab_trackTemperature.setText(data.trackTemperature+" ºC");
-                view.lab_airTemperature.setText(data.airTemperature+" ºC");
-                
-                switch(data.sessionType){
-                    case 10: case 11: view.lab_remaining.setText("Laps: "+data.totalLaps);
-                        break;
-                    default: view.lab_remaining.setText("");
-                }
+                printWeather(data);
+                printRaceStatus(data);
             }
+            
+            printBestSectors();
             
             paso.cerrar();
             

@@ -1,60 +1,51 @@
 package Packets;
 
-import classes.DataTypeUtilities;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-
 /**
- * Car Motion Packet.
+ * Car Setup Packet.
  *
  * @author miguelangel.garciar
  * @author Codemasters
  * @see
  * https://forums.codemasters.com/discussion/136948/f1-2018-udp-specification
  */
-public class PacketMotionData extends Packet{
-    
+public class PacketCarSetupData extends Packet{
+        
     ////////////////////////////////////////////////////////////////
     //                                                            //
-    //                      CAR MOTION PACKET                     //
+    //                      CAR SETUP PACKET                      //
     //                                                            //
     ////////////////////////////////////////////////////////////////
     /**
      * Packet Size in bytes (w/o header size).
      */
-    public static int LENGHT = 1341;
+    public static int LENGHT = 841;
     /**
-     * Data for all cars on track (20).
+     * List of all car setup data.
      */
-    public ArrayList<CarMotionData> carMotionData = new ArrayList<>();
-    /**
-     * Extra car motion data (for the user).
-     */
-    public ExtraCarMotionData extraCarMotionData;
+    public ArrayList<CarSetupData> carSetupData = new ArrayList<>();
     
     /**
-     * Packet Car Telemetry constructor.
+     * Packet Car Setup Data constructor.
      * @param content All byte content in datagram.
      */
-    public PacketMotionData(byte[] content){
+    public PacketCarSetupData(byte[] content){
         super(Arrays.copyOfRange(content, 0, Packet.HEADER_SIZE));
         super.lenght = LENGHT;
-        
+
         int from = Packet.HEADER_SIZE;
         int to = 0;
+        byte[] carcontent;
         int count = 0;
         while(count < 20){
-            to = from + CarMotionData.SIZE;
-
-            byte[] cmdc = Arrays.copyOfRange(content, from, to);
+            to = from + CarSetupData.SIZE;
+            carcontent = Arrays.copyOfRange(content, from, to);
+            CarSetupData ctd = new CarSetupData(carcontent);
+            carSetupData.add(ctd);
             
-            CarMotionData cmd = new CarMotionData(cmdc);
-            carMotionData.add(cmd);
-            
-            from += CarMotionData.SIZE;
+            from += CarSetupData.SIZE;
             count ++;
         }
     }
@@ -66,13 +57,12 @@ public class PacketMotionData extends Packet{
     @Override
     public String toString(){
         String ret = super.toString();
-        
-        for (CarMotionData cmd : carMotionData){
-            ret += "-----------------\n";
-            ret += cmd.toString();
+                
+        for(CarSetupData car : carSetupData){
+            ret += "\n------------\n";
+            ret += car.toString();
         }
         
-        ret += extraCarMotionData.toString();
         return ret;
     }
 }

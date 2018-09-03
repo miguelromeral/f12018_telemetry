@@ -1,8 +1,11 @@
 package classes;
 
+import Packets.CarMotionData;
+import Packets.CarSetupData;
 import Packets.CarStatusData;
 import Packets.CarTelemetryData;
 import Packets.LapData;
+import Packets.PacketParticipantsData;
 import Packets.ParticipantData;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -13,9 +16,11 @@ import java.util.Comparator;
  */
 public class Driver {
     
+    public CarSetupData carSetup;
     public CarStatusData carStatus;
     public CarTelemetryData carTelemetry;
     public ParticipantData participant;
+    public CarMotionData carMotion;
     public LapData lap;
     public Session session;
     
@@ -27,8 +32,8 @@ public class Driver {
     public float lastS3;
     
     public Driver(ParticipantData pd, Session session){
-        participant = pd;
         this.session = session;
+        setNewParticipant(pd);
         initializeSectores();
     }
     
@@ -85,7 +90,7 @@ public class Driver {
                 }
             }
         }
-        if(lap.getSector() == 1 && lap.lastLapTime != 0f){
+        if(lap.getSector() == 1 && lap.lastLapTime != 0f && lastS1 != Float.POSITIVE_INFINITY && lastS2 != Float.POSITIVE_INFINITY){
             lastS3 = lap.lastLapTime - lastS1 - lastS2;
             if(lastS3 < bestS3){
                 bestS3 = lastS3;
@@ -102,9 +107,7 @@ public class Driver {
     }
     
     public void setNewParticipant(ParticipantData pd){
-        if(pd.driverId != participant.driverId){
-            participant = pd;
-        }
+        participant = pd;
     }
     
     public void setNewCarTelemetry(CarTelemetryData ctd){
@@ -113,5 +116,13 @@ public class Driver {
     
     public void setNewCarStatus(CarStatusData csd){
         carStatus = csd;
+    }
+    
+    public void setNewCarSetup(CarSetupData csd){
+        carSetup = csd;
+    }
+    
+    public void setNewCarMotion(CarMotionData cmd){
+        carMotion = cmd;
     }
 }

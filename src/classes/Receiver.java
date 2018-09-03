@@ -39,7 +39,12 @@ public class Receiver extends Thread{
               // Wait to receive a datagram
               dsocket.receive(packet);
               // Send contents to Controller
-              controller.newPacket(buffer);
+              new Thread(new Runnable() {
+                  @Override
+                  public void run() {
+                    controller.newPacket(buffer);
+                  }
+              }).run();
               
               // Reset the length of the packet before reusing it.
               packet.setLength(buffer.length);

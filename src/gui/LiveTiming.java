@@ -100,6 +100,8 @@ public class LiveTiming extends javax.swing.JFrame {
         lab_bestTotal = new javax.swing.JLabel();
         space6 = new javax.swing.JLabel();
         lab_remaining = new javax.swing.JLabel();
+        space7 = new javax.swing.JLabel();
+        combo_data = new javax.swing.JComboBox<>();
         panelTiming = new javax.swing.JPanel();
         panel0 = new javax.swing.JPanel();
         labPos0 = new javax.swing.JLabel();
@@ -563,6 +565,17 @@ public class LiveTiming extends javax.swing.JFrame {
         lab_remaining.setText("remaining");
         panelSession.add(lab_remaining);
 
+        space7.setMaximumSize(new java.awt.Dimension(50, 0));
+        space7.setMinimumSize(new java.awt.Dimension(50, 0));
+        space7.setPreferredSize(new java.awt.Dimension(50, 0));
+        panelSession.add(space7);
+
+        combo_data.setBackground(new java.awt.Color(153, 0, 0));
+        combo_data.setFont(new java.awt.Font("Formula1 Display Wide", 0, 12)); // NOI18N
+        combo_data.setForeground(new java.awt.Color(255, 255, 255));
+        combo_data.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Latest", "Current" }));
+        panelSession.add(combo_data);
+
         panelTiming.setBackground(new java.awt.Color(19, 19, 19));
         panelTiming.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Timing", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(204, 204, 204))); // NOI18N
         panelTiming.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -814,7 +827,7 @@ public class LiveTiming extends javax.swing.JFrame {
         labPen1.setPreferredSize(new java.awt.Dimension(50, 17));
         panel1.add(labPen1);
 
-        panelTiming.add(panel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 43, 1216, 27));
+        panelTiming.add(panel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 43, 1210, 27));
 
         panel2.setBackground(new java.awt.Color(50, 50, 50));
         panel2.setLayout(new javax.swing.BoxLayout(panel2, javax.swing.BoxLayout.LINE_AXIS));
@@ -939,7 +952,7 @@ public class LiveTiming extends javax.swing.JFrame {
         labPen2.setPreferredSize(new java.awt.Dimension(50, 17));
         panel2.add(labPen2);
 
-        panelTiming.add(panel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 70, 1216, 27));
+        panelTiming.add(panel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 70, 1210, 27));
 
         panel3.setBackground(new java.awt.Color(19, 19, 19));
         panel3.setLayout(new javax.swing.BoxLayout(panel3, javax.swing.BoxLayout.LINE_AXIS));
@@ -1064,7 +1077,7 @@ public class LiveTiming extends javax.swing.JFrame {
         labPen3.setPreferredSize(new java.awt.Dimension(50, 17));
         panel3.add(labPen3);
 
-        panelTiming.add(panel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 97, 1216, 27));
+        panelTiming.add(panel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 97, 1210, 27));
 
         panel4.setBackground(new java.awt.Color(50, 50, 50));
         panel4.setLayout(new javax.swing.BoxLayout(panel4, javax.swing.BoxLayout.LINE_AXIS));
@@ -1189,7 +1202,7 @@ public class LiveTiming extends javax.swing.JFrame {
         labPen4.setPreferredSize(new java.awt.Dimension(50, 17));
         panel4.add(labPen4);
 
-        panelTiming.add(panel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 124, 1216, 27));
+        panelTiming.add(panel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 124, 1210, 27));
 
         panel5.setBackground(new java.awt.Color(19, 19, 19));
         panel5.setLayout(new javax.swing.BoxLayout(panel5, javax.swing.BoxLayout.LINE_AXIS));
@@ -1314,7 +1327,7 @@ public class LiveTiming extends javax.swing.JFrame {
         labPen5.setPreferredSize(new java.awt.Dimension(50, 17));
         panel5.add(labPen5);
 
-        panelTiming.add(panel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 151, 1216, 27));
+        panelTiming.add(panel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 151, 1210, 27));
 
         panel6.setBackground(new java.awt.Color(50, 50, 50));
         panel6.setLayout(new javax.swing.BoxLayout(panel6, javax.swing.BoxLayout.LINE_AXIS));
@@ -1439,7 +1452,7 @@ public class LiveTiming extends javax.swing.JFrame {
         labPen6.setPreferredSize(new java.awt.Dimension(50, 17));
         panel6.add(labPen6);
 
-        panelTiming.add(panel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 178, 1216, 27));
+        panelTiming.add(panel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 178, 1210, 27));
 
         panel7.setBackground(new java.awt.Color(19, 19, 19));
         panel7.setLayout(new javax.swing.BoxLayout(panel7, javax.swing.BoxLayout.LINE_AXIS));
@@ -1564,7 +1577,7 @@ public class LiveTiming extends javax.swing.JFrame {
         labPen7.setPreferredSize(new java.awt.Dimension(50, 17));
         panel7.add(labPen7);
 
-        panelTiming.add(panel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 205, 1216, 27));
+        panelTiming.add(panel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 205, 1210, 27));
 
         panel8.setBackground(new java.awt.Color(50, 50, 50));
         panel8.setLayout(new javax.swing.BoxLayout(panel8, javax.swing.BoxLayout.LINE_AXIS));
@@ -1689,7 +1702,7 @@ public class LiveTiming extends javax.swing.JFrame {
         labPen8.setPreferredSize(new java.awt.Dimension(50, 17));
         panel8.add(labPen8);
 
-        panelTiming.add(panel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 232, 1216, 27));
+        panelTiming.add(panel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 232, 1210, 27));
 
         panel9.setBackground(new java.awt.Color(19, 19, 19));
         panel9.setLayout(new javax.swing.BoxLayout(panel9, javax.swing.BoxLayout.LINE_AXIS));
@@ -1814,7 +1827,7 @@ public class LiveTiming extends javax.swing.JFrame {
         labPen9.setPreferredSize(new java.awt.Dimension(50, 17));
         panel9.add(labPen9);
 
-        panelTiming.add(panel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 259, 1216, 27));
+        panelTiming.add(panel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 259, 1210, 27));
 
         panel10.setBackground(new java.awt.Color(50, 50, 50));
         panel10.setLayout(new javax.swing.BoxLayout(panel10, javax.swing.BoxLayout.LINE_AXIS));
@@ -1939,7 +1952,7 @@ public class LiveTiming extends javax.swing.JFrame {
         labPen10.setPreferredSize(new java.awt.Dimension(50, 17));
         panel10.add(labPen10);
 
-        panelTiming.add(panel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 286, 1216, 27));
+        panelTiming.add(panel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 286, 1210, 27));
 
         panel11.setBackground(new java.awt.Color(19, 19, 19));
         panel11.setLayout(new javax.swing.BoxLayout(panel11, javax.swing.BoxLayout.LINE_AXIS));
@@ -2064,7 +2077,7 @@ public class LiveTiming extends javax.swing.JFrame {
         labPen11.setPreferredSize(new java.awt.Dimension(50, 17));
         panel11.add(labPen11);
 
-        panelTiming.add(panel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 313, 1216, 27));
+        panelTiming.add(panel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 313, 1210, 27));
 
         panel12.setBackground(new java.awt.Color(50, 50, 50));
         panel12.setLayout(new javax.swing.BoxLayout(panel12, javax.swing.BoxLayout.LINE_AXIS));
@@ -2189,7 +2202,7 @@ public class LiveTiming extends javax.swing.JFrame {
         labPen12.setPreferredSize(new java.awt.Dimension(50, 17));
         panel12.add(labPen12);
 
-        panelTiming.add(panel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 340, 1216, 27));
+        panelTiming.add(panel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 340, 1210, 27));
 
         panel13.setBackground(new java.awt.Color(19, 19, 19));
         panel13.setLayout(new javax.swing.BoxLayout(panel13, javax.swing.BoxLayout.LINE_AXIS));
@@ -2314,7 +2327,7 @@ public class LiveTiming extends javax.swing.JFrame {
         labPen13.setPreferredSize(new java.awt.Dimension(50, 17));
         panel13.add(labPen13);
 
-        panelTiming.add(panel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 367, 1216, 27));
+        panelTiming.add(panel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 367, 1210, 27));
 
         panel14.setBackground(new java.awt.Color(50, 50, 50));
         panel14.setLayout(new javax.swing.BoxLayout(panel14, javax.swing.BoxLayout.LINE_AXIS));
@@ -2439,7 +2452,7 @@ public class LiveTiming extends javax.swing.JFrame {
         labPen14.setPreferredSize(new java.awt.Dimension(50, 17));
         panel14.add(labPen14);
 
-        panelTiming.add(panel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 394, 1216, 27));
+        panelTiming.add(panel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 394, 1210, 27));
 
         panel15.setBackground(new java.awt.Color(19, 19, 19));
         panel15.setLayout(new javax.swing.BoxLayout(panel15, javax.swing.BoxLayout.LINE_AXIS));
@@ -2564,7 +2577,7 @@ public class LiveTiming extends javax.swing.JFrame {
         labPen15.setPreferredSize(new java.awt.Dimension(50, 17));
         panel15.add(labPen15);
 
-        panelTiming.add(panel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 421, 1216, 27));
+        panelTiming.add(panel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 421, 1210, 27));
 
         panel16.setBackground(new java.awt.Color(50, 50, 50));
         panel16.setLayout(new javax.swing.BoxLayout(panel16, javax.swing.BoxLayout.LINE_AXIS));
@@ -2689,7 +2702,7 @@ public class LiveTiming extends javax.swing.JFrame {
         labPen16.setPreferredSize(new java.awt.Dimension(50, 17));
         panel16.add(labPen16);
 
-        panelTiming.add(panel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 448, 1216, 27));
+        panelTiming.add(panel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 448, 1210, 27));
 
         panel17.setBackground(new java.awt.Color(19, 19, 19));
         panel17.setLayout(new javax.swing.BoxLayout(panel17, javax.swing.BoxLayout.LINE_AXIS));
@@ -2814,7 +2827,7 @@ public class LiveTiming extends javax.swing.JFrame {
         labPen17.setPreferredSize(new java.awt.Dimension(50, 17));
         panel17.add(labPen17);
 
-        panelTiming.add(panel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 475, 1216, 27));
+        panelTiming.add(panel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 475, 1210, 27));
 
         panel18.setBackground(new java.awt.Color(50, 50, 50));
         panel18.setLayout(new javax.swing.BoxLayout(panel18, javax.swing.BoxLayout.LINE_AXIS));
@@ -2939,7 +2952,7 @@ public class LiveTiming extends javax.swing.JFrame {
         labPen18.setPreferredSize(new java.awt.Dimension(50, 17));
         panel18.add(labPen18);
 
-        panelTiming.add(panel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 502, 1216, 27));
+        panelTiming.add(panel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 502, 1210, 27));
 
         panel19.setBackground(new java.awt.Color(19, 19, 19));
         panel19.setLayout(new javax.swing.BoxLayout(panel19, javax.swing.BoxLayout.LINE_AXIS));
@@ -3064,7 +3077,7 @@ public class LiveTiming extends javax.swing.JFrame {
         labPen19.setPreferredSize(new java.awt.Dimension(50, 17));
         panel19.add(labPen19);
 
-        panelTiming.add(panel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 529, 1216, 27));
+        panelTiming.add(panel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 529, 1210, 27));
 
         panel20.setBackground(new java.awt.Color(50, 50, 50));
         panel20.setLayout(new javax.swing.BoxLayout(panel20, javax.swing.BoxLayout.LINE_AXIS));
@@ -3189,7 +3202,7 @@ public class LiveTiming extends javax.swing.JFrame {
         labPen20.setPreferredSize(new java.awt.Dimension(50, 17));
         panel20.add(labPen20);
 
-        panelTiming.add(panel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 556, 1216, 27));
+        panelTiming.add(panel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 556, 1210, 27));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -3238,6 +3251,7 @@ public class LiveTiming extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosing
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JComboBox<String> combo_data;
     public javax.swing.JLabel jLabel12;
     public javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel4;
@@ -3599,5 +3613,6 @@ public class LiveTiming extends javax.swing.JFrame {
     private javax.swing.JLabel space4;
     private javax.swing.JLabel space5;
     private javax.swing.JLabel space6;
+    private javax.swing.JLabel space7;
     // End of variables declaration//GEN-END:variables
 }
