@@ -265,8 +265,7 @@ public class PacketSessionData extends Packet {
      * @return 
      */
     public String getSessionTimeLeft(){
-        Date date = new Date((long) sessionTimeLeft);
-        return new SimpleDateFormat("H:mm:ss").format(date);
+        return printFormattedSeconds(sessionTimeLeft);
     }
     
     /**
@@ -274,8 +273,7 @@ public class PacketSessionData extends Packet {
      * @return 
      */
     public String getSessionDuration(){
-        Date date = new Date((long)(sessionDuration));
-        return new SimpleDateFormat("H:mm:ss").format(date);
+        return printFormattedSeconds(sessionDuration);
     }
     
     /**
@@ -338,6 +336,16 @@ public class PacketSessionData extends Packet {
         }
     }
     
+    public static String printFormattedSeconds(int sec){
+        int hours = (int) (sec / 3600);
+        int minutes = (int) (sec / 60);
+        int seconds = sec % 60;
+        if(hours != 0){
+            return String.format("%d:%02d:%02d", hours, minutes, seconds);
+        }else
+            return String.format("%d:%02d", minutes, seconds);
+    }
+    
     /**
      * Get all data.
      * @return 
@@ -367,8 +375,8 @@ public class PacketSessionData extends Packet {
             ret += "\n------------\n";
             ret += mz.toString();
         }
-        
-        ret += "Safete Car: "+getSafetyCarStatus()+"\n";
+      
+        ret += "Safety Car: "+getSafetyCarStatus()+"\n";
         ret += "Network: "+getNetworkGame()+"\n";
         
         return ret;

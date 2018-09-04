@@ -24,6 +24,7 @@ public class CarStatusData {
      * Max ERS Storage;
      */
     public static float MAX_ERS_STORAGE = 4000000f;
+    public static float MAX_ERS_HARVEST = 2000000f;
     /**
      * 0 (off) - 2 (high).
      */

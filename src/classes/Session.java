@@ -76,6 +76,15 @@ public class Session {
         return null;
     }
     
+    public Driver getDriverByName(String name){
+        for(Driver d : drivers){
+            if(d.participant.getName().equalsIgnoreCase(name)){
+                return d;
+            }
+        }
+        return null;
+    }
+    
     public synchronized boolean betterThanS1(float sector){
         if(LapData.formatSeconds(sector, true) != null){
             return sector <= bestS1;
@@ -108,6 +117,18 @@ public class Session {
         }
     }
     
+    public ArrayList<String> getAllNameParticipants(){
+        ArrayList<String> list = new ArrayList<>();
+        
+        if(drivers != null){
+            for(Driver d : drivers){
+                list.add(d.participant.getName());
+            }
+        }
+        
+        return list;
+    }
+    
     public void setUserIndex(int user){
         this.userIndex = user;
     }
@@ -127,7 +148,6 @@ public class Session {
         }
         return null;
     }
-    
     
     public void createDrivers(PacketParticipantsData ppd){
         if(drivers == null){
@@ -184,6 +204,7 @@ public class Session {
     public void setParticipantsData(PacketParticipantsData packetParticipantsData){
         if(drivers == null){
             createDrivers(packetParticipantsData);
+            System.out.println("SET PARTICIPANTS! "+packetParticipantsData.participants.size());
         }
         if(drivers != null && !drivers.isEmpty()){
             HashMap<Short, ParticipantData> driversId = new HashMap<Short, ParticipantData>();
@@ -197,7 +218,6 @@ public class Session {
                     d.setNewParticipant(pd);
                 }
             }
-            //System.out.println("SET PARTICIPANTS! "+packetParticipantsData.participants.size());
         }
     }
     

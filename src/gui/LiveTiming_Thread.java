@@ -80,7 +80,7 @@ public class LiveTiming_Thread extends Thread{
     
     private void printRaceStatus(PacketSessionData data){
         if(data.sessionType > 0 && data.sessionType < 9){
-            view.lab_remaining.setText(data.getSessionTimeLeft());
+            view.lab_remaining.setText(data.getSessionType()+": "+data.getSessionTimeLeft());
         }else if(data.sessionType == 10 || data.sessionType == 11){
             view.lab_remaining.setText("Laps: "+data.totalLaps);
         }else{

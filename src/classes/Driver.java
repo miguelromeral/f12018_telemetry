@@ -9,6 +9,7 @@ import Packets.PacketParticipantsData;
 import Packets.ParticipantData;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.HashMap;
 
 /**
  *
@@ -22,6 +23,8 @@ public class Driver {
     public ParticipantData participant;
     public CarMotionData carMotion;
     public LapData lap;
+    public HashMap<Integer, Float> previousLaps;
+    public HashMap<Integer, Float> previousGapTimes;
     public Session session;
     
     public float bestS1;
@@ -37,6 +40,11 @@ public class Driver {
         initializeSectores();
     }
     
+    public void setPreviousGapTimes(int distance, float time){
+        int index = (int) (distance / 100);
+        previousGapTimes.put(index, time);
+    }
+    
     public void initializeSectores(){
         bestS1 = Float.POSITIVE_INFINITY;
         bestS2 = Float.POSITIVE_INFINITY;
@@ -44,6 +52,16 @@ public class Driver {
         lastS1 = Float.POSITIVE_INFINITY;
         lastS2 = Float.POSITIVE_INFINITY;
         lastS3 = Float.POSITIVE_INFINITY;
+        previousLaps = new HashMap<>();
+        previousGapTimes = new HashMap<>();
+    }
+    
+    public float getLapTime(int lap){
+        try{
+            return previousLaps.get(lap);
+        }catch(Exception e){
+            return 0f;
+        }
     }
     
     public float getLastS1(){
@@ -72,6 +90,7 @@ public class Driver {
     
     public void setNewLap(LapData newLap){
         lap = newLap;
+        setPreviousGapTimes((int) lap.lapDistance, lap.currentLapTime);
         if(lap.getSector() != 1 && lap.sector1Time != 0f){
             lastS1 = lap.sector1Time;
             if(lastS1 < bestS1){
@@ -100,8 +119,12 @@ public class Driver {
             }
         }
         if(lap.getSector() == 1){
-            if(lap.lastLapTime != 0f && lap.lastLapTime == lap.bestLapTime && session.betterThanLap(lap.bestLapTime)){
-                session.bestLap = lap.bestLapTime;
+            if(lap.lastLapTime != 0f){
+                previousLaps.put(lap.currentLapNum - 1, lap.lastLapTime);
+                
+                if(lap.lastLapTime == lap.bestLapTime && session.betterThanLap(lap.bestLapTime)){
+                    session.bestLap = lap.bestLapTime;
+                }
             }
         }
     }

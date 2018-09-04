@@ -91,7 +91,7 @@ public class GUIFeatures {
                 case 20: tr =  "azerbaijan";break;
             }
             if(tr != null){
-                setImageIcon(label, sh, sv, "tracks/"+tr);
+                setImageIcon(label, sh, sv, "track/"+tr);
             }
         } catch (Exception e) {
             System.out.println("Error en la imagen: " + e.toString());
@@ -164,6 +164,29 @@ public class GUIFeatures {
         }
     }
     
+    public static void getTyreImageMini(JLabel label, int size, int compound) {
+        try {
+            label.setText("");
+            String tyre = null;
+            switch(compound){
+                case 0: tyre = "hypersoft"; break;
+                case 1: tyre = "ultrasoft"; break;
+                case 2: tyre = "supersoft"; break;
+                case 3: tyre = "soft"; break;
+                case 4: tyre = "medium"; break;
+                case 5: tyre = "hard"; break;
+                case 6: tyre = "superhard"; break;
+                case 7: tyre = "inter"; break;
+                case 8: tyre = "wet"; break;
+            }
+            if(tyre != null){
+                setImageIcon(label, size, size, "tyres/mini/"+tyre);
+            }
+        } catch (Exception e) {
+            System.out.println("Error en la imagen: " + e.toString());
+        }
+    }
+    
     public static void setTyreWear(JProgressBar pb, JLabel lab, int usage){
         
         Color col; 
@@ -185,4 +208,20 @@ public class GUIFeatures {
         pb.setForeground(col);
     }
     
+    
+    public static Color getColorByDamagePercentage(int perc){
+        Color col; 
+        if(perc < 30){
+            col = Color.green;
+        }else if(perc < 50){
+            col = Color.yellow;
+        }else if(perc < 65){
+            col = Color.orange;
+        }else if(perc < 100){
+            col = Color.red;
+        }else{
+            col = Color.BLACK;
+        }
+        return col;
+    }
 }

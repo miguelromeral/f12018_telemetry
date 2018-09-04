@@ -469,6 +469,7 @@ public class LiveTiming extends javax.swing.JFrame {
 
         space.setMaximumSize(new java.awt.Dimension(10, 0));
         space.setMinimumSize(new java.awt.Dimension(10, 0));
+        space.setPreferredSize(new java.awt.Dimension(10, 0));
         panelSession.add(space);
 
         lab_weather_text.setFont(new java.awt.Font("Formula1 Display Regular", 0, 24)); // NOI18N
@@ -478,6 +479,7 @@ public class LiveTiming extends javax.swing.JFrame {
 
         space1.setMaximumSize(new java.awt.Dimension(10, 0));
         space1.setMinimumSize(new java.awt.Dimension(10, 0));
+        space1.setPreferredSize(new java.awt.Dimension(10, 0));
         panelSession.add(space1);
 
         jLabel13.setFont(new java.awt.Font("Formula1 Display Regular", 0, 18)); // NOI18N
@@ -487,6 +489,7 @@ public class LiveTiming extends javax.swing.JFrame {
 
         space2.setMaximumSize(new java.awt.Dimension(10, 0));
         space2.setMinimumSize(new java.awt.Dimension(10, 0));
+        space2.setPreferredSize(new java.awt.Dimension(10, 0));
         panelSession.add(space2);
 
         lab_trackTemperature.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -496,6 +499,7 @@ public class LiveTiming extends javax.swing.JFrame {
 
         space3.setMaximumSize(new java.awt.Dimension(10, 0));
         space3.setMinimumSize(new java.awt.Dimension(10, 0));
+        space3.setPreferredSize(new java.awt.Dimension(10, 0));
         panelSession.add(space3);
 
         jLabel12.setFont(new java.awt.Font("Formula1 Display Regular", 0, 18)); // NOI18N
@@ -505,6 +509,7 @@ public class LiveTiming extends javax.swing.JFrame {
 
         space4.setMaximumSize(new java.awt.Dimension(10, 0));
         space4.setMinimumSize(new java.awt.Dimension(10, 0));
+        space4.setPreferredSize(new java.awt.Dimension(10, 0));
         panelSession.add(space4);
 
         lab_airTemperature.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -514,12 +519,13 @@ public class LiveTiming extends javax.swing.JFrame {
 
         space5.setMaximumSize(new java.awt.Dimension(10, 0));
         space5.setMinimumSize(new java.awt.Dimension(10, 0));
+        space5.setPreferredSize(new java.awt.Dimension(10, 0));
         panelSession.add(space5);
 
         jPanel2.setBackground(new java.awt.Color(19, 19, 19));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Best Time Session", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(204, 204, 204))); // NOI18N
         jPanel2.setMaximumSize(new java.awt.Dimension(500, 50));
-        jPanel2.setPreferredSize(new java.awt.Dimension(500, 50));
+        jPanel2.setPreferredSize(new java.awt.Dimension(400, 50));
         jPanel2.setLayout(new javax.swing.BoxLayout(jPanel2, javax.swing.BoxLayout.LINE_AXIS));
 
         lab_bestS1.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
@@ -558,22 +564,25 @@ public class LiveTiming extends javax.swing.JFrame {
 
         space6.setMaximumSize(new java.awt.Dimension(10, 0));
         space6.setMinimumSize(new java.awt.Dimension(10, 0));
+        space6.setPreferredSize(new java.awt.Dimension(10, 0));
         panelSession.add(space6);
 
         lab_remaining.setFont(new java.awt.Font("Formula1 Display Regular", 0, 18)); // NOI18N
         lab_remaining.setForeground(new java.awt.Color(204, 204, 204));
         lab_remaining.setText("remaining");
+        lab_remaining.setMaximumSize(new java.awt.Dimension(100, 50));
+        lab_remaining.setPreferredSize(new java.awt.Dimension(200, 50));
         panelSession.add(lab_remaining);
 
         space7.setMaximumSize(new java.awt.Dimension(50, 0));
         space7.setMinimumSize(new java.awt.Dimension(50, 0));
-        space7.setPreferredSize(new java.awt.Dimension(50, 0));
+        space7.setPreferredSize(new java.awt.Dimension(10, 0));
         panelSession.add(space7);
 
         combo_data.setBackground(new java.awt.Color(153, 0, 0));
         combo_data.setFont(new java.awt.Font("Formula1 Display Wide", 0, 12)); // NOI18N
         combo_data.setForeground(new java.awt.Color(255, 255, 255));
-        combo_data.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Latest", "Current" }));
+        combo_data.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Latest", "Current", "Personal Best" }));
         panelSession.add(combo_data);
 
         panelTiming.setBackground(new java.awt.Color(19, 19, 19));
@@ -772,7 +781,7 @@ public class LiveTiming extends javax.swing.JFrame {
         panel1.add(labS31);
 
         labDelta1.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
-        labDelta1.setForeground(new java.awt.Color(255, 255, 255));
+        labDelta1.setForeground(new java.awt.Color(255, 255, 0));
         labDelta1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labDelta1.setMaximumSize(new java.awt.Dimension(100, 17));
         labDelta1.setMinimumSize(new java.awt.Dimension(20, 17));
@@ -829,7 +838,7 @@ public class LiveTiming extends javax.swing.JFrame {
 
         panelTiming.add(panel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 43, 1210, 27));
 
-        panel2.setBackground(new java.awt.Color(50, 50, 50));
+        panel2.setBackground(new java.awt.Color(25, 25, 25));
         panel2.setLayout(new javax.swing.BoxLayout(panel2, javax.swing.BoxLayout.LINE_AXIS));
 
         labPos2.setFont(new java.awt.Font("Formula1 Display Bold", 0, 14)); // NOI18N
@@ -897,7 +906,7 @@ public class LiveTiming extends javax.swing.JFrame {
         panel2.add(labS32);
 
         labDelta2.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
-        labDelta2.setForeground(new java.awt.Color(255, 255, 255));
+        labDelta2.setForeground(new java.awt.Color(255, 255, 0));
         labDelta2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labDelta2.setMaximumSize(new java.awt.Dimension(100, 17));
         labDelta2.setMinimumSize(new java.awt.Dimension(20, 17));
@@ -1022,7 +1031,7 @@ public class LiveTiming extends javax.swing.JFrame {
         panel3.add(labS33);
 
         labDelta3.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
-        labDelta3.setForeground(new java.awt.Color(255, 255, 255));
+        labDelta3.setForeground(new java.awt.Color(255, 255, 0));
         labDelta3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labDelta3.setMaximumSize(new java.awt.Dimension(100, 17));
         labDelta3.setMinimumSize(new java.awt.Dimension(20, 17));
@@ -1079,7 +1088,7 @@ public class LiveTiming extends javax.swing.JFrame {
 
         panelTiming.add(panel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 97, 1210, 27));
 
-        panel4.setBackground(new java.awt.Color(50, 50, 50));
+        panel4.setBackground(new java.awt.Color(25, 25, 25));
         panel4.setLayout(new javax.swing.BoxLayout(panel4, javax.swing.BoxLayout.LINE_AXIS));
 
         labPos4.setFont(new java.awt.Font("Formula1 Display Bold", 0, 14)); // NOI18N
@@ -1147,7 +1156,7 @@ public class LiveTiming extends javax.swing.JFrame {
         panel4.add(labS34);
 
         labDelta4.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
-        labDelta4.setForeground(new java.awt.Color(255, 255, 255));
+        labDelta4.setForeground(new java.awt.Color(255, 255, 0));
         labDelta4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labDelta4.setMaximumSize(new java.awt.Dimension(100, 17));
         labDelta4.setMinimumSize(new java.awt.Dimension(20, 17));
@@ -1272,7 +1281,7 @@ public class LiveTiming extends javax.swing.JFrame {
         panel5.add(labS35);
 
         labDelta5.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
-        labDelta5.setForeground(new java.awt.Color(255, 255, 255));
+        labDelta5.setForeground(new java.awt.Color(255, 255, 0));
         labDelta5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labDelta5.setMaximumSize(new java.awt.Dimension(100, 17));
         labDelta5.setMinimumSize(new java.awt.Dimension(20, 17));
@@ -1329,7 +1338,7 @@ public class LiveTiming extends javax.swing.JFrame {
 
         panelTiming.add(panel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 151, 1210, 27));
 
-        panel6.setBackground(new java.awt.Color(50, 50, 50));
+        panel6.setBackground(new java.awt.Color(25, 25, 25));
         panel6.setLayout(new javax.swing.BoxLayout(panel6, javax.swing.BoxLayout.LINE_AXIS));
 
         labPos6.setFont(new java.awt.Font("Formula1 Display Bold", 0, 14)); // NOI18N
@@ -1397,7 +1406,7 @@ public class LiveTiming extends javax.swing.JFrame {
         panel6.add(labS36);
 
         labDelta6.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
-        labDelta6.setForeground(new java.awt.Color(255, 255, 255));
+        labDelta6.setForeground(new java.awt.Color(255, 255, 0));
         labDelta6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labDelta6.setMaximumSize(new java.awt.Dimension(100, 17));
         labDelta6.setMinimumSize(new java.awt.Dimension(20, 17));
@@ -1522,7 +1531,7 @@ public class LiveTiming extends javax.swing.JFrame {
         panel7.add(labS37);
 
         labDelta7.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
-        labDelta7.setForeground(new java.awt.Color(255, 255, 255));
+        labDelta7.setForeground(new java.awt.Color(255, 255, 0));
         labDelta7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labDelta7.setMaximumSize(new java.awt.Dimension(100, 17));
         labDelta7.setMinimumSize(new java.awt.Dimension(20, 17));
@@ -1579,7 +1588,7 @@ public class LiveTiming extends javax.swing.JFrame {
 
         panelTiming.add(panel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 205, 1210, 27));
 
-        panel8.setBackground(new java.awt.Color(50, 50, 50));
+        panel8.setBackground(new java.awt.Color(25, 25, 25));
         panel8.setLayout(new javax.swing.BoxLayout(panel8, javax.swing.BoxLayout.LINE_AXIS));
 
         labPos8.setFont(new java.awt.Font("Formula1 Display Bold", 0, 14)); // NOI18N
@@ -1647,7 +1656,7 @@ public class LiveTiming extends javax.swing.JFrame {
         panel8.add(labS38);
 
         labDelta8.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
-        labDelta8.setForeground(new java.awt.Color(255, 255, 255));
+        labDelta8.setForeground(new java.awt.Color(255, 255, 0));
         labDelta8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labDelta8.setMaximumSize(new java.awt.Dimension(100, 17));
         labDelta8.setMinimumSize(new java.awt.Dimension(20, 17));
@@ -1772,7 +1781,7 @@ public class LiveTiming extends javax.swing.JFrame {
         panel9.add(labS39);
 
         labDelta9.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
-        labDelta9.setForeground(new java.awt.Color(255, 255, 255));
+        labDelta9.setForeground(new java.awt.Color(255, 255, 0));
         labDelta9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labDelta9.setMaximumSize(new java.awt.Dimension(100, 17));
         labDelta9.setMinimumSize(new java.awt.Dimension(20, 17));
@@ -1829,7 +1838,7 @@ public class LiveTiming extends javax.swing.JFrame {
 
         panelTiming.add(panel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 259, 1210, 27));
 
-        panel10.setBackground(new java.awt.Color(50, 50, 50));
+        panel10.setBackground(new java.awt.Color(25, 25, 25));
         panel10.setLayout(new javax.swing.BoxLayout(panel10, javax.swing.BoxLayout.LINE_AXIS));
 
         labPos10.setFont(new java.awt.Font("Formula1 Display Bold", 0, 14)); // NOI18N
@@ -1897,7 +1906,7 @@ public class LiveTiming extends javax.swing.JFrame {
         panel10.add(labS42);
 
         labDelta10.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
-        labDelta10.setForeground(new java.awt.Color(255, 255, 255));
+        labDelta10.setForeground(new java.awt.Color(255, 255, 0));
         labDelta10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labDelta10.setMaximumSize(new java.awt.Dimension(100, 17));
         labDelta10.setMinimumSize(new java.awt.Dimension(20, 17));
@@ -2022,7 +2031,7 @@ public class LiveTiming extends javax.swing.JFrame {
         panel11.add(labS45);
 
         labDelta11.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
-        labDelta11.setForeground(new java.awt.Color(255, 255, 255));
+        labDelta11.setForeground(new java.awt.Color(255, 255, 0));
         labDelta11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labDelta11.setMaximumSize(new java.awt.Dimension(100, 17));
         labDelta11.setMinimumSize(new java.awt.Dimension(20, 17));
@@ -2079,7 +2088,7 @@ public class LiveTiming extends javax.swing.JFrame {
 
         panelTiming.add(panel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 313, 1210, 27));
 
-        panel12.setBackground(new java.awt.Color(50, 50, 50));
+        panel12.setBackground(new java.awt.Color(25, 25, 25));
         panel12.setLayout(new javax.swing.BoxLayout(panel12, javax.swing.BoxLayout.LINE_AXIS));
 
         labPos12.setFont(new java.awt.Font("Formula1 Display Bold", 0, 14)); // NOI18N
@@ -2147,7 +2156,7 @@ public class LiveTiming extends javax.swing.JFrame {
         panel12.add(labS48);
 
         labDelta12.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
-        labDelta12.setForeground(new java.awt.Color(255, 255, 255));
+        labDelta12.setForeground(new java.awt.Color(255, 255, 0));
         labDelta12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labDelta12.setMaximumSize(new java.awt.Dimension(100, 17));
         labDelta12.setMinimumSize(new java.awt.Dimension(20, 17));
@@ -2272,7 +2281,7 @@ public class LiveTiming extends javax.swing.JFrame {
         panel13.add(labS51);
 
         labDelta13.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
-        labDelta13.setForeground(new java.awt.Color(255, 255, 255));
+        labDelta13.setForeground(new java.awt.Color(255, 255, 0));
         labDelta13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labDelta13.setMaximumSize(new java.awt.Dimension(100, 17));
         labDelta13.setMinimumSize(new java.awt.Dimension(20, 17));
@@ -2329,7 +2338,7 @@ public class LiveTiming extends javax.swing.JFrame {
 
         panelTiming.add(panel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 367, 1210, 27));
 
-        panel14.setBackground(new java.awt.Color(50, 50, 50));
+        panel14.setBackground(new java.awt.Color(25, 25, 25));
         panel14.setLayout(new javax.swing.BoxLayout(panel14, javax.swing.BoxLayout.LINE_AXIS));
 
         labPos14.setFont(new java.awt.Font("Formula1 Display Bold", 0, 14)); // NOI18N
@@ -2397,7 +2406,7 @@ public class LiveTiming extends javax.swing.JFrame {
         panel14.add(labS54);
 
         labDelta14.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
-        labDelta14.setForeground(new java.awt.Color(255, 255, 255));
+        labDelta14.setForeground(new java.awt.Color(255, 255, 0));
         labDelta14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labDelta14.setMaximumSize(new java.awt.Dimension(100, 17));
         labDelta14.setMinimumSize(new java.awt.Dimension(20, 17));
@@ -2522,7 +2531,7 @@ public class LiveTiming extends javax.swing.JFrame {
         panel15.add(labS57);
 
         labDelta15.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
-        labDelta15.setForeground(new java.awt.Color(255, 255, 255));
+        labDelta15.setForeground(new java.awt.Color(255, 255, 0));
         labDelta15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labDelta15.setMaximumSize(new java.awt.Dimension(100, 17));
         labDelta15.setMinimumSize(new java.awt.Dimension(20, 17));
@@ -2579,7 +2588,7 @@ public class LiveTiming extends javax.swing.JFrame {
 
         panelTiming.add(panel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 421, 1210, 27));
 
-        panel16.setBackground(new java.awt.Color(50, 50, 50));
+        panel16.setBackground(new java.awt.Color(25, 25, 25));
         panel16.setLayout(new javax.swing.BoxLayout(panel16, javax.swing.BoxLayout.LINE_AXIS));
 
         labPos16.setFont(new java.awt.Font("Formula1 Display Bold", 0, 14)); // NOI18N
@@ -2647,7 +2656,7 @@ public class LiveTiming extends javax.swing.JFrame {
         panel16.add(labS60);
 
         labDelta16.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
-        labDelta16.setForeground(new java.awt.Color(255, 255, 255));
+        labDelta16.setForeground(new java.awt.Color(255, 255, 0));
         labDelta16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labDelta16.setMaximumSize(new java.awt.Dimension(100, 17));
         labDelta16.setMinimumSize(new java.awt.Dimension(20, 17));
@@ -2772,7 +2781,7 @@ public class LiveTiming extends javax.swing.JFrame {
         panel17.add(labS63);
 
         labDelta17.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
-        labDelta17.setForeground(new java.awt.Color(255, 255, 255));
+        labDelta17.setForeground(new java.awt.Color(255, 255, 0));
         labDelta17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labDelta17.setMaximumSize(new java.awt.Dimension(100, 17));
         labDelta17.setMinimumSize(new java.awt.Dimension(20, 17));
@@ -2829,7 +2838,7 @@ public class LiveTiming extends javax.swing.JFrame {
 
         panelTiming.add(panel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 475, 1210, 27));
 
-        panel18.setBackground(new java.awt.Color(50, 50, 50));
+        panel18.setBackground(new java.awt.Color(25, 25, 25));
         panel18.setLayout(new javax.swing.BoxLayout(panel18, javax.swing.BoxLayout.LINE_AXIS));
 
         labPos18.setFont(new java.awt.Font("Formula1 Display Bold", 0, 14)); // NOI18N
@@ -2897,7 +2906,7 @@ public class LiveTiming extends javax.swing.JFrame {
         panel18.add(labS66);
 
         labDelta18.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
-        labDelta18.setForeground(new java.awt.Color(255, 255, 255));
+        labDelta18.setForeground(new java.awt.Color(255, 255, 0));
         labDelta18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labDelta18.setMaximumSize(new java.awt.Dimension(100, 17));
         labDelta18.setMinimumSize(new java.awt.Dimension(20, 17));
@@ -3022,7 +3031,7 @@ public class LiveTiming extends javax.swing.JFrame {
         panel19.add(labS69);
 
         labDelta19.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
-        labDelta19.setForeground(new java.awt.Color(255, 255, 255));
+        labDelta19.setForeground(new java.awt.Color(255, 255, 0));
         labDelta19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labDelta19.setMaximumSize(new java.awt.Dimension(100, 17));
         labDelta19.setMinimumSize(new java.awt.Dimension(20, 17));
@@ -3079,7 +3088,7 @@ public class LiveTiming extends javax.swing.JFrame {
 
         panelTiming.add(panel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 529, 1210, 27));
 
-        panel20.setBackground(new java.awt.Color(50, 50, 50));
+        panel20.setBackground(new java.awt.Color(25, 25, 25));
         panel20.setLayout(new javax.swing.BoxLayout(panel20, javax.swing.BoxLayout.LINE_AXIS));
 
         labPos20.setFont(new java.awt.Font("Formula1 Display Bold", 0, 14)); // NOI18N
@@ -3147,7 +3156,7 @@ public class LiveTiming extends javax.swing.JFrame {
         panel20.add(labS72);
 
         labDelta20.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
-        labDelta20.setForeground(new java.awt.Color(255, 255, 255));
+        labDelta20.setForeground(new java.awt.Color(255, 255, 0));
         labDelta20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labDelta20.setMaximumSize(new java.awt.Dimension(100, 17));
         labDelta20.setMinimumSize(new java.awt.Dimension(20, 17));

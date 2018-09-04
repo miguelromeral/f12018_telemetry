@@ -263,6 +263,53 @@ public class ParticipantData extends Packet {
     }
     
     /**
+     * Get 3 letters name.
+     * @return 
+     */
+    public String getAcronim(){
+        switch(driverId){
+            case 0: return "SAI";
+            case 2: return "RIC";
+            case 3: return "ALO";
+            case 6: return "RAI";
+            case 7: return "HAM";
+            case 8: return "ERI";
+            case 9: return "VER";
+            case 10: return "HUL";
+            case 11: return "MAG";
+            case 12: return "GRO";
+            case 13: return "VET";
+            case 14: return "PER";
+            case 15: return "BOT";
+            case 17: return "OCO";
+            case 18: return "VAN";
+            case 19: return "STR";
+            case 20: return "BAR";
+            case 21: return "GIL";
+            case 22: return "MUR";
+            case 23: return "ROT";
+            case 24: return "COR";
+            case 25: return "LEV";
+            case 26: return "SCH";
+            case 27: return "FOR";
+            case 28: return "LET";
+            case 29: return "SAA";
+            case 30: return "ATI";
+            case 31: return "CAL";
+            case 32: return "IZU";
+            case 33: return "CLA";
+            case 34: return "KAU";
+            case 35: return "LAU";
+            case 36: return "NIE";
+            case 58: return "LEC";
+            case 59: return "GAS";
+            case 60: return "HAR";
+            case 61: return "SIR";
+            default: return "ME";
+        }
+    }
+    
+    /**
      * Get driver name.
      * @return 
      */

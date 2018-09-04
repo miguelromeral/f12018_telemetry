@@ -47,22 +47,26 @@ public class Controller {
         pasos.remove(p);
     }
     
+        int i = 0;
+        
     public synchronized void newPacket(byte[] content){
         Packet packet = PacketFactory.getPacket(content);
         
+        
         if(packet != null){
             session.setUserIndex(packet.playerCarIndex);
-            /*
             
-            System.out.print("{");
+        /*   
+            System.out.println("// ID: "+packet.packetId);
+            System.out.print("byte[] cont"+i+" = {");
             for(byte b : content){
                 System.out.print(b+", ");
             }
-            System.out.println("}");
+            System.out.println("};\ncontroller.newPacket(cont"+i+");");
 
-            System.out.println("Length: "+packet.lenght+", Type: "+packet.packetId+"\n---------------");
-           
+            i++;
           */
+         //   System.out.println("Packet: "+packet.frameIdentifier);
             
             switch(packet.packetId){
             

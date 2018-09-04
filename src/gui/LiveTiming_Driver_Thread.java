@@ -1,6 +1,8 @@
 package gui;
 
 import Packets.LapData;
+import Packets.PacketSessionData;
+import classes.DataTypeUtilities;
 import classes.Driver;
 import classes.Paso;
 import java.awt.Color;
@@ -133,6 +135,36 @@ public class LiveTiming_Driver_Thread extends Thread{
         }
     }
     
+    private void printPersonalBest(Driver d){
+        if(d != null){
+            if(d.session.betterThanS1(d.bestS1)){
+                labs[5].setForeground(GUIFeatures.getColorTiming(3));
+            }else{
+                labs[5].setForeground(GUIFeatures.getColorTiming(2));
+            }
+            labs[5].setText(LapData.formatSeconds(d.bestS1, false));
+            
+            if(d.session.betterThanS2(d.bestS2)){
+                labs[6].setForeground(GUIFeatures.getColorTiming(3));
+            }else{
+                labs[6].setForeground(GUIFeatures.getColorTiming(2));
+            }
+            labs[6].setText(LapData.formatSeconds(d.bestS2, false));
+            
+            if(d.session.betterThanS3(d.bestS3)){
+                labs[7].setForeground(GUIFeatures.getColorTiming(3));
+            }else{
+                labs[7].setForeground(GUIFeatures.getColorTiming(2));
+            }
+            labs[7].setText(LapData.formatSeconds(d.bestS3, false));
+        }else{
+            labs[5].setText("");
+            labs[6].setText("");
+            labs[7].setText("");
+        }
+    }
+    
+    
     private void printLastSector2Data(Driver d){
         if(d != null){
             labs[6].setText(LapData.formatSeconds(d.getLastS2(), false));
@@ -216,28 +248,71 @@ public class LiveTiming_Driver_Thread extends Thread{
         }
     }
     
-    private void printCurrentLapTime(Driver d){
-        if(d != null){
-            if(d.lap != null && d.lap.resultStatus == 2){
-                if(d.lap.pitStatus == 0){
-                    labs[4].setText(d.lap.getCurrentLapTime(true));
-                    if(d.lap.getCurrentLapInvalid()){
-                        labs[4].setForeground(Color.red);
-                    }else{
-                        labs[4].setForeground(Color.white);
-                    }
-                }else{
-                    labs[4].setText("");
+    private void printDelta(Driver d){
+        // Aquí hacer la distincion entre qué delta queremos mostrar.
+        if(d != null && d.lap != null){
+            if(tcontroller.controller.session.data.sessionType == 10 ||
+                    tcontroller.controller.session.data.sessionType == 11){
+                switch(0){
+                    case 0: // Delta to 1st.
+                        labs[8].setText(DataTypeUtilities.getFormattedDelta(
+                                DataTypeUtilities.getDeltaBetween(tcontroller.controller.session, 1, d.lap.carPosition)));
+                        break;
+                    case 1: // Delta to next.
+                        break;
+                    default:
+                        labs[8].setText("");
                 }
             }else{
-                switch(d.lap.resultStatus){
-                    case 6: labs[4].setText("OUT");
+                switch(0){
+                    case 0: // Delta to 1st.
+                        labs[8].setText(DataTypeUtilities.getFormattedDeltaQualifying(
+                                DataTypeUtilities.getDeltaQualifying(tcontroller.controller.session, 1, d.lap.carPosition)));
                         break;
-                    default: labs[4].setText("");
+                    case 1: // Delta to next.
+                        break;
+                    default:
+                        labs[8].setText("");
                 }
             }
+        }
+    }
+    
+    private void printCurrentLapTime(Driver d){
+        if(d != null && d.lap != null){
+                
+                switch(d.lap.resultStatus){
+                    case 0: labs[4].setText("Invalid");
+                        break;
+                    case 1: labs[4].setText("INA");
+                        break;
+                    case 2:
+                        
+                        if(d.lap.driverStatus == 1 || d.lap.driverStatus == 2 || d.lap.driverStatus == 4){
+                            labs[4].setText(d.lap.getCurrentLapTime(true));
+                            if(d.lap.getCurrentLapInvalid()){
+                                labs[4].setForeground(Color.red);
+                            }else{
+                                labs[4].setForeground(Color.white);
+                            }
+                        }else{
+                            labs[4].setText("dS: "+d.lap.driverStatus);
+                        }
+                        
+                        break;
+                    case 3: labs[4].setText("FIN");
+                        break;
+                    case 4: labs[4].setText("DSQ");
+                        break;
+                    case 5: labs[4].setText("DNQ");
+                        break;
+                    case 6: labs[4].setText("OUT");
+                        break;
+                    default: labs[4].setText("Default");
+                }
+            
         }else{
-            labs[4].setText("");
+            labs[4].setText("Null lap");
         }
     }
     
@@ -253,6 +328,9 @@ public class LiveTiming_Driver_Thread extends Thread{
                     printCurrentSector1Data(d);
                     printCurrentSector2Data(d);
                     printCurrentSector3Data(d);
+                    break;
+                case "Personal Best":
+                    printPersonalBest(d);
                     break;
             }
         }else{
@@ -283,9 +361,9 @@ public class LiveTiming_Driver_Thread extends Thread{
             printTyreImage(d);
             
             
+            printDelta(d);
+            
             if(d != null && d.lap != null){
-                // Delta - 
-                labs[8].setText(""+d.lap.resultStatus);
                 
                 labs[13].setText(d.lap.getPitStatus());
                 
