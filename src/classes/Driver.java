@@ -1,12 +1,12 @@
 package classes;
 
-import Packets.CarMotionData;
-import Packets.CarSetupData;
-import Packets.CarStatusData;
-import Packets.CarTelemetryData;
-import Packets.LapData;
-import Packets.PacketParticipantsData;
-import Packets.ParticipantData;
+import packets.motion.CarMotionData;
+import packets.carsetup.CarSetupData;
+import packets.carstatus.CarStatusData;
+import packets.cartelemetry.CarTelemetryData;
+import packets.lapdata.LapData;
+import packets.participants.PacketParticipantsData;
+import packets.participants.ParticipantData;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;

@@ -1,15 +1,15 @@
 package classes;
 
-import Packets.Packet;
-import Packets.PacketCarSetupData;
-import Packets.PacketCarStatusData;
-import Packets.PacketCarTelemetryData;
-import Packets.PacketEventData;
-import Packets.PacketFactory;
-import Packets.PacketLapData;
-import Packets.PacketMotionData;
-import Packets.PacketParticipantsData;
-import Packets.PacketSessionData;
+import packets.Packet;
+import packets.carsetup.PacketCarSetupData;
+import packets.carstatus.PacketCarStatusData;
+import packets.cartelemetry.PacketCarTelemetryData;
+import packets.event.PacketEventData;
+import packets.PacketFactory;
+import packets.lapdata.PacketLapData;
+import packets.motion.PacketMotionData;
+import packets.participants.PacketParticipantsData;
+import packets.session.PacketSessionData;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Arrays;

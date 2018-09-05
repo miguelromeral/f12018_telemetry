@@ -5,6 +5,11 @@
  */
 package gui;
 
+import classes.statics.GUIFeatures;
+import gui.map.Map;
+import gui.livetiming.LiveTiming;
+import gui.console.Console;
+import gui.carstatus.CarStatus;
 import javax.swing.JFrame;
 import classes.Controller;
 import javax.swing.JOptionPane;
