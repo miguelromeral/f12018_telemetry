@@ -8,7 +8,7 @@ package gui;
 import classes.statics.GUIFeatures;
 import gui.map.Map;
 import gui.livetiming.LiveTiming;
-import gui.console.Console;
+import gui.telemetry.Telemetry;
 import gui.carstatus.CarStatus;
 import javax.swing.JFrame;
 import classes.Controller;
@@ -87,7 +87,7 @@ public class Main extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(51, 51, 51));
         jButton1.setFont(new java.awt.Font("Formula1 Display Bold", 0, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Live Telemetry");
+        jButton1.setText("Car Telemetry");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -152,7 +152,7 @@ public class Main extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        new Console(controller).setVisible(true);
+        new Telemetry(controller).setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed

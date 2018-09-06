@@ -256,7 +256,8 @@ public class LiveTiming_Driver_Thread extends Thread{
                     tcontroller.controller.session.data.sessionType == 11){
                 switch(0){
                     case 0: // Delta to 1st.
-                        labs[8].setText(DataTypeUtilities.getFormattedDelta(
+                        labs[8].setText(" "+
+                                DataTypeUtilities.getFormattedDelta(
                                 DataTypeUtilities.getDeltaBetween(tcontroller.controller.session, 1, d.lap.carPosition)));
                         break;
                     case 1: // Delta to next.
@@ -297,7 +298,7 @@ public class LiveTiming_Driver_Thread extends Thread{
                                 labs[4].setForeground(Color.white);
                             }
                         }else{
-                            labs[4].setText("dS: "+d.lap.driverStatus);
+                            labs[4].setText("");
                         }
                         
                         break;
@@ -313,7 +314,7 @@ public class LiveTiming_Driver_Thread extends Thread{
                 }
             
         }else{
-            labs[4].setText("Null lap");
+            labs[4].setText("");
         }
     }
     

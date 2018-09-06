@@ -1,5 +1,6 @@
 package classes;
 
+import com.sun.jmx.snmp.Timestamp;
 import packets.motion.CarMotionData;
 import packets.carsetup.CarSetupData;
 import packets.carstatus.CarStatusData;
@@ -9,6 +10,7 @@ import packets.participants.PacketParticipantsData;
 import packets.participants.ParticipantData;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.HashMap;
 
 /**
@@ -24,7 +26,7 @@ public class Driver {
     public CarMotionData carMotion;
     public LapData lap;
     public HashMap<Integer, Float> previousLaps;
-    public HashMap<Integer, Float> previousGapTimes;
+    public HashMap<Integer, Long> miniSectors;
     public Session session;
     
     public float bestS1;
@@ -40,9 +42,11 @@ public class Driver {
         initializeSectores();
     }
     
-    public void setPreviousGapTimes(int distance, float time){
-        int index = (int) (distance / 100);
-        previousGapTimes.put(index, time);
+    public void setPreviousGapTimes(float distance){
+        int index = (int) (distance / 250);
+        if(miniSectors.get(index) == null){
+            miniSectors.put(index, System.currentTimeMillis());
+        }
     }
     
     public void initializeSectores(){
@@ -53,7 +57,7 @@ public class Driver {
         lastS2 = Float.POSITIVE_INFINITY;
         lastS3 = Float.POSITIVE_INFINITY;
         previousLaps = new HashMap<>();
-        previousGapTimes = new HashMap<>();
+        miniSectors = new HashMap<>();
     }
     
     public float getLapTime(int lap){
@@ -90,7 +94,7 @@ public class Driver {
     
     public void setNewLap(LapData newLap){
         lap = newLap;
-        setPreviousGapTimes((int) lap.lapDistance, lap.currentLapTime);
+        setPreviousGapTimes(lap.totalDistance);
         if(lap.getSector() != 1 && lap.sector1Time != 0f){
             lastS1 = lap.sector1Time;
             if(lastS1 < bestS1){

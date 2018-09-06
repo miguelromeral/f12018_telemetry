@@ -208,6 +208,20 @@ public class GUIFeatures {
         pb.setForeground(col);
     }
     
+    public static void printRevLight(JLabel label, int position, int perc){
+        float percLight = (position / 15f);
+        if (perc <= (int) (percLight * 100) && perc != 100){
+            label.setForeground(new Color(51,51,51));
+        }else{
+            if(position <= 5){
+                label.setForeground(Color.GREEN);
+            }else if(position <= 10){
+                label.setForeground(Color.RED);
+            }else{
+                label.setForeground(Color.BLUE);
+            }
+        }
+    }
     
     public static Color getColorByDamagePercentage(int perc){
         Color col; 

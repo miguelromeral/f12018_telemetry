@@ -1,24 +1,37 @@
-package gui.console;
+package gui.telemetry;
 
 import classes.Controller;
 import classes.statics.GUIFeatures;
+import gui.carstatus.CarStatus_Thread;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
 
 /**
  *
  * @author miguelangel.garciar
  */
-public class Console extends javax.swing.JFrame {
+public class Telemetry extends javax.swing.JFrame {
 
-    Console_Thread thread;
+    Telemetry_Thread thread;
     
-    public Console(Controller controller) {
+    public Telemetry(Controller controller) {
         initComponents();
-        thread = new Console_Thread(controller, this);
+        thread = new Telemetry_Thread(controller, this);
         thread.start();
         
+        DefaultComboBoxModel dcbm = new DefaultComboBoxModel();
+        for(String p : controller.session.getAllNameParticipants()){
+            dcbm.addElement(p);
+        }
+        combo_driver.setModel(dcbm);
+        
+        MyItemListener actionListener = new MyItemListener(thread);
+        combo_driver.addItemListener(actionListener);
+        combo_driver.setSelectedIndex(-1);
         
         GUIFeatures.setImageIcon(iconFuel, 40, 40, "icons/fuel");
-        GUIFeatures.setImageIcon(engineIcon, engineIcon.getWidth(), engineIcon.getHeight(), "icons/engine");
     }
 
     /**
@@ -41,16 +54,6 @@ public class Console extends javax.swing.JFrame {
         pb_clutch = new javax.swing.JProgressBar();
         lab_revs = new javax.swing.JLabel();
         lab_flag = new javax.swing.JLabel();
-        panelEngine = new javax.swing.JPanel();
-        panelEngineValues = new javax.swing.JPanel();
-        lab_damageMGUH = new javax.swing.JLabel();
-        lab_damageES = new javax.swing.JLabel();
-        lab_damageCE = new javax.swing.JLabel();
-        lab_damageICE = new javax.swing.JLabel();
-        lab_damageMGUK = new javax.swing.JLabel();
-        lab_damageTC = new javax.swing.JLabel();
-        lab_damageGearbox = new javax.swing.JLabel();
-        engineIcon = new javax.swing.JLabel();
         panelERS = new javax.swing.JPanel();
         panelBars = new javax.swing.JPanel();
         pb_blue = new javax.swing.JProgressBar();
@@ -93,6 +96,22 @@ public class Console extends javax.swing.JFrame {
         lab_tyreCompound = new javax.swing.JLabel();
         panelSteer1 = new javax.swing.JPanel();
         panelSteerPercentage1 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        lab_revLight1 = new javax.swing.JLabel();
+        lab_revLight2 = new javax.swing.JLabel();
+        lab_revLight3 = new javax.swing.JLabel();
+        lab_revLight4 = new javax.swing.JLabel();
+        lab_revLight5 = new javax.swing.JLabel();
+        lab_revLight6 = new javax.swing.JLabel();
+        lab_revLight7 = new javax.swing.JLabel();
+        lab_revLight8 = new javax.swing.JLabel();
+        lab_revLight9 = new javax.swing.JLabel();
+        lab_revLight10 = new javax.swing.JLabel();
+        lab_revLight11 = new javax.swing.JLabel();
+        lab_revLight12 = new javax.swing.JLabel();
+        lab_revLight13 = new javax.swing.JLabel();
+        lab_revLight14 = new javax.swing.JLabel();
+        lab_revLight15 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -100,6 +119,7 @@ public class Console extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         pb_revs = new javax.swing.JProgressBar();
+        combo_driver = new javax.swing.JComboBox<>();
 
         jLabel4.setText("jLabel4");
 
@@ -152,72 +172,6 @@ public class Console extends javax.swing.JFrame {
         lab_flag.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lab_flag.setText("FLAG");
         lab_flag.setOpaque(true);
-
-        panelEngine.setBackground(new java.awt.Color(19, 19, 19));
-        panelEngine.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Engine Damage", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(204, 204, 204))); // NOI18N
-        panelEngine.setForeground(new java.awt.Color(19, 19, 19));
-
-        panelEngineValues.setBackground(new java.awt.Color(19, 19, 19));
-        panelEngineValues.setForeground(new java.awt.Color(19, 19, 19));
-        panelEngineValues.setLayout(new java.awt.GridLayout(7, 0));
-
-        lab_damageMGUH.setFont(new java.awt.Font("Formula1 Display Regular", 0, 18)); // NOI18N
-        lab_damageMGUH.setForeground(new java.awt.Color(255, 255, 255));
-        lab_damageMGUH.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lab_damageMGUH.setText("MGU-H");
-        panelEngineValues.add(lab_damageMGUH);
-
-        lab_damageES.setFont(new java.awt.Font("Formula1 Display Regular", 0, 18)); // NOI18N
-        lab_damageES.setForeground(new java.awt.Color(255, 255, 255));
-        lab_damageES.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lab_damageES.setText("ES");
-        panelEngineValues.add(lab_damageES);
-
-        lab_damageCE.setFont(new java.awt.Font("Formula1 Display Regular", 0, 18)); // NOI18N
-        lab_damageCE.setForeground(new java.awt.Color(255, 255, 255));
-        lab_damageCE.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lab_damageCE.setText("CE");
-        panelEngineValues.add(lab_damageCE);
-
-        lab_damageICE.setFont(new java.awt.Font("Formula1 Display Regular", 0, 18)); // NOI18N
-        lab_damageICE.setForeground(new java.awt.Color(255, 255, 255));
-        lab_damageICE.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lab_damageICE.setText("ICE");
-        panelEngineValues.add(lab_damageICE);
-
-        lab_damageMGUK.setFont(new java.awt.Font("Formula1 Display Regular", 0, 18)); // NOI18N
-        lab_damageMGUK.setForeground(new java.awt.Color(255, 255, 255));
-        lab_damageMGUK.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lab_damageMGUK.setText("MGU-K");
-        panelEngineValues.add(lab_damageMGUK);
-
-        lab_damageTC.setFont(new java.awt.Font("Formula1 Display Regular", 0, 18)); // NOI18N
-        lab_damageTC.setForeground(new java.awt.Color(255, 255, 255));
-        lab_damageTC.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lab_damageTC.setText("TC");
-        panelEngineValues.add(lab_damageTC);
-
-        lab_damageGearbox.setFont(new java.awt.Font("Formula1 Display Regular", 0, 18)); // NOI18N
-        lab_damageGearbox.setForeground(new java.awt.Color(255, 255, 255));
-        lab_damageGearbox.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lab_damageGearbox.setText("GearBox");
-        panelEngineValues.add(lab_damageGearbox);
-
-        javax.swing.GroupLayout panelEngineLayout = new javax.swing.GroupLayout(panelEngine);
-        panelEngine.setLayout(panelEngineLayout);
-        panelEngineLayout.setHorizontalGroup(
-            panelEngineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelEngineLayout.createSequentialGroup()
-                .addComponent(panelEngineValues, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(engineIcon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        panelEngineLayout.setVerticalGroup(
-            panelEngineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(engineIcon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(panelEngineValues, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
 
         panelERS.setBackground(new java.awt.Color(19, 19, 19));
         panelERS.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ERS Storage", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(204, 204, 204))); // NOI18N
@@ -492,9 +446,107 @@ public class Console extends javax.swing.JFrame {
         panelSteerPercentage1.setBackground(new java.awt.Color(19, 19, 19));
         panelSteerPercentage1.setLayout(new javax.swing.BoxLayout(panelSteerPercentage1, javax.swing.BoxLayout.PAGE_AXIS));
 
+        jPanel4.setBackground(new java.awt.Color(19, 19, 19));
+        jPanel4.setMinimumSize(new java.awt.Dimension(25, 50));
+        jPanel4.setPreferredSize(new java.awt.Dimension(50, 50));
+        jPanel4.setLayout(new java.awt.GridLayout(1, 15));
+
+        lab_revLight1.setFont(new java.awt.Font("Calibri", 1, 78)); // NOI18N
+        lab_revLight1.setForeground(new java.awt.Color(51, 51, 51));
+        lab_revLight1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lab_revLight1.setText("•");
+        jPanel4.add(lab_revLight1);
+
+        lab_revLight2.setFont(new java.awt.Font("Calibri", 1, 78)); // NOI18N
+        lab_revLight2.setForeground(new java.awt.Color(51, 51, 51));
+        lab_revLight2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lab_revLight2.setText("•");
+        jPanel4.add(lab_revLight2);
+
+        lab_revLight3.setFont(new java.awt.Font("Calibri", 1, 78)); // NOI18N
+        lab_revLight3.setForeground(new java.awt.Color(51, 51, 51));
+        lab_revLight3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lab_revLight3.setText("•");
+        jPanel4.add(lab_revLight3);
+
+        lab_revLight4.setFont(new java.awt.Font("Calibri", 1, 78)); // NOI18N
+        lab_revLight4.setForeground(new java.awt.Color(51, 51, 51));
+        lab_revLight4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lab_revLight4.setText("•");
+        jPanel4.add(lab_revLight4);
+
+        lab_revLight5.setFont(new java.awt.Font("Calibri", 1, 78)); // NOI18N
+        lab_revLight5.setForeground(new java.awt.Color(51, 51, 51));
+        lab_revLight5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lab_revLight5.setText("•");
+        jPanel4.add(lab_revLight5);
+
+        lab_revLight6.setFont(new java.awt.Font("Calibri", 1, 78)); // NOI18N
+        lab_revLight6.setForeground(new java.awt.Color(51, 51, 51));
+        lab_revLight6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lab_revLight6.setText("•");
+        jPanel4.add(lab_revLight6);
+
+        lab_revLight7.setFont(new java.awt.Font("Calibri", 1, 78)); // NOI18N
+        lab_revLight7.setForeground(new java.awt.Color(51, 51, 51));
+        lab_revLight7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lab_revLight7.setText("•");
+        jPanel4.add(lab_revLight7);
+
+        lab_revLight8.setFont(new java.awt.Font("Calibri", 1, 78)); // NOI18N
+        lab_revLight8.setForeground(new java.awt.Color(51, 51, 51));
+        lab_revLight8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lab_revLight8.setText("•");
+        jPanel4.add(lab_revLight8);
+
+        lab_revLight9.setFont(new java.awt.Font("Calibri", 1, 78)); // NOI18N
+        lab_revLight9.setForeground(new java.awt.Color(51, 51, 51));
+        lab_revLight9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lab_revLight9.setText("•");
+        jPanel4.add(lab_revLight9);
+
+        lab_revLight10.setFont(new java.awt.Font("Calibri", 1, 78)); // NOI18N
+        lab_revLight10.setForeground(new java.awt.Color(51, 51, 51));
+        lab_revLight10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lab_revLight10.setText("•");
+        jPanel4.add(lab_revLight10);
+
+        lab_revLight11.setFont(new java.awt.Font("Calibri", 1, 78)); // NOI18N
+        lab_revLight11.setForeground(new java.awt.Color(51, 51, 51));
+        lab_revLight11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lab_revLight11.setText("•");
+        jPanel4.add(lab_revLight11);
+
+        lab_revLight12.setFont(new java.awt.Font("Calibri", 1, 78)); // NOI18N
+        lab_revLight12.setForeground(new java.awt.Color(51, 51, 51));
+        lab_revLight12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lab_revLight12.setText("•");
+        jPanel4.add(lab_revLight12);
+
+        lab_revLight13.setFont(new java.awt.Font("Calibri", 1, 78)); // NOI18N
+        lab_revLight13.setForeground(new java.awt.Color(51, 51, 51));
+        lab_revLight13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lab_revLight13.setText("•");
+        jPanel4.add(lab_revLight13);
+
+        lab_revLight14.setFont(new java.awt.Font("Calibri", 1, 78)); // NOI18N
+        lab_revLight14.setForeground(new java.awt.Color(51, 51, 51));
+        lab_revLight14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lab_revLight14.setText("•");
+        jPanel4.add(lab_revLight14);
+
+        lab_revLight15.setFont(new java.awt.Font("Calibri", 1, 78)); // NOI18N
+        lab_revLight15.setForeground(new java.awt.Color(51, 51, 51));
+        lab_revLight15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lab_revLight15.setText("•");
+        jPanel4.add(lab_revLight15);
+
+        panelSteerPercentage1.add(jPanel4);
+
         jPanel3.setBackground(new java.awt.Color(19, 19, 19));
-        jPanel3.setMaximumSize(new java.awt.Dimension(588, 15));
-        jPanel3.setPreferredSize(new java.awt.Dimension(588, 15));
+        jPanel3.setMaximumSize(new java.awt.Dimension(720, 15));
+        jPanel3.setMinimumSize(new java.awt.Dimension(700, 15));
+        jPanel3.setPreferredSize(new java.awt.Dimension(700, 15));
         jPanel3.setLayout(new javax.swing.BoxLayout(jPanel3, javax.swing.BoxLayout.LINE_AXIS));
 
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -537,6 +589,10 @@ public class Console extends javax.swing.JFrame {
 
         panelSteer1.add(panelSteerPercentage1, java.awt.BorderLayout.CENTER);
 
+        combo_driver.setBackground(new java.awt.Color(153, 0, 0));
+        combo_driver.setFont(new java.awt.Font("Formula1 Display Bold", 0, 14)); // NOI18N
+        combo_driver.setForeground(new java.awt.Color(255, 255, 255));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -544,7 +600,10 @@ public class Console extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lab_flag, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(lab_flag, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(combo_driver, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(panelPedals, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -556,13 +615,12 @@ public class Console extends javax.swing.JFrame {
                                     .addComponent(panelFuelMix, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lab_speed)
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(panelEngine, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                             .addComponent(panelChecks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                             .addComponent(panelERS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addComponent(panelSteer, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 135, Short.MAX_VALUE)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(panelGlobalTyres, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -575,7 +633,9 @@ public class Console extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lab_flag, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(combo_driver)
+                    .addComponent(lab_flag, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lab_revs)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -585,6 +645,10 @@ public class Console extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(panelGlobalTyres, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(lab_speed, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(panelSteer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -592,14 +656,9 @@ public class Console extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(panelChecks, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(panelERS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(panelEngine, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(panelGlobalTyres, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(panelFuelMix, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(panelPedals, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(panelFuelMix, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(panelPedals, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -629,7 +688,7 @@ public class Console extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosing
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel engineIcon;
+    public javax.swing.JComboBox<String> combo_driver;
     private javax.swing.JLabel iconFuel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -643,15 +702,9 @@ public class Console extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JTextField jTextField1;
     public javax.swing.JLabel lab_abs;
-    public javax.swing.JLabel lab_damageCE;
-    public javax.swing.JLabel lab_damageES;
-    public javax.swing.JLabel lab_damageGearbox;
-    public javax.swing.JLabel lab_damageICE;
-    public javax.swing.JLabel lab_damageMGUH;
-    public javax.swing.JLabel lab_damageMGUK;
-    public javax.swing.JLabel lab_damageTC;
     public javax.swing.JLabel lab_drs;
     public javax.swing.JLabel lab_ersDeploy;
     public javax.swing.JLabel lab_ersModeNumber;
@@ -662,6 +715,21 @@ public class Console extends javax.swing.JFrame {
     public javax.swing.JLabel lab_fuelMix;
     public javax.swing.JLabel lab_gear;
     public javax.swing.JLabel lab_pitLimiter;
+    public javax.swing.JLabel lab_revLight1;
+    public javax.swing.JLabel lab_revLight10;
+    public javax.swing.JLabel lab_revLight11;
+    public javax.swing.JLabel lab_revLight12;
+    public javax.swing.JLabel lab_revLight13;
+    public javax.swing.JLabel lab_revLight14;
+    public javax.swing.JLabel lab_revLight15;
+    public javax.swing.JLabel lab_revLight2;
+    public javax.swing.JLabel lab_revLight3;
+    public javax.swing.JLabel lab_revLight4;
+    public javax.swing.JLabel lab_revLight5;
+    public javax.swing.JLabel lab_revLight6;
+    public javax.swing.JLabel lab_revLight7;
+    public javax.swing.JLabel lab_revLight8;
+    public javax.swing.JLabel lab_revLight9;
     public javax.swing.JLabel lab_revs;
     public javax.swing.JLabel lab_speed;
     public javax.swing.JLabel lab_steer;
@@ -673,8 +741,6 @@ public class Console extends javax.swing.JFrame {
     private javax.swing.JPanel panelBars;
     private javax.swing.JPanel panelChecks;
     private javax.swing.JPanel panelERS;
-    private javax.swing.JPanel panelEngine;
-    private javax.swing.JPanel panelEngineValues;
     private javax.swing.JPanel panelFuelMix;
     private javax.swing.JPanel panelGlobalTyres;
     private javax.swing.JPanel panelPedals;
@@ -700,4 +766,23 @@ public class Console extends javax.swing.JFrame {
     public javax.swing.JProgressBar pb_white;
     public javax.swing.JProgressBar pb_yellow;
     // End of variables declaration//GEN-END:variables
+}
+
+class MyItemListener implements ItemListener {
+
+    Telemetry_Thread thread;
+    
+    public MyItemListener(Telemetry_Thread t){
+        thread = t;
+    }
+    
+    public void itemStateChanged(ItemEvent evt) {
+        JComboBox cb = (JComboBox) evt.getSource();
+
+        String item = (String) evt.getItem();
+
+        if (evt.getStateChange() == ItemEvent.SELECTED) {
+            thread.setDriver(thread.controller.session.getDriverByName(item));
+        }
+    }
 }

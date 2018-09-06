@@ -1,4 +1,4 @@
-package gui.console;
+package gui.telemetry;
 
 import packets.carstatus.CarStatusData;
 import packets.cartelemetry.CarTelemetryData;
@@ -22,17 +22,22 @@ import javax.swing.SwingUtilities;
  *
  * @author miguelangel.garciar
  */
-public class Console_Thread extends Thread{
+public class Telemetry_Thread extends Thread{
     
     Controller controller;
-    Console view;
+    Telemetry view;
     Paso paso;
+    Driver driver;
     
-    public Console_Thread(Controller controller, Console view){
+    public Telemetry_Thread(Controller controller, Telemetry view){
         this.controller = controller;
         this.view = view;
         paso = new Paso();
         controller.addPaso(paso);
+    }
+    
+    public void setDriver(Driver d){
+        driver = d;
     }
     
     private void setPanelTyreDamage(CarStatusData car){
@@ -93,26 +98,6 @@ public class Console_Thread extends Thread{
             view.lab_fuelMix.setText(car.getFuelMix());
         }else{
             view.lab_fuelMix.setText("UNKNOWN");
-        }
-    }
-    
-    private void setPanelEngine(CarStatusData car){
-        if(car != null){
-            view.lab_damageMGUH.setText("- %");         // Motor Generator Unit - Hear
-            view.lab_damageES.setText("- %");           // Energy Store
-            view.lab_damageCE.setText("- %");           // Control Electrics
-            view.lab_damageICE.setText("- %");          // Internal Combustion Engine
-            view.lab_damageMGUK.setText("- %");         // MGU-Kinetic
-            view.lab_damageTC.setText("- %");           // Turbo Charger
-            view.lab_damageGearbox.setText(+car.gearBoxDamage+" %"); // Gear Box
-        }else{
-            view.lab_damageMGUH.setText("UNK");         // Motor Generator Unit - Hear
-            view.lab_damageES.setText("UNK");           // Energy Store
-            view.lab_damageCE.setText("UNK");           // Control Electrics
-            view.lab_damageICE.setText("UNK");          // Internal Combustion Engine
-            view.lab_damageMGUK.setText("UNK");         // MGU-Kinetic
-            view.lab_damageTC.setText("UNK");           // Turbo Charger
-            view.lab_damageGearbox.setText("UNK"); // Gear Box
         }
     }
     
@@ -225,19 +210,57 @@ public class Console_Thread extends Thread{
         }
     }
     
+    private void setPanelRevsLight(CarTelemetryData tel){
+        // Flag
+        if(tel != null){
+            GUIFeatures.printRevLight(view.lab_revLight1, 1, tel.revLightsPercent);
+            GUIFeatures.printRevLight(view.lab_revLight2, 2, tel.revLightsPercent);
+            GUIFeatures.printRevLight(view.lab_revLight3, 3, tel.revLightsPercent);
+            GUIFeatures.printRevLight(view.lab_revLight4, 4, tel.revLightsPercent);
+            GUIFeatures.printRevLight(view.lab_revLight5, 5, tel.revLightsPercent);
+            GUIFeatures.printRevLight(view.lab_revLight6, 6, tel.revLightsPercent);
+            GUIFeatures.printRevLight(view.lab_revLight7, 7, tel.revLightsPercent);
+            GUIFeatures.printRevLight(view.lab_revLight8, 8, tel.revLightsPercent);
+            GUIFeatures.printRevLight(view.lab_revLight9, 9, tel.revLightsPercent);
+            GUIFeatures.printRevLight(view.lab_revLight10, 10, tel.revLightsPercent);
+            GUIFeatures.printRevLight(view.lab_revLight11, 11, tel.revLightsPercent);
+            GUIFeatures.printRevLight(view.lab_revLight12, 12, tel.revLightsPercent);
+            GUIFeatures.printRevLight(view.lab_revLight13, 13, tel.revLightsPercent);
+            GUIFeatures.printRevLight(view.lab_revLight14, 14, tel.revLightsPercent);
+            GUIFeatures.printRevLight(view.lab_revLight15, 15, tel.revLightsPercent);
+        }else{
+            GUIFeatures.printRevLight(view.lab_revLight1, 1, 0);
+            GUIFeatures.printRevLight(view.lab_revLight2, 2, 0);
+            GUIFeatures.printRevLight(view.lab_revLight3, 3, 0);
+            GUIFeatures.printRevLight(view.lab_revLight4, 4, 0);
+            GUIFeatures.printRevLight(view.lab_revLight5, 5, 0);
+            GUIFeatures.printRevLight(view.lab_revLight6, 6, 0);
+            GUIFeatures.printRevLight(view.lab_revLight7, 7, 0);
+            GUIFeatures.printRevLight(view.lab_revLight8, 8, 0);
+            GUIFeatures.printRevLight(view.lab_revLight9, 9, 0);
+            GUIFeatures.printRevLight(view.lab_revLight10, 10, 0);
+            GUIFeatures.printRevLight(view.lab_revLight11, 11, 0);
+            GUIFeatures.printRevLight(view.lab_revLight12, 12, 0);
+            GUIFeatures.printRevLight(view.lab_revLight13, 13, 0);
+            GUIFeatures.printRevLight(view.lab_revLight14, 14, 0);
+            GUIFeatures.printRevLight(view.lab_revLight15, 15, 0);
+        }
+    }
+    
     public void run(){
         while (true)
         {
             paso.mirar();
             
-            Driver d = controller.session.getUserDriver();
+            Driver d = driver;
+            
             PacketSessionData data = controller.session.data;
             CarStatusData car = (d == null ? null : d.carStatus);
             CarTelemetryData tel = (d == null ? null : d.carTelemetry);
             
             setPanelTyreDamage(car);
+            setPanelRevsLight(tel);
             setPanelFuel(car);
-            setPanelEngine(car);
             setPanelERSStorage(car);
             setPanelFlag(data, car);
             setPanelPedals(tel);

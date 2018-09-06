@@ -4,8 +4,12 @@ import packets.lapdata.LapData;
 import classes.Driver;
 import classes.Session;
 import com.sun.jmx.snmp.SnmpDataTypeEnums;
+import java.awt.List;
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Set;
 
 /**
  *
@@ -50,6 +54,16 @@ public abstract class DataTypeUtilities {
         return i;
     }
     
+    public static int getSameLastMiniSector(Driver f, Driver s){
+        ArrayList<Integer> ks = new ArrayList<>(s.miniSectors.keySet());
+        Collections.reverse(ks);
+        for(int ind : ks){
+            if (f.miniSectors.get(ind) != null){
+                return ind;
+            }
+        }
+        return -1;
+    }
     
     public static float getDeltaBetween(Session session, int first, int second){
         Driver f = session.getDriverByPosition(first);
@@ -59,38 +73,28 @@ public abstract class DataTypeUtilities {
             int lapf = f.lap.currentLapNum;
             int laps = s.lap.currentLapNum;
             
+            
             if(lapf == laps || lapf == laps + 1){
                 
-                if(s.lap.carPosition == 18){
-                    System.out.println("1 - S1: "+f.lastS1+", S2: "+f.lastS2+", S3: "+f.lastS3+", Last: "+f.lap.lastLapTime+", Current: "+f.lap.currentLapTime);
-                    System.out.println("20 - S1: "+s.lastS1+", S2: "+s.lastS2+", S3: "+s.lastS3+", Last: "+s.lap.lastLapTime+", Current: "+s.lap.currentLapTime);
+                if(!f.miniSectors.isEmpty() && !s.miniSectors.isEmpty()){
+                    
+                    int index = getSameLastMiniSector(f, s);
+
+                    if (index != -1) {
+                        long timef = f.miniSectors.get(index);
+                        long times = s.miniSectors.get(index);
+                        
+                        
+                        long diff = times - timef;
+
+                        return (float) (diff / 1000f);
+                    } else {
+                        return Float.POSITIVE_INFINITY;
+                    }
+                        
+                } else {
+                    return Float.POSITIVE_INFINITY;
                 }
-                
-               float curDiff = f.lap.currentLapTime - s.lap.currentLapTime;
-               
-               if(curDiff >= 0f){
-                   
-                   if(s.lap.sector <= 2){
-                       curDiff = curDiff + (s.lap.sector1Time - f.lap.sector1Time);
-                   }
-                   if(s.lap.sector == 2){
-                       curDiff = curDiff + (s.lap.sector2Time - f.lap.sector2Time);
-                   }
-                   if (s.lap.carPosition == 18) {
-                       System.out.println("Result: " + (curDiff));
-                   }
-                   return curDiff;
-  
-               }else{
-                   
-                   if (s.lap.carPosition == 18) {
-                       System.out.println("* Result: " + (f.lap.lastLapTime - s.lap.currentLapTime + f.lap.currentLapTime));
-                   }
-                   return f.lap.lastLapTime - s.lap.currentLapTime + f.lap.currentLapTime;
-                  
-               }
-               
-              //  return s.lastS3 -  f.lastS3 + s.lastS2 - f.lastS2 + s.lastS1 - f.lastS1 + s.lap.lastLapTime - f.lap.lastLapTime;
                 
                 
             }else{
@@ -112,8 +116,11 @@ public abstract class DataTypeUtilities {
             if(delta == 0){
                 return "+/-";
             }
-            int decimals = (int) (delta * 1000) % 1000;
+            int decimals = (int) Math.abs(delta * 1000) % 1000;
             String pad = "";
+            if(decimals == 0){
+                return (int) delta + ".000";
+            }
             if(decimals < 10){
                 pad = "00";
             }else if(decimals < 100){
