@@ -17,83 +17,83 @@ public class CarSetupData {
     /**
      * Front wing aero.
      */
-    short frontWing;
+    public short frontWing;
     /**
      * Rear wing aero.
      */
-    short rearWing;
+    public short rearWing;
     /**
      * Differential adjustment on throttle (percentage).
      */
-    short onThrottle;
+    public short onThrottle;
     /**
      * Differential adjustment off throttle (percentage).
      */
-    short offThrottle;
+    public short offThrottle;
     /**
      * Front camber angle (suspension geometry).
      */
-    float frontCamber;
+    public float frontCamber;
     /**
      * Rear camber angle (suspension geometry).
      */
-    float rearCamber;
+    public float rearCamber;
     /**
      * Front toe angle (suspension geometry).
      */
-    float frontToe;
+    public float frontToe;
     /**
      * Rear toe angle (suspension geometry).
      */
-    float rearToe;
+    public float rearToe;
     /**
      * Front suspension.
      */
-    short frontSuspension;
+    public short frontSuspension;
     /**
      * Rear suspension.
      */
-    short rearSuspension;
+    public short rearSuspension;
     /**
      * Front anti-roll bar.
      */
-    short frontAntiRollBar;
+    public short frontAntiRollBar;
     /**
      * Front anti-roll bar.
      */
-    short rearAntiRollBar;
+    public short rearAntiRollBar;
     /**
      * Front ride height.
      */
-    short frontSuspensionHeight;
+    public short frontSuspensionHeight;
     /**
      * Rear ride height.
      */
-    short rearSuspensionHeight;
+    public short rearSuspensionHeight;
     /**
      * Brake pressure (percentage).
      */
-    short brakePressure;
+    public short brakePressure;
     /**
      * Brake bias (percentage).
      */
-    short brakeBias;
+    public short brakeBias;
     /**
      * Front tyre pressure (PSI).
      */
-    float frontTyrePressure;
+    public float frontTyrePressure;
     /**
      * Rear tyre pressure (PSI).
      */
-    float rearTyrePressure;
+    public float rearTyrePressure;
     /**
      * Ballast.
      */
-    short ballast;
+    public short ballast;
     /**
      * Fuel load.
      */
-    float fuelLoad;
+    public float fuelLoad;
 
 
     

@@ -197,14 +197,17 @@ public class CarStatus extends javax.swing.JFrame {
 
         pb_blue.setBackground(new java.awt.Color(51, 51, 51));
         pb_blue.setForeground(new java.awt.Color(0, 102, 255));
+        pb_blue.setBorderPainted(false);
         panelBars.add(pb_blue);
 
         pb_yellow.setBackground(new java.awt.Color(51, 51, 51));
         pb_yellow.setForeground(new java.awt.Color(255, 204, 0));
+        pb_yellow.setBorderPainted(false);
         panelBars.add(pb_yellow);
 
         pb_white.setBackground(new java.awt.Color(51, 51, 51));
         pb_white.setForeground(new java.awt.Color(255, 255, 255));
+        pb_white.setBorderPainted(false);
         panelBars.add(pb_white);
 
         panelPercentages.setBackground(new java.awt.Color(19, 19, 19));
@@ -325,6 +328,7 @@ public class CarStatus extends javax.swing.JFrame {
         pb_frwd.setBackground(new java.awt.Color(51, 51, 51));
         pb_frwd.setForeground(new java.awt.Color(0, 255, 0));
         pb_frwd.setValue(50);
+        pb_frwd.setBorderPainted(false);
         jPanel3.add(pb_frwd, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 50, 60, -1));
 
         lab_tyreWearFR.setFont(new java.awt.Font("Formula1 Display Regular", 0, 18)); // NOI18N
@@ -339,6 +343,7 @@ public class CarStatus extends javax.swing.JFrame {
         pb_rwd.setBackground(new java.awt.Color(51, 51, 51));
         pb_rwd.setForeground(new java.awt.Color(0, 255, 0));
         pb_rwd.setValue(50);
+        pb_rwd.setBorderPainted(false);
         jPanel3.add(pb_rwd, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 250, 90, -1));
 
         lab_rwd.setFont(new java.awt.Font("Formula1 Display Regular", 0, 18)); // NOI18N
@@ -353,6 +358,7 @@ public class CarStatus extends javax.swing.JFrame {
         pb_flwd.setBackground(new java.awt.Color(51, 51, 51));
         pb_flwd.setForeground(new java.awt.Color(0, 255, 0));
         pb_flwd.setValue(50);
+        pb_flwd.setBorderPainted(false);
         jPanel3.add(pb_flwd, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 60, -1));
 
         lab_FLWD.setFont(new java.awt.Font("Formula1 Display Regular", 0, 18)); // NOI18N

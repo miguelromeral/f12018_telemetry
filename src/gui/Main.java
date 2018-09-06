@@ -12,6 +12,7 @@ import gui.console.Console;
 import gui.carstatus.CarStatus;
 import javax.swing.JFrame;
 import classes.Controller;
+import gui.carsetup.CarSetup;
 import javax.swing.JOptionPane;
 
 /**
@@ -37,8 +38,8 @@ public class Main extends javax.swing.JFrame {
         
         controller = new Controller(port);
         
-        //Prueba p = new Prueba(controller);
-        //sp.run();
+       /* Prueba p = new Prueba(controller);
+        p.run();*/
     }
 
     /**
@@ -57,6 +58,7 @@ public class Main extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("F1 2018 Telemetry");
@@ -69,7 +71,7 @@ public class Main extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "View data", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(204, 204, 204))); // NOI18N
-        jPanel1.setLayout(new java.awt.GridLayout(4, 1));
+        jPanel1.setLayout(new java.awt.GridLayout(5, 1));
 
         jButton3.setBackground(new java.awt.Color(51, 51, 51));
         jButton3.setFont(new java.awt.Font("Formula1 Display Bold", 0, 14)); // NOI18N
@@ -115,7 +117,18 @@ public class Main extends javax.swing.JFrame {
         });
         jPanel1.add(jButton5);
 
-        general.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 310, 150));
+        jButton6.setBackground(new java.awt.Color(51, 51, 51));
+        jButton6.setFont(new java.awt.Font("Formula1 Display Bold", 0, 14)); // NOI18N
+        jButton6.setForeground(new java.awt.Color(255, 255, 255));
+        jButton6.setText("Car Setup");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton6);
+
+        general.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 310, 200));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -130,7 +143,7 @@ public class Main extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(general, javax.swing.GroupLayout.DEFAULT_SIZE, 353, Short.MAX_VALUE)
+                .addComponent(general, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
 
@@ -153,6 +166,10 @@ public class Main extends javax.swing.JFrame {
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         new Map(controller).setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        new CarSetup(controller).setVisible(true);
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -195,6 +212,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lab_icon;
     // End of variables declaration//GEN-END:variables

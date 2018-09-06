@@ -3,7 +3,6 @@ package packets.lapdata;
 import classes.statics.DataTypeUtilities;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
-import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 

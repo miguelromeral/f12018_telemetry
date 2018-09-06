@@ -371,6 +371,7 @@
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="ff" green="66" red="0" type="rgb"/>
                         </Property>
+                        <Property name="borderPainted" type="boolean" value="false"/>
                       </Properties>
                       <AuxValues>
                         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -384,6 +385,7 @@
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="0" green="cc" red="ff" type="rgb"/>
                         </Property>
+                        <Property name="borderPainted" type="boolean" value="false"/>
                       </Properties>
                       <AuxValues>
                         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -397,6 +399,7 @@
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="ff" green="ff" red="ff" type="rgb"/>
                         </Property>
+                        <Property name="borderPainted" type="boolean" value="false"/>
                       </Properties>
                       <AuxValues>
                         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -705,6 +708,7 @@
                       <Color blue="0" green="ff" red="0" type="rgb"/>
                     </Property>
                     <Property name="value" type="int" value="50"/>
+                    <Property name="borderPainted" type="boolean" value="false"/>
                   </Properties>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -753,6 +757,7 @@
                       <Color blue="0" green="ff" red="0" type="rgb"/>
                     </Property>
                     <Property name="value" type="int" value="50"/>
+                    <Property name="borderPainted" type="boolean" value="false"/>
                   </Properties>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -801,6 +806,7 @@
                       <Color blue="0" green="ff" red="0" type="rgb"/>
                     </Property>
                     <Property name="value" type="int" value="50"/>
+                    <Property name="borderPainted" type="boolean" value="false"/>
                   </Properties>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
