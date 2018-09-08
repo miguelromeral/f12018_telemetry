@@ -6,6 +6,7 @@ import packets.session.PacketSessionData;
 import classes.Controller;
 import classes.Driver;
 import classes.Paso;
+import classes.statics.DataTypeUtilities;
 import classes.statics.GUIFeatures;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -44,16 +45,16 @@ public class CarStatus_Thread extends Thread{
     private void setPanelTyreDamage(CarStatusData car){
         if(car != null){
             GUIFeatures.getTyreImage(view.lab_tyreCompound, 60, car.tyreCompound);
-            GUIFeatures.setTyreWear(view.pb_tyreWearRL, view.lab_tyreWearRL, car.tyresWear[0]);
-            GUIFeatures.setTyreWear(view.pb_tyreWearRR, view.lab_tyreWearRR, car.tyresWear[1]);
-            GUIFeatures.setTyreWear(view.pb_tyreWearFL, view.lab_tyreWearFL, car.tyresWear[2]);
-            GUIFeatures.setTyreWear(view.pb_tyreWearFR, view.lab_tyreWearFR, car.tyresWear[3]);
+            GUIFeatures.setTyreWear(view.pb_tyreWearRL, car.tyresWear[0]);
+            GUIFeatures.setTyreWear(view.pb_tyreWearRR, car.tyresWear[1]);
+            GUIFeatures.setTyreWear(view.pb_tyreWearFL, car.tyresWear[2]);
+            GUIFeatures.setTyreWear(view.pb_tyreWearFR, car.tyresWear[3]);
         }else{
             view.lab_tyreCompound.setText("UNK");
-            GUIFeatures.setTyreWear(view.pb_tyreWearRL, view.lab_tyreWearRL, 0);
-            GUIFeatures.setTyreWear(view.pb_tyreWearRR, view.lab_tyreWearRR, 0);
-            GUIFeatures.setTyreWear(view.pb_tyreWearFL, view.lab_tyreWearFL, 0);
-            GUIFeatures.setTyreWear(view.pb_tyreWearFR, view.lab_tyreWearFR, 0);
+            GUIFeatures.setTyreWear(view.pb_tyreWearRL, 0);
+            GUIFeatures.setTyreWear(view.pb_tyreWearRR, 0);
+            GUIFeatures.setTyreWear(view.pb_tyreWearFL, 0);
+            GUIFeatures.setTyreWear(view.pb_tyreWearFR, 0);
         }
     }
     
@@ -94,15 +95,35 @@ public class CarStatus_Thread extends Thread{
         }
     }
     
-    private void setPanelFuel(CarStatusData car){
-        if(car != null){
+    private void setPanelFuel(CarStatusData car, Driver d){
+        if(car != null && d.session.data != null){
             view.lab_fuelMix.setText(car.getFuelMix());
+            view.pb_fuel.setMaximum((int) car.fuelCapacity * 100);
+            view.pb_fuel.setValue((int) car.fuelInTank * 100);
+            float excess = car.getAverageExceesFuel(d.session.data.trackId);
+            
+            if(!Float.isNaN(excess)){
+                if(excess == 0f){
+                    view.lab_fuelExcess.setForeground(Color.white);
+                    view.lab_fuelExcess.setText("+/-");
+                }else if(excess > 0f){
+                    view.lab_fuelExcess.setForeground(Color.green);
+                    view.lab_fuelExcess.setText("+"+DataTypeUtilities.printFormattedFloat(excess));
+                }else{
+                    view.lab_fuelExcess.setForeground(Color.red);
+                    view.lab_fuelExcess.setText(DataTypeUtilities.printFormattedFloat(excess));
+                }
+            }else{
+                view.lab_fuelExcess.setForeground(Color.white);
+                view.lab_fuelExcess.setText("UNK");
+            }
+            
         }else{
             view.lab_fuelMix.setText("UNKNOWN");
         }
     }
     
-    private void setPanelEngine(CarStatusData car){
+    private void setPanelEngine(CarStatusData car, CarTelemetryData tel){
         if(car != null){
             view.lab_engine_damage.setText(car.engineDamage+"%");
             view.lab_engine_damage.setForeground(GUIFeatures.getColorByDamagePercentage(car.engineDamage));
@@ -113,7 +134,6 @@ public class CarStatus_Thread extends Thread{
             view.lab_gearbox_damage.setText(car.gearBoxDamage+"%");
             view.lab_gearbox_damage.setForeground(GUIFeatures.getColorByDamagePercentage(car.gearBoxDamage));
             
-            
         }else{
             view.lab_engine_damage.setText("UNK");
             view.lab_engine_damage.setForeground(GUIFeatures.getColorByDamagePercentage(0));
@@ -123,6 +143,14 @@ public class CarStatus_Thread extends Thread{
             
             view.lab_gearbox_damage.setText("UNK");
             view.lab_gearbox_damage.setForeground(GUIFeatures.getColorByDamagePercentage(0));
+            
+        }
+        if(tel != null){
+            view.lab_engine_temp.setText(tel.engineTemperature+"ºC");
+            view.lab_engine_temp.setForeground(GUIFeatures.getEngineTemperature(tel.engineTemperature));
+        }else{
+            view.lab_engine_temp.setText("UNK");
+            view.lab_engine_temp.setForeground(GUIFeatures.getEngineTemperature(0));
         }
     }
     
@@ -265,6 +293,59 @@ public class CarStatus_Thread extends Thread{
         }
     }
     
+    private void setBrakesTemperature(CarTelemetryData tel){
+        if(tel != null){
+            GUIFeatures.setBrakeTemperature(view.lab_brakeTempRL, tel.brakesTemperature[0]);
+            GUIFeatures.setBrakeTemperature(view.lab_brakeTempRR, tel.brakesTemperature[1]);
+            GUIFeatures.setBrakeTemperature(view.lab_brakeTempFL, tel.brakesTemperature[2]);
+            GUIFeatures.setBrakeTemperature(view.lab_brakeTempFR, tel.brakesTemperature[3]);
+        }else{
+            GUIFeatures.setBrakeTemperature(view.lab_brakeTempRL, 0);
+            GUIFeatures.setBrakeTemperature(view.lab_brakeTempRR, 0);
+            GUIFeatures.setBrakeTemperature(view.lab_brakeTempFL, 0);
+            GUIFeatures.setBrakeTemperature(view.lab_brakeTempFR, 0);
+        }
+    }
+    private void setTyreSurfaceTemperature(CarTelemetryData tel){
+        if(tel != null){
+            GUIFeatures.setTyreSurfaceTemperature(view.lab_tyreSurfaceTempRL, tel.tyresSurfaceTemperature[0]);
+            GUIFeatures.setTyreSurfaceTemperature(view.lab_tyreSurfaceTempRR, tel.tyresSurfaceTemperature[1]);
+            GUIFeatures.setTyreSurfaceTemperature(view.lab_tyreSurfaceTempFL, tel.tyresSurfaceTemperature[2]);
+            GUIFeatures.setTyreSurfaceTemperature(view.lab_tyreSurfaceTempFR, tel.tyresSurfaceTemperature[3]);
+        }else{
+            GUIFeatures.setTyreSurfaceTemperature(view.lab_tyreSurfaceTempRL, 0);
+            GUIFeatures.setTyreSurfaceTemperature(view.lab_tyreSurfaceTempRR, 0);
+            GUIFeatures.setTyreSurfaceTemperature(view.lab_tyreSurfaceTempFL, 0);
+            GUIFeatures.setTyreSurfaceTemperature(view.lab_tyreSurfaceTempFR, 0);
+        }
+    }
+    private void setTyreInnerTemperature(CarTelemetryData tel){
+        if(tel != null){
+            GUIFeatures.setTyreInnerTemperature(view.lab_tyreInnerTempRL, tel.tyresInnerTemperature[0]);
+            GUIFeatures.setTyreInnerTemperature(view.lab_tyreInnerTempRR, tel.tyresInnerTemperature[1]);
+            GUIFeatures.setTyreInnerTemperature(view.lab_tyreInnerTempFL, tel.tyresInnerTemperature[2]);
+            GUIFeatures.setTyreInnerTemperature(view.lab_tyreInnerTempFR, tel.tyresInnerTemperature[3]);
+        }else{
+            GUIFeatures.setTyreInnerTemperature(view.lab_tyreInnerTempRL, 0);
+            GUIFeatures.setTyreInnerTemperature(view.lab_tyreInnerTempRR, 0);
+            GUIFeatures.setTyreInnerTemperature(view.lab_tyreInnerTempFL, 0);
+            GUIFeatures.setTyreInnerTemperature(view.lab_tyreInnerTempFR, 0);
+        }
+    }
+    private void setTyrePressure(CarTelemetryData tel){
+        if(tel != null){
+            GUIFeatures.setTyrePressure(view.lab_tyrePressureRL, tel.tyresPressure[0]);
+            GUIFeatures.setTyrePressure(view.lab_tyrePressureRR, tel.tyresPressure[1]);
+            GUIFeatures.setTyrePressure(view.lab_tyrePressureFL, tel.tyresPressure[2]);
+            GUIFeatures.setTyrePressure(view.lab_tyrePressureFR, tel.tyresPressure[3]);
+        }else{
+            GUIFeatures.setTyrePressure(view.lab_tyrePressureRL, 0);
+            GUIFeatures.setTyrePressure(view.lab_tyrePressureRR, 0);
+            GUIFeatures.setTyrePressure(view.lab_tyrePressureFL, 0);
+            GUIFeatures.setTyrePressure(view.lab_tyrePressureFR, 0);
+        }
+    }
+    
     public void run(){
         while (true)
         {
@@ -275,13 +356,19 @@ public class CarStatus_Thread extends Thread{
             CarStatusData car = (d == null ? null : d.carStatus);
             CarTelemetryData tel = (d == null ? null : d.carTelemetry);
             
+            
+            
             setPanelTyreDamage(car);
-            setPanelFuel(car);
-            setPanelEngine(car);
+            setPanelFuel(car, d);
+            setPanelEngine(car, tel);
             setPanelERSStorage(car);
             setPanelFlag(data, car);
             setPanelConsole(car, tel);
             setWingDamage(car);
+            setBrakesTemperature(tel);
+            setTyreSurfaceTemperature(tel);
+            setTyreInnerTemperature(tel);
+            setTyrePressure(tel);
                 
             paso.cerrar();
             

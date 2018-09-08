@@ -1,16 +1,16 @@
 package classes;
 
-import packets.motion.CarMotionData;
+import packets.carmotion.CarMotionData;
 import packets.carstatus.CarStatusData;
 import packets.cartelemetry.CarTelemetryData;
-import packets.motion.ExtraCarMotionData;
+import packets.carmotion.ExtraCarMotionData;
 import packets.lapdata.LapData;
 import packets.carsetup.PacketCarSetupData;
 import packets.carstatus.PacketCarStatusData;
 import packets.cartelemetry.PacketCarTelemetryData;
 import packets.event.PacketEventData;
 import packets.lapdata.PacketLapData;
-import packets.motion.PacketMotionData;
+import packets.carmotion.PacketMotionData;
 import packets.participants.PacketParticipantsData;
 import packets.session.PacketSessionData;
 import packets.participants.ParticipantData;
@@ -246,5 +246,4 @@ public class Session {
     public void setSessionData(PacketSessionData packetSessionData){
         data = packetSessionData;
     }
-    
 }

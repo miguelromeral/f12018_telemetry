@@ -1,5 +1,6 @@
 package packets;
 
+import packets.carmotion.PacketMotionData;
 import packets.carstatus.PacketCarStatusData;
 import packets.cartelemetry.PacketCarTelemetryData;
 import packets.carsetup.PacketCarSetupData;
@@ -7,7 +8,6 @@ import packets.participants.PacketParticipantsData;
 import packets.event.PacketEventData;
 import packets.lapdata.PacketLapData;
 import packets.session.PacketSessionData;
-import packets.motion.PacketMotionData;
 
 /**
  * Class to build the appropiate packet base on its ID.

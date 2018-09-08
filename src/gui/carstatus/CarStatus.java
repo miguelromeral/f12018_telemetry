@@ -2,11 +2,19 @@ package gui.carstatus;
 
 import classes.Controller;
 import classes.statics.GUIFeatures;
+import classes.statics.ProgressCircleUI;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
+import javax.swing.plaf.ProgressBarUI;
+import java.awt.*;
+import java.awt.geom.Arc2D;
+import java.awt.geom.Area;
+import java.awt.geom.Ellipse2D;
+import javax.swing.*;
+import javax.swing.plaf.basic.BasicProgressBarUI;
 
 /**
  *
@@ -32,6 +40,11 @@ public class CarStatus extends javax.swing.JFrame {
         combo_driver.setSelectedIndex(-1);
         
         GUIFeatures.setImageIcon(iconFuel, 40, 40, "icons/fuel");
+        
+        ProgressCircleUI.initialize(pb_tyreWearFL);
+        ProgressCircleUI.initialize(pb_tyreWearFR);
+        ProgressCircleUI.initialize(pb_tyreWearRL);
+        ProgressCircleUI.initialize(pb_tyreWearRR);
     }
 
     /**
@@ -57,6 +70,8 @@ public class CarStatus extends javax.swing.JFrame {
         panelFuelMix = new javax.swing.JPanel();
         iconFuel = new javax.swing.JLabel();
         lab_fuelMix = new javax.swing.JLabel();
+        pb_fuel = new javax.swing.JProgressBar();
+        lab_fuelExcess = new javax.swing.JLabel();
         panelERS = new javax.swing.JPanel();
         panelBars = new javax.swing.JPanel();
         pb_blue = new javax.swing.JProgressBar();
@@ -70,22 +85,16 @@ public class CarStatus extends javax.swing.JFrame {
         lab_ersDeploy = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         carDamageIcon = new javax.swing.JLabel();
-        lab_tyreWearRR = new javax.swing.JLabel();
         pb_tyreWearRR = new javax.swing.JProgressBar();
-        lab_tyreWearRL = new javax.swing.JLabel();
         pb_tyreWearRL = new javax.swing.JProgressBar();
-        pb_tyreWearFR = new javax.swing.JProgressBar();
         lab_FRWD = new javax.swing.JLabel();
         pb_tyreWearFL = new javax.swing.JProgressBar();
-        lab_tyreWearFL = new javax.swing.JLabel();
         pb_frwd = new javax.swing.JProgressBar();
-        lab_tyreWearFR = new javax.swing.JLabel();
         pb_rwd = new javax.swing.JProgressBar();
         lab_rwd = new javax.swing.JLabel();
         pb_flwd = new javax.swing.JProgressBar();
         lab_FLWD = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        lab_tyreCompound = new javax.swing.JLabel();
+        pb_tyreWearFR = new javax.swing.JProgressBar();
         jPanel5 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         lab_engine_damage = new javax.swing.JLabel();
@@ -93,6 +102,38 @@ public class CarStatus extends javax.swing.JFrame {
         lab_exhaust_damage = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         lab_gearbox_damage = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        lab_engine_temp = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        lab_tyreCompound = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        jPanel7 = new javax.swing.JPanel();
+        lab_brakeTempFL = new javax.swing.JLabel();
+        lab_brakeTempFR = new javax.swing.JLabel();
+        lab_brakeTempRL = new javax.swing.JLabel();
+        lab_brakeTempRR = new javax.swing.JLabel();
+        jPanel8 = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        jPanel9 = new javax.swing.JPanel();
+        lab_tyreSurfaceTempFL = new javax.swing.JLabel();
+        lab_tyreSurfaceTempFR = new javax.swing.JLabel();
+        lab_tyreSurfaceTempRL = new javax.swing.JLabel();
+        lab_tyreSurfaceTempRR = new javax.swing.JLabel();
+        jPanel10 = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        jPanel11 = new javax.swing.JPanel();
+        lab_tyreInnerTempFL = new javax.swing.JLabel();
+        lab_tyreInnerTempFR = new javax.swing.JLabel();
+        lab_tyreInnerTempRL = new javax.swing.JLabel();
+        lab_tyreInnerTempRR = new javax.swing.JLabel();
+        jPanel12 = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        jPanel13 = new javax.swing.JPanel();
+        lab_tyrePressureFL = new javax.swing.JLabel();
+        lab_tyrePressureFR = new javax.swing.JLabel();
+        lab_tyrePressureRL = new javax.swing.JLabel();
+        lab_tyrePressureRR = new javax.swing.JLabel();
         combo_driver = new javax.swing.JComboBox<>();
 
         jLabel4.setText("jLabel4");
@@ -158,35 +199,29 @@ public class CarStatus extends javax.swing.JFrame {
 
         panelFuelMix.setBackground(new java.awt.Color(19, 19, 19));
         panelFuelMix.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Fuel", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(204, 204, 204))); // NOI18N
+        panelFuelMix.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         iconFuel.setText("Fuel");
+        panelFuelMix.add(iconFuel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 40, 40));
 
         lab_fuelMix.setFont(new java.awt.Font("Formula1 Display Regular", 0, 18)); // NOI18N
         lab_fuelMix.setForeground(new java.awt.Color(255, 153, 153));
         lab_fuelMix.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lab_fuelMix.setText("FuelMix");
+        panelFuelMix.add(lab_fuelMix, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, 129, 40));
 
-        javax.swing.GroupLayout panelFuelMixLayout = new javax.swing.GroupLayout(panelFuelMix);
-        panelFuelMix.setLayout(panelFuelMixLayout);
-        panelFuelMixLayout.setHorizontalGroup(
-            panelFuelMixLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelFuelMixLayout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(iconFuel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lab_fuelMix, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(40, Short.MAX_VALUE))
-        );
-        panelFuelMixLayout.setVerticalGroup(
-            panelFuelMixLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelFuelMixLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(panelFuelMixLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(iconFuel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lab_fuelMix, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-        );
+        pb_fuel.setBackground(new java.awt.Color(0, 0, 0));
+        pb_fuel.setForeground(new java.awt.Color(0, 204, 153));
+        pb_fuel.setBorderPainted(false);
+        panelFuelMix.add(pb_fuel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 180, -1));
 
-        jPanel4.add(panelFuelMix, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 100, -1, -1));
+        lab_fuelExcess.setFont(new java.awt.Font("Formula1 Display Bold", 1, 18)); // NOI18N
+        lab_fuelExcess.setForeground(new java.awt.Color(0, 153, 204));
+        lab_fuelExcess.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lab_fuelExcess.setText("Total");
+        panelFuelMix.add(lab_fuelExcess, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, 80, 50));
+
+        jPanel4.add(panelFuelMix, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 180, 280, 90));
 
         panelERS.setBackground(new java.awt.Color(19, 19, 19));
         panelERS.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ERS Storage", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(204, 204, 204))); // NOI18N
@@ -272,37 +307,17 @@ public class CarStatus extends javax.swing.JFrame {
 
         carDamageIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         carDamageIcon.setIcon(new javax.swing.ImageIcon("C:\\Users\\miguelangel.garciar\\Documents\\NetBeansProjects\\F12018\\images\\icons\\car_damage.png")); // NOI18N
-        jPanel3.add(carDamageIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, 100, 170));
-
-        lab_tyreWearRR.setFont(new java.awt.Font("Formula1 Display Regular", 0, 18)); // NOI18N
-        lab_tyreWearRR.setForeground(new java.awt.Color(153, 204, 255));
-        lab_tyreWearRR.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lab_tyreWearRR.setText("RR");
-        jPanel3.add(lab_tyreWearRR, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 160, 50, 80));
+        jPanel3.add(carDamageIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, 100, 170));
 
         pb_tyreWearRR.setBackground(new java.awt.Color(51, 51, 51));
         pb_tyreWearRR.setForeground(new java.awt.Color(255, 102, 102));
-        pb_tyreWearRR.setOrientation(1);
         pb_tyreWearRR.setBorderPainted(false);
-        jPanel3.add(pb_tyreWearRR, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, 15, 80));
-
-        lab_tyreWearRL.setFont(new java.awt.Font("Formula1 Display Regular", 0, 18)); // NOI18N
-        lab_tyreWearRL.setForeground(new java.awt.Color(153, 204, 255));
-        lab_tyreWearRL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lab_tyreWearRL.setText("RL");
-        jPanel3.add(lab_tyreWearRL, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 50, 80));
+        jPanel3.add(pb_tyreWearRR, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 150, 80, 80));
 
         pb_tyreWearRL.setBackground(new java.awt.Color(51, 51, 51));
         pb_tyreWearRL.setForeground(new java.awt.Color(255, 102, 102));
-        pb_tyreWearRL.setOrientation(1);
         pb_tyreWearRL.setBorderPainted(false);
-        jPanel3.add(pb_tyreWearRL, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, 15, 80));
-
-        pb_tyreWearFR.setBackground(new java.awt.Color(51, 51, 51));
-        pb_tyreWearFR.setForeground(new java.awt.Color(255, 102, 102));
-        pb_tyreWearFR.setOrientation(1);
-        pb_tyreWearFR.setBorderPainted(false);
-        jPanel3.add(pb_tyreWearFR, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, 15, 80));
+        jPanel3.add(pb_tyreWearRL, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 80, 80));
 
         lab_FRWD.setFont(new java.awt.Font("Formula1 Display Regular", 0, 18)); // NOI18N
         lab_FRWD.setForeground(new java.awt.Color(153, 204, 255));
@@ -311,40 +326,24 @@ public class CarStatus extends javax.swing.JFrame {
         lab_FRWD.setMaximumSize(new java.awt.Dimension(50, 80));
         lab_FRWD.setMinimumSize(new java.awt.Dimension(50, 80));
         lab_FRWD.setPreferredSize(new java.awt.Dimension(50, 80));
-        jPanel3.add(lab_FRWD, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 30, 60, 20));
+        jPanel3.add(lab_FRWD, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 20, 120, 20));
 
         pb_tyreWearFL.setBackground(new java.awt.Color(51, 51, 51));
         pb_tyreWearFL.setForeground(new java.awt.Color(255, 102, 102));
-        pb_tyreWearFL.setOrientation(1);
         pb_tyreWearFL.setBorderPainted(false);
-        jPanel3.add(pb_tyreWearFL, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, 15, 80));
-
-        lab_tyreWearFL.setFont(new java.awt.Font("Formula1 Display Regular", 0, 18)); // NOI18N
-        lab_tyreWearFL.setForeground(new java.awt.Color(153, 204, 255));
-        lab_tyreWearFL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lab_tyreWearFL.setText("FL");
-        jPanel3.add(lab_tyreWearFL, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 50, 80));
+        jPanel3.add(pb_tyreWearFL, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 80, 80));
 
         pb_frwd.setBackground(new java.awt.Color(51, 51, 51));
         pb_frwd.setForeground(new java.awt.Color(0, 255, 0));
         pb_frwd.setValue(50);
         pb_frwd.setBorderPainted(false);
-        jPanel3.add(pb_frwd, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 50, 60, -1));
-
-        lab_tyreWearFR.setFont(new java.awt.Font("Formula1 Display Regular", 0, 18)); // NOI18N
-        lab_tyreWearFR.setForeground(new java.awt.Color(153, 204, 255));
-        lab_tyreWearFR.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lab_tyreWearFR.setText("FR");
-        lab_tyreWearFR.setMaximumSize(new java.awt.Dimension(50, 80));
-        lab_tyreWearFR.setMinimumSize(new java.awt.Dimension(50, 80));
-        lab_tyreWearFR.setPreferredSize(new java.awt.Dimension(50, 80));
-        jPanel3.add(lab_tyreWearFR, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 70, -1, 80));
+        jPanel3.add(pb_frwd, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 40, 120, -1));
 
         pb_rwd.setBackground(new java.awt.Color(51, 51, 51));
         pb_rwd.setForeground(new java.awt.Color(0, 255, 0));
         pb_rwd.setValue(50);
         pb_rwd.setBorderPainted(false);
-        jPanel3.add(pb_rwd, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 250, 90, -1));
+        jPanel3.add(pb_rwd, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 260, -1));
 
         lab_rwd.setFont(new java.awt.Font("Formula1 Display Regular", 0, 18)); // NOI18N
         lab_rwd.setForeground(new java.awt.Color(153, 204, 255));
@@ -353,13 +352,13 @@ public class CarStatus extends javax.swing.JFrame {
         lab_rwd.setMaximumSize(new java.awt.Dimension(50, 80));
         lab_rwd.setMinimumSize(new java.awt.Dimension(50, 80));
         lab_rwd.setPreferredSize(new java.awt.Dimension(50, 80));
-        jPanel3.add(lab_rwd, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 270, 90, 20));
+        jPanel3.add(lab_rwd, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 260, 20));
 
         pb_flwd.setBackground(new java.awt.Color(51, 51, 51));
         pb_flwd.setForeground(new java.awt.Color(0, 255, 0));
         pb_flwd.setValue(50);
         pb_flwd.setBorderPainted(false);
-        jPanel3.add(pb_flwd, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 60, -1));
+        jPanel3.add(pb_flwd, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 120, -1));
 
         lab_FLWD.setFont(new java.awt.Font("Formula1 Display Regular", 0, 18)); // NOI18N
         lab_FLWD.setForeground(new java.awt.Color(153, 204, 255));
@@ -368,35 +367,18 @@ public class CarStatus extends javax.swing.JFrame {
         lab_FLWD.setMaximumSize(new java.awt.Dimension(50, 80));
         lab_FLWD.setMinimumSize(new java.awt.Dimension(50, 80));
         lab_FLWD.setPreferredSize(new java.awt.Dimension(50, 80));
-        jPanel3.add(lab_FLWD, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, 60, 20));
+        jPanel3.add(lab_FLWD, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 120, 20));
 
-        jPanel2.setBackground(new java.awt.Color(19, 19, 19));
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Compound", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(204, 204, 204))); // NOI18N
+        pb_tyreWearFR.setBackground(new java.awt.Color(51, 51, 51));
+        pb_tyreWearFR.setForeground(new java.awt.Color(255, 102, 102));
+        pb_tyreWearFR.setBorderPainted(false);
+        jPanel3.add(pb_tyreWearFR, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 60, 80, 80));
 
-        lab_tyreCompound.setFont(new java.awt.Font("Formula1 Display Bold", 0, 14)); // NOI18N
-        lab_tyreCompound.setForeground(new java.awt.Color(255, 255, 255));
-        lab_tyreCompound.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lab_tyreCompound.setText("Tyre");
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lab_tyreCompound, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lab_tyreCompound, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-
-        jPanel3.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 20, -1, -1));
+        jPanel4.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 290, 290));
 
         jPanel5.setBackground(new java.awt.Color(19, 19, 19));
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Engine", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(204, 204, 204))); // NOI18N
-        jPanel5.setLayout(new java.awt.GridLayout(3, 2));
+        jPanel5.setLayout(new java.awt.GridLayout(4, 2));
 
         jLabel1.setFont(new java.awt.Font("Formula1 Display Regular", 0, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -434,9 +416,258 @@ public class CarStatus extends javax.swing.JFrame {
         lab_gearbox_damage.setText("jLabel2");
         jPanel5.add(lab_gearbox_damage);
 
-        jPanel3.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 110, 270, 90));
+        jLabel11.setFont(new java.awt.Font("Formula1 Display Regular", 0, 14)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel11.setText("Engine Temp.");
+        jPanel5.add(jLabel11);
 
-        jPanel4.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 540, 320));
+        lab_engine_temp.setFont(new java.awt.Font("Formula1 Display Regular", 1, 14)); // NOI18N
+        lab_engine_temp.setForeground(new java.awt.Color(255, 255, 0));
+        lab_engine_temp.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lab_engine_temp.setText("jLabel2");
+        jPanel5.add(lab_engine_temp);
+
+        jPanel4.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 360, 290, 110));
+
+        jPanel2.setBackground(new java.awt.Color(19, 19, 19));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Compound", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(204, 204, 204))); // NOI18N
+
+        lab_tyreCompound.setFont(new java.awt.Font("Formula1 Display Bold", 0, 14)); // NOI18N
+        lab_tyreCompound.setForeground(new java.awt.Color(255, 255, 255));
+        lab_tyreCompound.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lab_tyreCompound.setText("Tyre");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(lab_tyreCompound, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 1, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lab_tyreCompound, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
+        jPanel4.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 10, 120, 130));
+
+        jPanel6.setBackground(new java.awt.Color(19, 19, 19));
+        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Brakes Temperature", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(204, 204, 204))); // NOI18N
+
+        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\miguelangel.garciar\\Documents\\NetBeansProjects\\F12018\\images\\icons\\brakes.png")); // NOI18N
+
+        jPanel7.setBackground(new java.awt.Color(19, 19, 19));
+        jPanel7.setLayout(new java.awt.GridLayout(2, 2, 5, 5));
+
+        lab_brakeTempFL.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lab_brakeTempFL.setForeground(new java.awt.Color(255, 255, 255));
+        lab_brakeTempFL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lab_brakeTempFL.setText("jLabel2");
+        jPanel7.add(lab_brakeTempFL);
+
+        lab_brakeTempFR.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lab_brakeTempFR.setForeground(new java.awt.Color(255, 255, 255));
+        lab_brakeTempFR.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lab_brakeTempFR.setText("jLabel2");
+        jPanel7.add(lab_brakeTempFR);
+
+        lab_brakeTempRL.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lab_brakeTempRL.setForeground(new java.awt.Color(255, 255, 255));
+        lab_brakeTempRL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lab_brakeTempRL.setText("jLabel2");
+        jPanel7.add(lab_brakeTempRL);
+
+        lab_brakeTempRR.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lab_brakeTempRR.setForeground(new java.awt.Color(255, 255, 255));
+        lab_brakeTempRR.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lab_brakeTempRR.setText("jLabel2");
+        jPanel7.add(lab_brakeTempRR);
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(8, 8, 8)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(20, 20, 20))
+        );
+
+        jPanel4.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 10, 340, 110));
+
+        jPanel8.setBackground(new java.awt.Color(19, 19, 19));
+        jPanel8.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tyres Surface Temperature", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(204, 204, 204))); // NOI18N
+
+        jLabel8.setIcon(new javax.swing.ImageIcon("C:\\Users\\miguelangel.garciar\\Documents\\NetBeansProjects\\F12018\\images\\icons\\tyre_surface.png")); // NOI18N
+
+        jPanel9.setBackground(new java.awt.Color(19, 19, 19));
+        jPanel9.setLayout(new java.awt.GridLayout(2, 2, 5, 5));
+
+        lab_tyreSurfaceTempFL.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lab_tyreSurfaceTempFL.setForeground(new java.awt.Color(255, 255, 255));
+        lab_tyreSurfaceTempFL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lab_tyreSurfaceTempFL.setText("jLabel2");
+        jPanel9.add(lab_tyreSurfaceTempFL);
+
+        lab_tyreSurfaceTempFR.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lab_tyreSurfaceTempFR.setForeground(new java.awt.Color(255, 255, 255));
+        lab_tyreSurfaceTempFR.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lab_tyreSurfaceTempFR.setText("jLabel2");
+        jPanel9.add(lab_tyreSurfaceTempFR);
+
+        lab_tyreSurfaceTempRL.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lab_tyreSurfaceTempRL.setForeground(new java.awt.Color(255, 255, 255));
+        lab_tyreSurfaceTempRL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lab_tyreSurfaceTempRL.setText("jLabel2");
+        jPanel9.add(lab_tyreSurfaceTempRL);
+
+        lab_tyreSurfaceTempRR.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lab_tyreSurfaceTempRR.setForeground(new java.awt.Color(255, 255, 255));
+        lab_tyreSurfaceTempRR.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lab_tyreSurfaceTempRR.setText("jLabel2");
+        jPanel9.add(lab_tyreSurfaceTempRR);
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(8, 8, 8)
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(20, 20, 20))
+        );
+
+        jPanel4.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 130, 340, 110));
+
+        jPanel10.setBackground(new java.awt.Color(19, 19, 19));
+        jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tyres Inner Temperature", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(204, 204, 204))); // NOI18N
+
+        jLabel9.setIcon(new javax.swing.ImageIcon("C:\\Users\\miguelangel.garciar\\Documents\\NetBeansProjects\\F12018\\images\\icons\\tyre_inner.png")); // NOI18N
+
+        jPanel11.setBackground(new java.awt.Color(19, 19, 19));
+        jPanel11.setLayout(new java.awt.GridLayout(2, 2, 5, 5));
+
+        lab_tyreInnerTempFL.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lab_tyreInnerTempFL.setForeground(new java.awt.Color(255, 255, 255));
+        lab_tyreInnerTempFL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lab_tyreInnerTempFL.setText("jLabel2");
+        jPanel11.add(lab_tyreInnerTempFL);
+
+        lab_tyreInnerTempFR.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lab_tyreInnerTempFR.setForeground(new java.awt.Color(255, 255, 255));
+        lab_tyreInnerTempFR.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lab_tyreInnerTempFR.setText("jLabel2");
+        jPanel11.add(lab_tyreInnerTempFR);
+
+        lab_tyreInnerTempRL.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lab_tyreInnerTempRL.setForeground(new java.awt.Color(255, 255, 255));
+        lab_tyreInnerTempRL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lab_tyreInnerTempRL.setText("jLabel2");
+        jPanel11.add(lab_tyreInnerTempRL);
+
+        lab_tyreInnerTempRR.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lab_tyreInnerTempRR.setForeground(new java.awt.Color(255, 255, 255));
+        lab_tyreInnerTempRR.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lab_tyreInnerTempRR.setText("jLabel2");
+        jPanel11.add(lab_tyreInnerTempRR);
+
+        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
+        jPanel10.setLayout(jPanel10Layout);
+        jPanel10Layout.setHorizontalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addGap(8, 8, 8)
+                .addComponent(jLabel9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel10Layout.setVerticalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(20, 20, 20))
+        );
+
+        jPanel4.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 130, -1, 110));
+
+        jPanel12.setBackground(new java.awt.Color(19, 19, 19));
+        jPanel12.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tyres Pressure", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(204, 204, 204))); // NOI18N
+
+        jLabel10.setIcon(new javax.swing.ImageIcon("C:\\Users\\miguelangel.garciar\\Documents\\NetBeansProjects\\F12018\\images\\icons\\tyre_pressure.png")); // NOI18N
+
+        jPanel13.setBackground(new java.awt.Color(19, 19, 19));
+        jPanel13.setLayout(new java.awt.GridLayout(2, 2, 5, 5));
+
+        lab_tyrePressureFL.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lab_tyrePressureFL.setForeground(new java.awt.Color(255, 255, 255));
+        lab_tyrePressureFL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lab_tyrePressureFL.setText("jLabel2");
+        jPanel13.add(lab_tyrePressureFL);
+
+        lab_tyrePressureFR.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lab_tyrePressureFR.setForeground(new java.awt.Color(255, 255, 255));
+        lab_tyrePressureFR.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lab_tyrePressureFR.setText("jLabel2");
+        jPanel13.add(lab_tyrePressureFR);
+
+        lab_tyrePressureRL.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lab_tyrePressureRL.setForeground(new java.awt.Color(255, 255, 255));
+        lab_tyrePressureRL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lab_tyrePressureRL.setText("jLabel2");
+        jPanel13.add(lab_tyrePressureRL);
+
+        lab_tyrePressureRR.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lab_tyrePressureRR.setForeground(new java.awt.Color(255, 255, 255));
+        lab_tyrePressureRR.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lab_tyrePressureRR.setText("jLabel2");
+        jPanel13.add(lab_tyrePressureRR);
+
+        javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
+        jPanel12.setLayout(jPanel12Layout);
+        jPanel12Layout.setHorizontalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel12Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel10)
+                .addGap(8, 8, 8)
+                .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel12Layout.setVerticalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel12Layout.createSequentialGroup()
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(20, 20, 20))
+        );
+
+        jPanel4.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 10, -1, 110));
 
         combo_driver.setBackground(new java.awt.Color(153, 0, 0));
         combo_driver.setFont(new java.awt.Font("Formula1 Display Bold", 0, 14)); // NOI18N
@@ -464,8 +695,8 @@ public class CarStatus extends javax.swing.JFrame {
                     .addComponent(lab_flag, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
                     .addComponent(combo_driver))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 553, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -479,10 +710,7 @@ public class CarStatus extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -498,21 +726,39 @@ public class CarStatus extends javax.swing.JFrame {
     public javax.swing.JComboBox<String> combo_driver;
     private javax.swing.JLabel iconFuel;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
+    private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JTextField jTextField1;
     public javax.swing.JLabel lab_FLWD;
     public javax.swing.JLabel lab_FRWD;
     public javax.swing.JLabel lab_abs;
+    public javax.swing.JLabel lab_brakeTempFL;
+    public javax.swing.JLabel lab_brakeTempFR;
+    public javax.swing.JLabel lab_brakeTempRL;
+    public javax.swing.JLabel lab_brakeTempRR;
     public javax.swing.JLabel lab_drs;
     public javax.swing.JLabel lab_engine_damage;
+    public javax.swing.JLabel lab_engine_temp;
     public javax.swing.JLabel lab_ersDeploy;
     public javax.swing.JLabel lab_ersModeNumber;
     public javax.swing.JLabel lab_ers_blue;
@@ -520,16 +766,25 @@ public class CarStatus extends javax.swing.JFrame {
     public javax.swing.JLabel lab_ers_yellow;
     public javax.swing.JLabel lab_exhaust_damage;
     public javax.swing.JLabel lab_flag;
+    public javax.swing.JLabel lab_fuelExcess;
     public javax.swing.JLabel lab_fuelMix;
     public javax.swing.JLabel lab_gear;
     public javax.swing.JLabel lab_gearbox_damage;
     public javax.swing.JLabel lab_pitLimiter;
     public javax.swing.JLabel lab_rwd;
     public javax.swing.JLabel lab_tyreCompound;
-    public javax.swing.JLabel lab_tyreWearFL;
-    public javax.swing.JLabel lab_tyreWearFR;
-    public javax.swing.JLabel lab_tyreWearRL;
-    public javax.swing.JLabel lab_tyreWearRR;
+    public javax.swing.JLabel lab_tyreInnerTempFL;
+    public javax.swing.JLabel lab_tyreInnerTempFR;
+    public javax.swing.JLabel lab_tyreInnerTempRL;
+    public javax.swing.JLabel lab_tyreInnerTempRR;
+    public javax.swing.JLabel lab_tyrePressureFL;
+    public javax.swing.JLabel lab_tyrePressureFR;
+    public javax.swing.JLabel lab_tyrePressureRL;
+    public javax.swing.JLabel lab_tyrePressureRR;
+    public javax.swing.JLabel lab_tyreSurfaceTempFL;
+    public javax.swing.JLabel lab_tyreSurfaceTempFR;
+    public javax.swing.JLabel lab_tyreSurfaceTempRL;
+    public javax.swing.JLabel lab_tyreSurfaceTempRR;
     private javax.swing.JPanel panelBars;
     private javax.swing.JPanel panelChecks;
     private javax.swing.JPanel panelERS;
@@ -538,6 +793,7 @@ public class CarStatus extends javax.swing.JFrame {
     public javax.swing.JProgressBar pb_blue;
     public javax.swing.JProgressBar pb_flwd;
     public javax.swing.JProgressBar pb_frwd;
+    public javax.swing.JProgressBar pb_fuel;
     public javax.swing.JProgressBar pb_rwd;
     public javax.swing.JProgressBar pb_tyreWearFL;
     public javax.swing.JProgressBar pb_tyreWearFR;

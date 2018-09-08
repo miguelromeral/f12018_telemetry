@@ -1,7 +1,7 @@
 package classes;
 
 import com.sun.jmx.snmp.Timestamp;
-import packets.motion.CarMotionData;
+import packets.carmotion.CarMotionData;
 import packets.carsetup.CarSetupData;
 import packets.carstatus.CarStatusData;
 import packets.cartelemetry.CarTelemetryData;
@@ -27,6 +27,7 @@ public class Driver {
     public LapData lap;
     public HashMap<Integer, Float> previousLaps;
     public HashMap<Integer, Long> miniSectors;
+    public HashMap<Integer, Float> fuelUsed;
     public Session session;
     
     public float bestS1;
@@ -49,6 +50,32 @@ public class Driver {
         }
     }
     
+    public void setFuelUsed(){
+        if(lap != null && carStatus != null){
+            if(lap.currentLapNum == 1 && lap.totalDistance <= 0f){
+                if(fuelUsed.get(0) == null){
+                    fuelUsed.put(0, carStatus.fuelInTank);
+                }
+            }else{
+                if(fuelUsed.get(lap.currentLapNum - 1) == null){
+                    fuelUsed.put(lap.currentLapNum - 1, carStatus.fuelInTank);
+                }
+            }
+        }
+    }
+    
+    /**
+     * Get how much +/- laps the fuel remain.
+     * @return 
+     */
+    public float getExcessFuelUsed(){
+        if(fuelUsed != null && !fuelUsed.isEmpty()){
+            float min = fuelUsed.get(0);
+            
+        }
+        return 0f;
+    }
+    
     public void initializeSectores(){
         bestS1 = Float.POSITIVE_INFINITY;
         bestS2 = Float.POSITIVE_INFINITY;
@@ -58,13 +85,14 @@ public class Driver {
         lastS3 = Float.POSITIVE_INFINITY;
         previousLaps = new HashMap<>();
         miniSectors = new HashMap<>();
+        fuelUsed = new HashMap<>();
     }
     
     public float getLapTime(int lap){
         try{
             return previousLaps.get(lap);
         }catch(Exception e){
-            return 0f;
+            return -1f;
         }
     }
     
@@ -94,7 +122,9 @@ public class Driver {
     
     public void setNewLap(LapData newLap){
         lap = newLap;
+        
         setPreviousGapTimes(lap.totalDistance);
+        setFuelUsed();
         if(lap.getSector() != 1 && lap.sector1Time != 0f){
             lastS1 = lap.sector1Time;
             if(lastS1 < bestS1){
@@ -151,5 +181,13 @@ public class Driver {
     
     public void setNewCarMotion(CarMotionData cmd){
         carMotion = cmd;
+    }
+    
+    public String toString(){
+        String ret = "";
+        if(participant != null){
+            ret += "Driver:\n"+participant.toString();
+        }
+        return ret;
     }
 }

@@ -1,6 +1,6 @@
-package Packets;
+package packets.carmotion;
 
-import classes.DataTypeUtilities;
+import classes.statics.DataTypeUtilities;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.util.Arrays;

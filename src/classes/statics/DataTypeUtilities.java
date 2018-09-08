@@ -17,14 +17,6 @@ import java.util.Set;
  */
 public abstract class DataTypeUtilities {
     
-    public static byte[] reorder(byte[] source){
-        int length = source.length;
-        byte[] dest = new byte[length];
-        for(int i=0; i<length; i--){
-            dest[i] = source[length-1-i];
-        }
-        return dest;
-    }
     
     public static short convert_uint16(short s){
         //s = reorder(s);
@@ -161,5 +153,21 @@ public abstract class DataTypeUtilities {
             }
             
             return (int)(delta)+"."+pad+""+decimals;
+    }
+    
+    public static String printFormattedFloat(float f){
+        char sign = ' ';
+        if(f < 0f){
+            sign = '-';
+        }
+        int uds = Math.abs((int) f);
+        int decimals = (int) Math.abs((f * 1000) % 1000);
+        if(decimals == 0){
+            return sign+""+uds+".00";
+        }
+        if(decimals < 10){
+            return sign+""+uds+".0"+decimals;
+        }
+        return sign+""+uds+"."+decimals;
     }
 }

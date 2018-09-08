@@ -187,7 +187,7 @@ public class GUIFeatures {
         }
     }
     
-    public static void setTyreWear(JProgressBar pb, JLabel lab, int usage){
+    public static void setTyreWear(JProgressBar pb, int usage){
         
         Color col; 
         if(usage < 30){
@@ -202,10 +202,95 @@ public class GUIFeatures {
             col = Color.BLACK;
         }
         
-        lab.setText(usage+"%");
-        lab.setForeground(col);
         pb.setValue(usage);
         pb.setForeground(col);
+    }
+    
+    public static void setBrakeTemperature(JLabel lab, int perc){
+        
+        Color col; 
+        if(perc >= 1025){
+            col = Color.red;
+        }else if(perc >= 900){
+            col = Color.orange;
+        }else if(perc >= 775){
+            col = Color.yellow;
+        }else if(perc > 250){
+            col = Color.green;
+        }else{
+            col = Color.cyan;
+        }
+        
+        lab.setText(perc+"ºC");
+        lab.setForeground(col);
+    }
+    
+    public static void setTyreSurfaceTemperature(JLabel lab, int perc){
+        
+        Color col; 
+        if(perc >= 135){
+            col = Color.red;
+        }else if(perc >= 122){
+            col = Color.orange;
+        }else if(perc >= 110){
+            col = Color.yellow;
+        }else if(perc >= 70){
+            col = Color.green;
+        }else{
+            col = Color.cyan;
+        }
+        
+        lab.setText(perc+"ºC");
+        lab.setForeground(col);
+    }
+    
+    public static void setTyreInnerTemperature(JLabel lab, int perc){
+        
+        Color col; 
+        if(perc >= 110){
+            col = Color.red;
+        }else if(perc >= 105){
+            col = Color.orange;
+        }else if(perc >= 100){
+            col = Color.yellow;
+        }else if(perc > 85){
+            col = Color.green;
+        }else{
+            col = Color.cyan;
+        }
+        
+        lab.setText(perc+"ºC");
+        lab.setForeground(col);
+    }    
+    
+    public static Color getEngineTemperature(int perc){
+        
+        Color col; 
+        if(perc >= 160){
+            col = Color.red;
+        }else if(perc >= 150){
+            col = Color.orange;
+        }else if(perc >= 135){
+            col = Color.yellow;
+        }else if(perc >= 70){
+            col = Color.green;
+        }else{
+            col = Color.cyan;
+        }
+        
+        return col;
+    }    
+    
+    public static void setTyrePressure(JLabel lab, float pres){
+        Color col; 
+        if(pres < 20f || pres > 24f){
+            col = Color.red;
+        }else{
+            col = Color.green;
+        }
+        
+        lab.setForeground(col);
+        lab.setText(pres+" psi");
     }
     
     public static void printRevLight(JLabel label, int position, int perc){

@@ -324,7 +324,7 @@ public class ParticipantData extends Packet {
      */
     public String toString(){
         String ret = "Controlled by: "+getAIControlled()+"\n";
-        ret += "Driver: "+getDriver()+"\n";
+        ret += "Driver: "+getDriver()+" (ID: "+driverId+")\n";
         ret += "Team: "+getTeam()+"\n";
         ret += "Race Number: "+raceNumber+"\n";
         ret += "Nationality: "+getNationality()+"\n";
