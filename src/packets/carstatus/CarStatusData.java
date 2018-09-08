@@ -333,7 +333,7 @@ public class CarStatusData {
         return ret;
     }
     
-    public float getAverageExceesFuel(int trackId){
+    public float getAverageExceesFuel(int trackId, int laps, int lap){
         float stimated;
         switch(trackId){
             case 0: stimated = 1.78f; break; //Melbourne";
@@ -360,6 +360,6 @@ public class CarStatusData {
             default: return Float.NaN;
         }
         
-        return fuelInTank / stimated;
+        return (fuelInTank / stimated) - (float) laps + (float) lap - 1;
     }
 }

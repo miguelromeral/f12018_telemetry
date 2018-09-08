@@ -44,7 +44,7 @@ public class CarStatus_Thread extends Thread{
     
     private void setPanelTyreDamage(CarStatusData car){
         if(car != null){
-            GUIFeatures.getTyreImage(view.lab_tyreCompound, 60, car.tyreCompound);
+            GUIFeatures.getTyreImage(view.lab_tyreCompound, view.lab_tyreCompound.getHeight(), car.tyreCompound);
             GUIFeatures.setTyreWear(view.pb_tyreWearRL, car.tyresWear[0]);
             GUIFeatures.setTyreWear(view.pb_tyreWearRR, car.tyresWear[1]);
             GUIFeatures.setTyreWear(view.pb_tyreWearFL, car.tyresWear[2]);
@@ -96,11 +96,11 @@ public class CarStatus_Thread extends Thread{
     }
     
     private void setPanelFuel(CarStatusData car, Driver d){
-        if(car != null && d.session.data != null){
+        if(car != null && d.session.data != null && d.lap != null){
             view.lab_fuelMix.setText(car.getFuelMix());
             view.pb_fuel.setMaximum((int) car.fuelCapacity * 100);
             view.pb_fuel.setValue((int) car.fuelInTank * 100);
-            float excess = car.getAverageExceesFuel(d.session.data.trackId);
+            float excess = car.getAverageExceesFuel(d.session.data.trackId, d.session.data.totalLaps, d.lap.currentLapNum);
             
             if(!Float.isNaN(excess)){
                 if(excess == 0f){
@@ -117,9 +117,13 @@ public class CarStatus_Thread extends Thread{
                 view.lab_fuelExcess.setForeground(Color.white);
                 view.lab_fuelExcess.setText("UNK");
             }
+            view.lab_fuelInTank.setText(DataTypeUtilities.printFormattedFloat(car.fuelInTank)+" kg");
             
         }else{
             view.lab_fuelMix.setText("UNKNOWN");
+            view.lab_fuelInTank.setText("UNK");
+            view.lab_fuelExcess.setForeground(Color.white);
+            view.lab_fuelExcess.setText("UNK");
         }
     }
     
@@ -346,6 +350,85 @@ public class CarStatus_Thread extends Thread{
         }
     }
     
+    private void setPanelRevsLight(CarTelemetryData tel){
+        // Flag
+        if(tel != null){
+            GUIFeatures.printRevLight(view.lab_revLight1, 1, tel.revLightsPercent);
+            GUIFeatures.printRevLight(view.lab_revLight2, 2, tel.revLightsPercent);
+            GUIFeatures.printRevLight(view.lab_revLight3, 3, tel.revLightsPercent);
+            GUIFeatures.printRevLight(view.lab_revLight4, 4, tel.revLightsPercent);
+            GUIFeatures.printRevLight(view.lab_revLight5, 5, tel.revLightsPercent);
+            GUIFeatures.printRevLight(view.lab_revLight6, 6, tel.revLightsPercent);
+            GUIFeatures.printRevLight(view.lab_revLight7, 7, tel.revLightsPercent);
+            GUIFeatures.printRevLight(view.lab_revLight8, 8, tel.revLightsPercent);
+            GUIFeatures.printRevLight(view.lab_revLight9, 9, tel.revLightsPercent);
+            GUIFeatures.printRevLight(view.lab_revLight10, 10, tel.revLightsPercent);
+            GUIFeatures.printRevLight(view.lab_revLight11, 11, tel.revLightsPercent);
+            GUIFeatures.printRevLight(view.lab_revLight12, 12, tel.revLightsPercent);
+            GUIFeatures.printRevLight(view.lab_revLight13, 13, tel.revLightsPercent);
+            GUIFeatures.printRevLight(view.lab_revLight14, 14, tel.revLightsPercent);
+            GUIFeatures.printRevLight(view.lab_revLight15, 15, tel.revLightsPercent);
+        }else{
+            GUIFeatures.printRevLight(view.lab_revLight1, 1, 0);
+            GUIFeatures.printRevLight(view.lab_revLight2, 2, 0);
+            GUIFeatures.printRevLight(view.lab_revLight3, 3, 0);
+            GUIFeatures.printRevLight(view.lab_revLight4, 4, 0);
+            GUIFeatures.printRevLight(view.lab_revLight5, 5, 0);
+            GUIFeatures.printRevLight(view.lab_revLight6, 6, 0);
+            GUIFeatures.printRevLight(view.lab_revLight7, 7, 0);
+            GUIFeatures.printRevLight(view.lab_revLight8, 8, 0);
+            GUIFeatures.printRevLight(view.lab_revLight9, 9, 0);
+            GUIFeatures.printRevLight(view.lab_revLight10, 10, 0);
+            GUIFeatures.printRevLight(view.lab_revLight11, 11, 0);
+            GUIFeatures.printRevLight(view.lab_revLight12, 12, 0);
+            GUIFeatures.printRevLight(view.lab_revLight13, 13, 0);
+            GUIFeatures.printRevLight(view.lab_revLight14, 14, 0);
+            GUIFeatures.printRevLight(view.lab_revLight15, 15, 0);
+        }
+    }
+    
+     private void setPanelPedals(CarTelemetryData tel){
+        if(tel != null){
+            // Speed
+            view.lab_speed.setText("" + tel.speed);
+            // Throttle %
+            view.pb_throttle.setValue((int) tel.throttle);
+            // Brake %
+            view.pb_brake.setValue((int) tel.brake);
+            // Clutch %
+            view.pb_clutch.setValue((int) tel.clutch);
+
+            // Revs:
+            view.lab_revs.setText("" + tel.engineRPM);
+            view.pb_revs.setValue(tel.engineRPM);
+        }else{// Speed
+            view.lab_speed.setText("UNK");
+            view.pb_throttle.setValue(0);
+            view.pb_brake.setValue(0);
+            view.pb_clutch.setValue(0);
+            view.lab_revs.setText("-");
+            view.pb_revs.setValue(0);
+        }
+    }
+     
+     private void setPanelSteer(CarTelemetryData tel){
+        int steer = (tel == null ? 0 : tel.steer);
+        if (steer > 0) {
+            view.pb_steer_r.setValue(steer);
+            view.pb_steer_l.setValue(100);
+            view.lab_steer.setText(steer + "%");
+        } else if (steer < 0) {
+            steer += 100;
+            view.pb_steer_r.setValue(0);
+            view.pb_steer_l.setValue(steer);
+            view.lab_steer.setText((100 - steer) + "%");
+        } else {
+            view.pb_steer_r.setValue(0);
+            view.pb_steer_l.setValue(100);
+            view.lab_steer.setText("0%");
+        }
+    }
+    
     public void run(){
         while (true)
         {
@@ -356,8 +439,9 @@ public class CarStatus_Thread extends Thread{
             CarStatusData car = (d == null ? null : d.carStatus);
             CarTelemetryData tel = (d == null ? null : d.carTelemetry);
             
-            
-            
+            setPanelRevsLight(tel);
+            setPanelPedals(tel);
+            setPanelSteer(tel);
             setPanelTyreDamage(car);
             setPanelFuel(car, d);
             setPanelEngine(car, tel);
