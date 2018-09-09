@@ -141,26 +141,33 @@ public class GUIFeatures {
         label.setIcon(imgRedimensionada);
     }
     
-    public static void getTyreImage(JLabel label, int size, int compound) {
+    public static void getTyreImage(JLabel label, int size, int compound, int era) {
         try {
             label.setText("");
             String tyre = null;
-            switch(compound){
-                case 0: tyre = "hypersoft"; break;
-                case 1: tyre = "ultrasoft"; break;
-                case 2: tyre = "supersoft"; break;
-                case 3: tyre = "soft"; break;
-                case 4: tyre = "medium"; break;
-                case 5: tyre = "hard"; break;
-                case 6: tyre = "superhard"; break;
-                case 7: tyre = "inter"; break;
-                case 8: tyre = "wet"; break;
-            }
-            if(tyre != null){
-                setImageIcon(label, size, size, "tyres/"+tyre);
+            if(era == 0){
+                switch(compound){
+                    case 0: tyre = "hypersoft"; break;
+                    case 1: tyre = "ultrasoft"; break;
+                    case 2: tyre = "supersoft"; break;
+                    case 3: tyre = "soft"; break;
+                    case 4: tyre = "medium"; break;
+                    case 5: tyre = "hard"; break;
+                    case 6: tyre = "superhard"; break;
+                    case 7: tyre = "inter"; break;
+                    case 8: tyre = "wet"; break;
+                }
+                if(tyre != null){
+                    setImageIcon(label, size, size, "tyres/"+tyre);
+                }
+            }else{
+                if(compound < 7){
+                    setImageIcon(label, size, size, "tyres/dry_classic");
+                }else if (compound < 9){
+                    setImageIcon(label, size, size, "tyres/wet_classic");
+                }
             }
         } catch (Exception e) {
-            System.out.println("Error en la imagen: " + e.toString());
         }
     }
     

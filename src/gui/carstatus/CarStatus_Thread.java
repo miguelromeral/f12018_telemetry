@@ -42,14 +42,15 @@ public class CarStatus_Thread extends Thread{
         driver = d;
     }
     
-    private void setPanelTyreDamage(CarStatusData car){
-        if(car != null){
-            GUIFeatures.getTyreImage(view.lab_tyreCompound, view.lab_tyreCompound.getHeight(), car.tyreCompound);
+    private void setPanelTyreDamage(CarStatusData car, PacketSessionData session){
+        if(car != null && session != null){
+            GUIFeatures.getTyreImage(view.lab_tyreCompound, view.lab_tyreCompound.getHeight(), car.tyreCompound, session.era);
             GUIFeatures.setTyreWear(view.pb_tyreWearRL, car.tyresWear[0]);
             GUIFeatures.setTyreWear(view.pb_tyreWearRR, car.tyresWear[1]);
             GUIFeatures.setTyreWear(view.pb_tyreWearFL, car.tyresWear[2]);
             GUIFeatures.setTyreWear(view.pb_tyreWearFR, car.tyresWear[3]);
         }else{
+            view.lab_tyreCompound.setIcon(null);
             view.lab_tyreCompound.setText("UNK");
             GUIFeatures.setTyreWear(view.pb_tyreWearRL, 0);
             GUIFeatures.setTyreWear(view.pb_tyreWearRR, 0);
@@ -100,7 +101,8 @@ public class CarStatus_Thread extends Thread{
             view.lab_fuelMix.setText(car.getFuelMix());
             view.pb_fuel.setMaximum((int) car.fuelCapacity * 100);
             view.pb_fuel.setValue((int) car.fuelInTank * 100);
-            float excess = car.getAverageExceesFuel(d.session.data.trackId, d.session.data.totalLaps, d.lap.currentLapNum);
+            float excess = car.getAverageExceesFuel(d.session.data.trackId, d.session.data.totalLaps, d.lap.currentLapNum,
+                    d.session.isRaceSession(), d.lap.totalDistance);
             
             if(!Float.isNaN(excess)){
                 if(excess == 0f){
@@ -442,7 +444,7 @@ public class CarStatus_Thread extends Thread{
             setPanelRevsLight(tel);
             setPanelPedals(tel);
             setPanelSteer(tel);
-            setPanelTyreDamage(car);
+            setPanelTyreDamage(car, data);
             setPanelFuel(car, d);
             setPanelEngine(car, tel);
             setPanelERSStorage(car);

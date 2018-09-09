@@ -333,33 +333,78 @@ public class CarStatusData {
         return ret;
     }
     
-    public float getAverageExceesFuel(int trackId, int laps, int lap){
+    public float getAverageExceesFuel(short trackId, short laps, short lap, boolean race, float distanceCovered){
         float stimated;
+        float distance;
         switch(trackId){
-            case 0: stimated = 1.78f; break; //Melbourne";
-            case 1: stimated = 1.86f; break; //Paul Ricard";
-            case 2: stimated = 1.80f; break; //Shanghai";
-            case 3: stimated = 1.81f; break; //Sakhir";
-            case 4: stimated = 1.59f; break; //Catalunya";
-            case 5: stimated = 1.17f; break; // Monaco
-            case 6: stimated = 1.47f; break; //Montreal";
-            case 7: stimated = 1.87f; break; //Silverstone";
-            case 8: stimated = 1.54f; break; //Hockenheim";
-            case 9: stimated = 1.50f; break; //Hungaroring";
-            case 10:stimated = 2.24f; break;  //Spa";
-            case 11:stimated = 1.97f; break;  //Monza";
-            case 12:stimated = 1.80f; break;  //Singapore";
-            case 13:stimated = 1.86f; break;  //Suzuka";
-            case 14:stimated = 1.90f; break;  //Abu Dhabi";
-            case 15:stimated = 1.85f; break;  //Texas";
-            case 16:stimated = 1.41f; break;  //Brazil";
-            case 17:stimated = 1.68f; break;  //Austria";
-            case 18:stimated = 1.92f; break;  //Sochi";
-            case 19:stimated = 1.49f; break;  //Mexico";
-            case 20:stimated = 2.04f; break;  //Baku";
+            case 0: stimated = 1.78f; 
+                    distance = 5303f;
+                break; //Melbourne";
+            case 1: stimated = 1.86f; 
+                    distance = 5842f;
+                break; //Paul Ricard";
+            case 2: stimated = 1.80f; 
+                    distance = 5451f;
+                break; //Shanghai";
+            case 3: stimated = 1.81f; 
+                    distance = 5412f;
+                break; //Sakhir";
+            case 4: stimated = 1.59f; 
+                    distance = 4655f;
+                break; //Catalunya";
+            case 5: stimated = 1.17f; 
+                    distance = 3337f;
+                break; // Monaco
+            case 6: stimated = 1.47f; 
+                    distance = 4361f;
+                break; //Montreal";
+            case 7: stimated = 1.87f; 
+                    distance = 5891f;
+                break; //Silverstone";
+            case 8: stimated = 1.54f; 
+                    distance = 4574f;
+                break; //Hockenheim";
+            case 9: stimated = 1.50f; 
+                    distance = 4381f;
+                break; //Hungaroring";
+            case 10:stimated = 2.24f; 
+                    distance = 7004f;
+                break;  //Spa";
+            case 11:stimated = 1.97f; 
+                    distance = 5793f;
+                break;  //Monza";
+            case 12:stimated = 1.80f; 
+                    distance = 5065f;
+                break;  //Singapore";
+            case 13:stimated = 1.86f; 
+                    distance = 5807f;
+                break;  //Suzuka";
+            case 14:stimated = 1.90f; 
+                    distance = 5554f;
+                break;  //Abu Dhabi";
+            case 15:stimated = 1.85f; 
+                    distance = 5513f;
+                break;  //Texas";
+            case 16:stimated = 1.41f; 
+                    distance = 4309f;
+                break;  //Brazil";
+            case 17:stimated = 1.68f; 
+                    distance = 4318f;
+                break;  //Austria";
+            case 18:stimated = 1.92f; 
+                    distance = 5848f;
+                break;  //Sochi";
+            case 19:stimated = 1.49f; 
+                    distance = 4304f;
+                break;  //Mexico";
+            case 20:stimated = 2.04f; 
+                    distance = 6003f;
+                break;  //Baku";
             default: return Float.NaN;
         }
-        
-        return (fuelInTank / stimated) - (float) laps + (float) lap - 1;
+        if(!race){
+            return fuelInTank / stimated;
+        }
+        return (fuelInTank / stimated) - ((float) laps + (distanceCovered / distance));
     }
 }

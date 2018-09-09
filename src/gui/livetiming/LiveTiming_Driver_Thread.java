@@ -233,9 +233,9 @@ public class LiveTiming_Driver_Thread extends Thread{
         }
     }
     
-    private void printTyreImage(Driver d){
-        if(d != null && d.carStatus != null){
-            GUIFeatures.getTyreImage(labs[12], labs[12].getHeight(), d.carStatus.tyreCompound);
+    private void printTyreImage(Driver d, PacketSessionData session){
+        if(d != null && d.carStatus != null && session != null){
+            GUIFeatures.getTyreImage(labs[12], labs[12].getHeight(), d.carStatus.tyreCompound, session.era);
         }
     }
     
@@ -347,6 +347,7 @@ public class LiveTiming_Driver_Thread extends Thread{
             paso.mirar();
             
             Driver d = driver;
+            PacketSessionData data = tcontroller.controller.session.data;
             
             printParticipantData(d);
             printColorNameOnTrack(d);
@@ -360,7 +361,7 @@ public class LiveTiming_Driver_Thread extends Thread{
 
             printLapNumberData(d);
 
-            printTyreImage(d);
+            printTyreImage(d, data);
             
             
             printDelta(d);

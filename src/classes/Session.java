@@ -39,6 +39,13 @@ public class Session {
         initialize();
     }
     
+    public boolean isRaceSession(){
+        if(data == null){
+            return false;
+        }
+        return data.sessionType == 10 || data.sessionType == 11;
+    }
+    
     public void initialize(){
         status = "SSTA";
         bestS1 = Float.POSITIVE_INFINITY;
