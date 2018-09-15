@@ -107,6 +107,7 @@ public class LiveTiming extends javax.swing.JFrame {
         labPos0 = new javax.swing.JLabel();
         labCol0 = new javax.swing.JLabel();
         labNum = new javax.swing.JLabel();
+        labPen0 = new javax.swing.JLabel();
         labName0 = new javax.swing.JLabel();
         labTime0 = new javax.swing.JLabel();
         labS10 = new javax.swing.JLabel();
@@ -118,9 +119,9 @@ public class LiveTiming extends javax.swing.JFrame {
         labLap0 = new javax.swing.JLabel();
         labTyre0 = new javax.swing.JLabel();
         labPit0 = new javax.swing.JLabel();
-        labPen0 = new javax.swing.JLabel();
         panel1 = new javax.swing.JPanel();
         labPos1 = new javax.swing.JLabel();
+        labPen1 = new javax.swing.JLabel();
         labCol1 = new javax.swing.JLabel();
         labNum1 = new javax.swing.JLabel();
         labName1 = new javax.swing.JLabel();
@@ -134,9 +135,9 @@ public class LiveTiming extends javax.swing.JFrame {
         labLap1 = new javax.swing.JLabel();
         labTyre1 = new javax.swing.JLabel();
         labBox1 = new javax.swing.JLabel();
-        labPen1 = new javax.swing.JLabel();
         panel2 = new javax.swing.JPanel();
         labPos2 = new javax.swing.JLabel();
+        labPen2 = new javax.swing.JLabel();
         labCol2 = new javax.swing.JLabel();
         labNum2 = new javax.swing.JLabel();
         labName2 = new javax.swing.JLabel();
@@ -150,9 +151,9 @@ public class LiveTiming extends javax.swing.JFrame {
         labLap2 = new javax.swing.JLabel();
         labTyre2 = new javax.swing.JLabel();
         labBox2 = new javax.swing.JLabel();
-        labPen2 = new javax.swing.JLabel();
         panel3 = new javax.swing.JPanel();
         labPos3 = new javax.swing.JLabel();
+        labPen3 = new javax.swing.JLabel();
         labCol3 = new javax.swing.JLabel();
         labNum3 = new javax.swing.JLabel();
         labName3 = new javax.swing.JLabel();
@@ -166,9 +167,9 @@ public class LiveTiming extends javax.swing.JFrame {
         labLap3 = new javax.swing.JLabel();
         labTyre3 = new javax.swing.JLabel();
         labBox3 = new javax.swing.JLabel();
-        labPen3 = new javax.swing.JLabel();
         panel4 = new javax.swing.JPanel();
         labPos4 = new javax.swing.JLabel();
+        labPen4 = new javax.swing.JLabel();
         labCol4 = new javax.swing.JLabel();
         labNum4 = new javax.swing.JLabel();
         labName4 = new javax.swing.JLabel();
@@ -182,9 +183,9 @@ public class LiveTiming extends javax.swing.JFrame {
         labLap4 = new javax.swing.JLabel();
         labTyre4 = new javax.swing.JLabel();
         labBox4 = new javax.swing.JLabel();
-        labPen4 = new javax.swing.JLabel();
         panel5 = new javax.swing.JPanel();
         labPos5 = new javax.swing.JLabel();
+        labPen5 = new javax.swing.JLabel();
         labCol5 = new javax.swing.JLabel();
         labNum5 = new javax.swing.JLabel();
         labName5 = new javax.swing.JLabel();
@@ -198,9 +199,9 @@ public class LiveTiming extends javax.swing.JFrame {
         labLap5 = new javax.swing.JLabel();
         labTyre5 = new javax.swing.JLabel();
         labBox5 = new javax.swing.JLabel();
-        labPen5 = new javax.swing.JLabel();
         panel6 = new javax.swing.JPanel();
         labPos6 = new javax.swing.JLabel();
+        labPen6 = new javax.swing.JLabel();
         labCol6 = new javax.swing.JLabel();
         labNum6 = new javax.swing.JLabel();
         labName6 = new javax.swing.JLabel();
@@ -214,9 +215,9 @@ public class LiveTiming extends javax.swing.JFrame {
         labLap6 = new javax.swing.JLabel();
         labTyre6 = new javax.swing.JLabel();
         labBox6 = new javax.swing.JLabel();
-        labPen6 = new javax.swing.JLabel();
         panel7 = new javax.swing.JPanel();
         labPos7 = new javax.swing.JLabel();
+        labPen7 = new javax.swing.JLabel();
         labCol7 = new javax.swing.JLabel();
         labNum7 = new javax.swing.JLabel();
         labName7 = new javax.swing.JLabel();
@@ -230,9 +231,9 @@ public class LiveTiming extends javax.swing.JFrame {
         labLap7 = new javax.swing.JLabel();
         labTyre7 = new javax.swing.JLabel();
         labBox7 = new javax.swing.JLabel();
-        labPen7 = new javax.swing.JLabel();
         panel8 = new javax.swing.JPanel();
         labPos8 = new javax.swing.JLabel();
+        labPen8 = new javax.swing.JLabel();
         labCol8 = new javax.swing.JLabel();
         labNum8 = new javax.swing.JLabel();
         labName8 = new javax.swing.JLabel();
@@ -246,9 +247,9 @@ public class LiveTiming extends javax.swing.JFrame {
         labLap8 = new javax.swing.JLabel();
         labTyre8 = new javax.swing.JLabel();
         labBox8 = new javax.swing.JLabel();
-        labPen8 = new javax.swing.JLabel();
         panel9 = new javax.swing.JPanel();
         labPos9 = new javax.swing.JLabel();
+        labPen9 = new javax.swing.JLabel();
         labCol9 = new javax.swing.JLabel();
         labNum9 = new javax.swing.JLabel();
         labName9 = new javax.swing.JLabel();
@@ -262,9 +263,9 @@ public class LiveTiming extends javax.swing.JFrame {
         labLap9 = new javax.swing.JLabel();
         labTyre9 = new javax.swing.JLabel();
         labBox9 = new javax.swing.JLabel();
-        labPen9 = new javax.swing.JLabel();
         panel10 = new javax.swing.JPanel();
         labPos10 = new javax.swing.JLabel();
+        labPen10 = new javax.swing.JLabel();
         labCol10 = new javax.swing.JLabel();
         labNum10 = new javax.swing.JLabel();
         labName10 = new javax.swing.JLabel();
@@ -278,9 +279,9 @@ public class LiveTiming extends javax.swing.JFrame {
         labLap10 = new javax.swing.JLabel();
         labTyre10 = new javax.swing.JLabel();
         labBox10 = new javax.swing.JLabel();
-        labPen10 = new javax.swing.JLabel();
         panel11 = new javax.swing.JPanel();
         labPos11 = new javax.swing.JLabel();
+        labPen11 = new javax.swing.JLabel();
         labCol11 = new javax.swing.JLabel();
         labNum11 = new javax.swing.JLabel();
         labName11 = new javax.swing.JLabel();
@@ -294,9 +295,9 @@ public class LiveTiming extends javax.swing.JFrame {
         labLap11 = new javax.swing.JLabel();
         labTyre11 = new javax.swing.JLabel();
         labBox11 = new javax.swing.JLabel();
-        labPen11 = new javax.swing.JLabel();
         panel12 = new javax.swing.JPanel();
         labPos12 = new javax.swing.JLabel();
+        labPen12 = new javax.swing.JLabel();
         labCol12 = new javax.swing.JLabel();
         labNum12 = new javax.swing.JLabel();
         labName12 = new javax.swing.JLabel();
@@ -310,9 +311,9 @@ public class LiveTiming extends javax.swing.JFrame {
         labLap12 = new javax.swing.JLabel();
         labTyre12 = new javax.swing.JLabel();
         labBox12 = new javax.swing.JLabel();
-        labPen12 = new javax.swing.JLabel();
         panel13 = new javax.swing.JPanel();
         labPos13 = new javax.swing.JLabel();
+        labPen13 = new javax.swing.JLabel();
         labCol13 = new javax.swing.JLabel();
         labNum13 = new javax.swing.JLabel();
         labName13 = new javax.swing.JLabel();
@@ -326,9 +327,9 @@ public class LiveTiming extends javax.swing.JFrame {
         labLap13 = new javax.swing.JLabel();
         labTyre13 = new javax.swing.JLabel();
         labBox13 = new javax.swing.JLabel();
-        labPen13 = new javax.swing.JLabel();
         panel14 = new javax.swing.JPanel();
         labPos14 = new javax.swing.JLabel();
+        labPen14 = new javax.swing.JLabel();
         labCol14 = new javax.swing.JLabel();
         labNum14 = new javax.swing.JLabel();
         labName14 = new javax.swing.JLabel();
@@ -342,9 +343,9 @@ public class LiveTiming extends javax.swing.JFrame {
         labLap14 = new javax.swing.JLabel();
         labTyre14 = new javax.swing.JLabel();
         labBox14 = new javax.swing.JLabel();
-        labPen14 = new javax.swing.JLabel();
         panel15 = new javax.swing.JPanel();
         labPos15 = new javax.swing.JLabel();
+        labPen15 = new javax.swing.JLabel();
         labCol15 = new javax.swing.JLabel();
         labNum15 = new javax.swing.JLabel();
         labName15 = new javax.swing.JLabel();
@@ -358,9 +359,9 @@ public class LiveTiming extends javax.swing.JFrame {
         labLap15 = new javax.swing.JLabel();
         labTyre15 = new javax.swing.JLabel();
         labBox15 = new javax.swing.JLabel();
-        labPen15 = new javax.swing.JLabel();
         panel16 = new javax.swing.JPanel();
         labPos16 = new javax.swing.JLabel();
+        labPen16 = new javax.swing.JLabel();
         labCol16 = new javax.swing.JLabel();
         labNum16 = new javax.swing.JLabel();
         labName16 = new javax.swing.JLabel();
@@ -374,9 +375,9 @@ public class LiveTiming extends javax.swing.JFrame {
         labLap16 = new javax.swing.JLabel();
         labTyre16 = new javax.swing.JLabel();
         labBox16 = new javax.swing.JLabel();
-        labPen16 = new javax.swing.JLabel();
         panel17 = new javax.swing.JPanel();
         labPos17 = new javax.swing.JLabel();
+        labPen17 = new javax.swing.JLabel();
         labCol17 = new javax.swing.JLabel();
         labNum17 = new javax.swing.JLabel();
         labName17 = new javax.swing.JLabel();
@@ -390,9 +391,9 @@ public class LiveTiming extends javax.swing.JFrame {
         labLap17 = new javax.swing.JLabel();
         labTyre17 = new javax.swing.JLabel();
         labBox17 = new javax.swing.JLabel();
-        labPen17 = new javax.swing.JLabel();
         panel18 = new javax.swing.JPanel();
         labPos18 = new javax.swing.JLabel();
+        labPen18 = new javax.swing.JLabel();
         labCol18 = new javax.swing.JLabel();
         labNum18 = new javax.swing.JLabel();
         labName18 = new javax.swing.JLabel();
@@ -406,9 +407,9 @@ public class LiveTiming extends javax.swing.JFrame {
         labLap18 = new javax.swing.JLabel();
         labTyre18 = new javax.swing.JLabel();
         labBox18 = new javax.swing.JLabel();
-        labPen18 = new javax.swing.JLabel();
         panel19 = new javax.swing.JPanel();
         labPos19 = new javax.swing.JLabel();
+        labPen19 = new javax.swing.JLabel();
         labCol19 = new javax.swing.JLabel();
         labNum19 = new javax.swing.JLabel();
         labName19 = new javax.swing.JLabel();
@@ -422,9 +423,9 @@ public class LiveTiming extends javax.swing.JFrame {
         labLap19 = new javax.swing.JLabel();
         labTyre19 = new javax.swing.JLabel();
         labBox19 = new javax.swing.JLabel();
-        labPen19 = new javax.swing.JLabel();
         panel20 = new javax.swing.JPanel();
         labPos20 = new javax.swing.JLabel();
+        labPen20 = new javax.swing.JLabel();
         labCol20 = new javax.swing.JLabel();
         labNum20 = new javax.swing.JLabel();
         labName20 = new javax.swing.JLabel();
@@ -438,7 +439,6 @@ public class LiveTiming extends javax.swing.JFrame {
         labLap20 = new javax.swing.JLabel();
         labTyre20 = new javax.swing.JLabel();
         labBox20 = new javax.swing.JLabel();
-        labPen20 = new javax.swing.JLabel();
 
         jLabel4.setText("jLabel4");
 
@@ -616,6 +616,13 @@ public class LiveTiming extends javax.swing.JFrame {
         labNum.setPreferredSize(new java.awt.Dimension(50, 17));
         panel0.add(labNum);
 
+        labPen0.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        labPen0.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labPen0.setMaximumSize(new java.awt.Dimension(40, 17));
+        labPen0.setMinimumSize(new java.awt.Dimension(20, 17));
+        labPen0.setPreferredSize(new java.awt.Dimension(50, 17));
+        panel0.add(labPen0);
+
         labName0.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         labName0.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labName0.setText("NAME");
@@ -703,14 +710,6 @@ public class LiveTiming extends javax.swing.JFrame {
         labPit0.setPreferredSize(new java.awt.Dimension(50, 17));
         panel0.add(labPit0);
 
-        labPen0.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        labPen0.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labPen0.setText("PEN");
-        labPen0.setMaximumSize(new java.awt.Dimension(40, 17));
-        labPen0.setMinimumSize(new java.awt.Dimension(20, 17));
-        labPen0.setPreferredSize(new java.awt.Dimension(50, 17));
-        panel0.add(labPen0);
-
         panelTiming.add(panel0, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 16, 1210, 27));
 
         panel1.setBackground(new java.awt.Color(19, 19, 19));
@@ -723,6 +722,14 @@ public class LiveTiming extends javax.swing.JFrame {
         labPos1.setMinimumSize(new java.awt.Dimension(20, 17));
         labPos1.setPreferredSize(new java.awt.Dimension(20, 17));
         panel1.add(labPos1);
+
+        labPen1.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        labPen1.setForeground(new java.awt.Color(255, 255, 255));
+        labPen1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labPen1.setMaximumSize(new java.awt.Dimension(40, 18));
+        labPen1.setMinimumSize(new java.awt.Dimension(20, 17));
+        labPen1.setPreferredSize(new java.awt.Dimension(50, 17));
+        panel1.add(labPen1);
 
         labCol1.setFont(new java.awt.Font("Formula1 Display Bold", 0, 14)); // NOI18N
         labCol1.setForeground(new java.awt.Color(255, 255, 255));
@@ -828,14 +835,6 @@ public class LiveTiming extends javax.swing.JFrame {
         labBox1.setPreferredSize(new java.awt.Dimension(50, 17));
         panel1.add(labBox1);
 
-        labPen1.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
-        labPen1.setForeground(new java.awt.Color(255, 255, 255));
-        labPen1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labPen1.setMaximumSize(new java.awt.Dimension(40, 17));
-        labPen1.setMinimumSize(new java.awt.Dimension(20, 17));
-        labPen1.setPreferredSize(new java.awt.Dimension(50, 17));
-        panel1.add(labPen1);
-
         panelTiming.add(panel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 43, 1210, 27));
 
         panel2.setBackground(new java.awt.Color(25, 25, 25));
@@ -848,6 +847,14 @@ public class LiveTiming extends javax.swing.JFrame {
         labPos2.setMinimumSize(new java.awt.Dimension(20, 17));
         labPos2.setPreferredSize(new java.awt.Dimension(20, 17));
         panel2.add(labPos2);
+
+        labPen2.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        labPen2.setForeground(new java.awt.Color(255, 255, 255));
+        labPen2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labPen2.setMaximumSize(new java.awt.Dimension(40, 18));
+        labPen2.setMinimumSize(new java.awt.Dimension(20, 17));
+        labPen2.setPreferredSize(new java.awt.Dimension(50, 17));
+        panel2.add(labPen2);
 
         labCol2.setFont(new java.awt.Font("Formula1 Display Bold", 0, 14)); // NOI18N
         labCol2.setForeground(new java.awt.Color(255, 255, 255));
@@ -953,14 +960,6 @@ public class LiveTiming extends javax.swing.JFrame {
         labBox2.setPreferredSize(new java.awt.Dimension(50, 17));
         panel2.add(labBox2);
 
-        labPen2.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
-        labPen2.setForeground(new java.awt.Color(255, 255, 255));
-        labPen2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labPen2.setMaximumSize(new java.awt.Dimension(40, 17));
-        labPen2.setMinimumSize(new java.awt.Dimension(20, 17));
-        labPen2.setPreferredSize(new java.awt.Dimension(50, 17));
-        panel2.add(labPen2);
-
         panelTiming.add(panel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 70, 1210, 27));
 
         panel3.setBackground(new java.awt.Color(19, 19, 19));
@@ -973,6 +972,14 @@ public class LiveTiming extends javax.swing.JFrame {
         labPos3.setMinimumSize(new java.awt.Dimension(20, 17));
         labPos3.setPreferredSize(new java.awt.Dimension(20, 17));
         panel3.add(labPos3);
+
+        labPen3.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        labPen3.setForeground(new java.awt.Color(255, 255, 255));
+        labPen3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labPen3.setMaximumSize(new java.awt.Dimension(40, 18));
+        labPen3.setMinimumSize(new java.awt.Dimension(20, 17));
+        labPen3.setPreferredSize(new java.awt.Dimension(50, 17));
+        panel3.add(labPen3);
 
         labCol3.setFont(new java.awt.Font("Formula1 Display Bold", 0, 14)); // NOI18N
         labCol3.setForeground(new java.awt.Color(255, 255, 255));
@@ -1078,14 +1085,6 @@ public class LiveTiming extends javax.swing.JFrame {
         labBox3.setPreferredSize(new java.awt.Dimension(50, 17));
         panel3.add(labBox3);
 
-        labPen3.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
-        labPen3.setForeground(new java.awt.Color(255, 255, 255));
-        labPen3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labPen3.setMaximumSize(new java.awt.Dimension(40, 17));
-        labPen3.setMinimumSize(new java.awt.Dimension(20, 17));
-        labPen3.setPreferredSize(new java.awt.Dimension(50, 17));
-        panel3.add(labPen3);
-
         panelTiming.add(panel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 97, 1210, 27));
 
         panel4.setBackground(new java.awt.Color(25, 25, 25));
@@ -1098,6 +1097,14 @@ public class LiveTiming extends javax.swing.JFrame {
         labPos4.setMinimumSize(new java.awt.Dimension(20, 17));
         labPos4.setPreferredSize(new java.awt.Dimension(20, 17));
         panel4.add(labPos4);
+
+        labPen4.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        labPen4.setForeground(new java.awt.Color(255, 255, 255));
+        labPen4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labPen4.setMaximumSize(new java.awt.Dimension(40, 18));
+        labPen4.setMinimumSize(new java.awt.Dimension(20, 17));
+        labPen4.setPreferredSize(new java.awt.Dimension(50, 17));
+        panel4.add(labPen4);
 
         labCol4.setFont(new java.awt.Font("Formula1 Display Bold", 0, 14)); // NOI18N
         labCol4.setForeground(new java.awt.Color(255, 255, 255));
@@ -1203,14 +1210,6 @@ public class LiveTiming extends javax.swing.JFrame {
         labBox4.setPreferredSize(new java.awt.Dimension(50, 17));
         panel4.add(labBox4);
 
-        labPen4.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
-        labPen4.setForeground(new java.awt.Color(255, 255, 255));
-        labPen4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labPen4.setMaximumSize(new java.awt.Dimension(40, 17));
-        labPen4.setMinimumSize(new java.awt.Dimension(20, 17));
-        labPen4.setPreferredSize(new java.awt.Dimension(50, 17));
-        panel4.add(labPen4);
-
         panelTiming.add(panel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 124, 1210, 27));
 
         panel5.setBackground(new java.awt.Color(19, 19, 19));
@@ -1223,6 +1222,14 @@ public class LiveTiming extends javax.swing.JFrame {
         labPos5.setMinimumSize(new java.awt.Dimension(20, 17));
         labPos5.setPreferredSize(new java.awt.Dimension(20, 17));
         panel5.add(labPos5);
+
+        labPen5.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        labPen5.setForeground(new java.awt.Color(255, 255, 255));
+        labPen5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labPen5.setMaximumSize(new java.awt.Dimension(40, 18));
+        labPen5.setMinimumSize(new java.awt.Dimension(20, 17));
+        labPen5.setPreferredSize(new java.awt.Dimension(50, 17));
+        panel5.add(labPen5);
 
         labCol5.setFont(new java.awt.Font("Formula1 Display Bold", 0, 14)); // NOI18N
         labCol5.setForeground(new java.awt.Color(255, 255, 255));
@@ -1328,14 +1335,6 @@ public class LiveTiming extends javax.swing.JFrame {
         labBox5.setPreferredSize(new java.awt.Dimension(50, 17));
         panel5.add(labBox5);
 
-        labPen5.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
-        labPen5.setForeground(new java.awt.Color(255, 255, 255));
-        labPen5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labPen5.setMaximumSize(new java.awt.Dimension(40, 17));
-        labPen5.setMinimumSize(new java.awt.Dimension(20, 17));
-        labPen5.setPreferredSize(new java.awt.Dimension(50, 17));
-        panel5.add(labPen5);
-
         panelTiming.add(panel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 151, 1210, 27));
 
         panel6.setBackground(new java.awt.Color(25, 25, 25));
@@ -1348,6 +1347,14 @@ public class LiveTiming extends javax.swing.JFrame {
         labPos6.setMinimumSize(new java.awt.Dimension(20, 17));
         labPos6.setPreferredSize(new java.awt.Dimension(20, 17));
         panel6.add(labPos6);
+
+        labPen6.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        labPen6.setForeground(new java.awt.Color(255, 255, 255));
+        labPen6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labPen6.setMaximumSize(new java.awt.Dimension(40, 18));
+        labPen6.setMinimumSize(new java.awt.Dimension(20, 17));
+        labPen6.setPreferredSize(new java.awt.Dimension(50, 17));
+        panel6.add(labPen6);
 
         labCol6.setFont(new java.awt.Font("Formula1 Display Bold", 0, 14)); // NOI18N
         labCol6.setForeground(new java.awt.Color(255, 255, 255));
@@ -1453,14 +1460,6 @@ public class LiveTiming extends javax.swing.JFrame {
         labBox6.setPreferredSize(new java.awt.Dimension(50, 17));
         panel6.add(labBox6);
 
-        labPen6.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
-        labPen6.setForeground(new java.awt.Color(255, 255, 255));
-        labPen6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labPen6.setMaximumSize(new java.awt.Dimension(40, 17));
-        labPen6.setMinimumSize(new java.awt.Dimension(20, 17));
-        labPen6.setPreferredSize(new java.awt.Dimension(50, 17));
-        panel6.add(labPen6);
-
         panelTiming.add(panel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 178, 1210, 27));
 
         panel7.setBackground(new java.awt.Color(19, 19, 19));
@@ -1473,6 +1472,14 @@ public class LiveTiming extends javax.swing.JFrame {
         labPos7.setMinimumSize(new java.awt.Dimension(20, 17));
         labPos7.setPreferredSize(new java.awt.Dimension(20, 17));
         panel7.add(labPos7);
+
+        labPen7.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        labPen7.setForeground(new java.awt.Color(255, 255, 255));
+        labPen7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labPen7.setMaximumSize(new java.awt.Dimension(40, 18));
+        labPen7.setMinimumSize(new java.awt.Dimension(20, 17));
+        labPen7.setPreferredSize(new java.awt.Dimension(50, 17));
+        panel7.add(labPen7);
 
         labCol7.setFont(new java.awt.Font("Formula1 Display Bold", 0, 14)); // NOI18N
         labCol7.setForeground(new java.awt.Color(255, 255, 255));
@@ -1578,14 +1585,6 @@ public class LiveTiming extends javax.swing.JFrame {
         labBox7.setPreferredSize(new java.awt.Dimension(50, 17));
         panel7.add(labBox7);
 
-        labPen7.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
-        labPen7.setForeground(new java.awt.Color(255, 255, 255));
-        labPen7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labPen7.setMaximumSize(new java.awt.Dimension(40, 17));
-        labPen7.setMinimumSize(new java.awt.Dimension(20, 17));
-        labPen7.setPreferredSize(new java.awt.Dimension(50, 17));
-        panel7.add(labPen7);
-
         panelTiming.add(panel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 205, 1210, 27));
 
         panel8.setBackground(new java.awt.Color(25, 25, 25));
@@ -1598,6 +1597,14 @@ public class LiveTiming extends javax.swing.JFrame {
         labPos8.setMinimumSize(new java.awt.Dimension(20, 17));
         labPos8.setPreferredSize(new java.awt.Dimension(20, 17));
         panel8.add(labPos8);
+
+        labPen8.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        labPen8.setForeground(new java.awt.Color(255, 255, 255));
+        labPen8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labPen8.setMaximumSize(new java.awt.Dimension(40, 18));
+        labPen8.setMinimumSize(new java.awt.Dimension(20, 17));
+        labPen8.setPreferredSize(new java.awt.Dimension(50, 17));
+        panel8.add(labPen8);
 
         labCol8.setFont(new java.awt.Font("Formula1 Display Bold", 0, 14)); // NOI18N
         labCol8.setForeground(new java.awt.Color(255, 255, 255));
@@ -1703,14 +1710,6 @@ public class LiveTiming extends javax.swing.JFrame {
         labBox8.setPreferredSize(new java.awt.Dimension(50, 17));
         panel8.add(labBox8);
 
-        labPen8.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
-        labPen8.setForeground(new java.awt.Color(255, 255, 255));
-        labPen8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labPen8.setMaximumSize(new java.awt.Dimension(40, 17));
-        labPen8.setMinimumSize(new java.awt.Dimension(20, 17));
-        labPen8.setPreferredSize(new java.awt.Dimension(50, 17));
-        panel8.add(labPen8);
-
         panelTiming.add(panel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 232, 1210, 27));
 
         panel9.setBackground(new java.awt.Color(19, 19, 19));
@@ -1723,6 +1722,14 @@ public class LiveTiming extends javax.swing.JFrame {
         labPos9.setMinimumSize(new java.awt.Dimension(20, 17));
         labPos9.setPreferredSize(new java.awt.Dimension(20, 17));
         panel9.add(labPos9);
+
+        labPen9.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        labPen9.setForeground(new java.awt.Color(255, 255, 255));
+        labPen9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labPen9.setMaximumSize(new java.awt.Dimension(40, 18));
+        labPen9.setMinimumSize(new java.awt.Dimension(20, 17));
+        labPen9.setPreferredSize(new java.awt.Dimension(50, 17));
+        panel9.add(labPen9);
 
         labCol9.setFont(new java.awt.Font("Formula1 Display Bold", 0, 14)); // NOI18N
         labCol9.setForeground(new java.awt.Color(255, 255, 255));
@@ -1828,14 +1835,6 @@ public class LiveTiming extends javax.swing.JFrame {
         labBox9.setPreferredSize(new java.awt.Dimension(50, 17));
         panel9.add(labBox9);
 
-        labPen9.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
-        labPen9.setForeground(new java.awt.Color(255, 255, 255));
-        labPen9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labPen9.setMaximumSize(new java.awt.Dimension(40, 17));
-        labPen9.setMinimumSize(new java.awt.Dimension(20, 17));
-        labPen9.setPreferredSize(new java.awt.Dimension(50, 17));
-        panel9.add(labPen9);
-
         panelTiming.add(panel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 259, 1210, 27));
 
         panel10.setBackground(new java.awt.Color(25, 25, 25));
@@ -1848,6 +1847,14 @@ public class LiveTiming extends javax.swing.JFrame {
         labPos10.setMinimumSize(new java.awt.Dimension(20, 17));
         labPos10.setPreferredSize(new java.awt.Dimension(20, 17));
         panel10.add(labPos10);
+
+        labPen10.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        labPen10.setForeground(new java.awt.Color(255, 255, 255));
+        labPen10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labPen10.setMaximumSize(new java.awt.Dimension(40, 18));
+        labPen10.setMinimumSize(new java.awt.Dimension(20, 17));
+        labPen10.setPreferredSize(new java.awt.Dimension(50, 17));
+        panel10.add(labPen10);
 
         labCol10.setFont(new java.awt.Font("Formula1 Display Bold", 0, 14)); // NOI18N
         labCol10.setForeground(new java.awt.Color(255, 255, 255));
@@ -1953,14 +1960,6 @@ public class LiveTiming extends javax.swing.JFrame {
         labBox10.setPreferredSize(new java.awt.Dimension(50, 17));
         panel10.add(labBox10);
 
-        labPen10.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
-        labPen10.setForeground(new java.awt.Color(255, 255, 255));
-        labPen10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labPen10.setMaximumSize(new java.awt.Dimension(40, 17));
-        labPen10.setMinimumSize(new java.awt.Dimension(20, 17));
-        labPen10.setPreferredSize(new java.awt.Dimension(50, 17));
-        panel10.add(labPen10);
-
         panelTiming.add(panel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 286, 1210, 27));
 
         panel11.setBackground(new java.awt.Color(19, 19, 19));
@@ -1973,6 +1972,14 @@ public class LiveTiming extends javax.swing.JFrame {
         labPos11.setMinimumSize(new java.awt.Dimension(20, 17));
         labPos11.setPreferredSize(new java.awt.Dimension(20, 17));
         panel11.add(labPos11);
+
+        labPen11.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        labPen11.setForeground(new java.awt.Color(255, 255, 255));
+        labPen11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labPen11.setMaximumSize(new java.awt.Dimension(40, 18));
+        labPen11.setMinimumSize(new java.awt.Dimension(20, 17));
+        labPen11.setPreferredSize(new java.awt.Dimension(50, 17));
+        panel11.add(labPen11);
 
         labCol11.setFont(new java.awt.Font("Formula1 Display Bold", 0, 14)); // NOI18N
         labCol11.setForeground(new java.awt.Color(255, 255, 255));
@@ -2078,14 +2085,6 @@ public class LiveTiming extends javax.swing.JFrame {
         labBox11.setPreferredSize(new java.awt.Dimension(50, 17));
         panel11.add(labBox11);
 
-        labPen11.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
-        labPen11.setForeground(new java.awt.Color(255, 255, 255));
-        labPen11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labPen11.setMaximumSize(new java.awt.Dimension(40, 17));
-        labPen11.setMinimumSize(new java.awt.Dimension(20, 17));
-        labPen11.setPreferredSize(new java.awt.Dimension(50, 17));
-        panel11.add(labPen11);
-
         panelTiming.add(panel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 313, 1210, 27));
 
         panel12.setBackground(new java.awt.Color(25, 25, 25));
@@ -2098,6 +2097,14 @@ public class LiveTiming extends javax.swing.JFrame {
         labPos12.setMinimumSize(new java.awt.Dimension(20, 17));
         labPos12.setPreferredSize(new java.awt.Dimension(20, 17));
         panel12.add(labPos12);
+
+        labPen12.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        labPen12.setForeground(new java.awt.Color(255, 255, 255));
+        labPen12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labPen12.setMaximumSize(new java.awt.Dimension(40, 18));
+        labPen12.setMinimumSize(new java.awt.Dimension(20, 17));
+        labPen12.setPreferredSize(new java.awt.Dimension(50, 17));
+        panel12.add(labPen12);
 
         labCol12.setFont(new java.awt.Font("Formula1 Display Bold", 0, 14)); // NOI18N
         labCol12.setForeground(new java.awt.Color(255, 255, 255));
@@ -2203,14 +2210,6 @@ public class LiveTiming extends javax.swing.JFrame {
         labBox12.setPreferredSize(new java.awt.Dimension(50, 17));
         panel12.add(labBox12);
 
-        labPen12.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
-        labPen12.setForeground(new java.awt.Color(255, 255, 255));
-        labPen12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labPen12.setMaximumSize(new java.awt.Dimension(40, 17));
-        labPen12.setMinimumSize(new java.awt.Dimension(20, 17));
-        labPen12.setPreferredSize(new java.awt.Dimension(50, 17));
-        panel12.add(labPen12);
-
         panelTiming.add(panel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 340, 1210, 27));
 
         panel13.setBackground(new java.awt.Color(19, 19, 19));
@@ -2223,6 +2222,14 @@ public class LiveTiming extends javax.swing.JFrame {
         labPos13.setMinimumSize(new java.awt.Dimension(20, 17));
         labPos13.setPreferredSize(new java.awt.Dimension(20, 17));
         panel13.add(labPos13);
+
+        labPen13.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        labPen13.setForeground(new java.awt.Color(255, 255, 255));
+        labPen13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labPen13.setMaximumSize(new java.awt.Dimension(40, 18));
+        labPen13.setMinimumSize(new java.awt.Dimension(20, 17));
+        labPen13.setPreferredSize(new java.awt.Dimension(50, 17));
+        panel13.add(labPen13);
 
         labCol13.setFont(new java.awt.Font("Formula1 Display Bold", 0, 14)); // NOI18N
         labCol13.setForeground(new java.awt.Color(255, 255, 255));
@@ -2328,14 +2335,6 @@ public class LiveTiming extends javax.swing.JFrame {
         labBox13.setPreferredSize(new java.awt.Dimension(50, 17));
         panel13.add(labBox13);
 
-        labPen13.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
-        labPen13.setForeground(new java.awt.Color(255, 255, 255));
-        labPen13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labPen13.setMaximumSize(new java.awt.Dimension(40, 17));
-        labPen13.setMinimumSize(new java.awt.Dimension(20, 17));
-        labPen13.setPreferredSize(new java.awt.Dimension(50, 17));
-        panel13.add(labPen13);
-
         panelTiming.add(panel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 367, 1210, 27));
 
         panel14.setBackground(new java.awt.Color(25, 25, 25));
@@ -2348,6 +2347,14 @@ public class LiveTiming extends javax.swing.JFrame {
         labPos14.setMinimumSize(new java.awt.Dimension(20, 17));
         labPos14.setPreferredSize(new java.awt.Dimension(20, 17));
         panel14.add(labPos14);
+
+        labPen14.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        labPen14.setForeground(new java.awt.Color(255, 255, 255));
+        labPen14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labPen14.setMaximumSize(new java.awt.Dimension(40, 18));
+        labPen14.setMinimumSize(new java.awt.Dimension(20, 17));
+        labPen14.setPreferredSize(new java.awt.Dimension(50, 17));
+        panel14.add(labPen14);
 
         labCol14.setFont(new java.awt.Font("Formula1 Display Bold", 0, 14)); // NOI18N
         labCol14.setForeground(new java.awt.Color(255, 255, 255));
@@ -2453,14 +2460,6 @@ public class LiveTiming extends javax.swing.JFrame {
         labBox14.setPreferredSize(new java.awt.Dimension(50, 17));
         panel14.add(labBox14);
 
-        labPen14.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
-        labPen14.setForeground(new java.awt.Color(255, 255, 255));
-        labPen14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labPen14.setMaximumSize(new java.awt.Dimension(40, 17));
-        labPen14.setMinimumSize(new java.awt.Dimension(20, 17));
-        labPen14.setPreferredSize(new java.awt.Dimension(50, 17));
-        panel14.add(labPen14);
-
         panelTiming.add(panel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 394, 1210, 27));
 
         panel15.setBackground(new java.awt.Color(19, 19, 19));
@@ -2473,6 +2472,14 @@ public class LiveTiming extends javax.swing.JFrame {
         labPos15.setMinimumSize(new java.awt.Dimension(20, 17));
         labPos15.setPreferredSize(new java.awt.Dimension(20, 17));
         panel15.add(labPos15);
+
+        labPen15.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        labPen15.setForeground(new java.awt.Color(255, 255, 255));
+        labPen15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labPen15.setMaximumSize(new java.awt.Dimension(40, 18));
+        labPen15.setMinimumSize(new java.awt.Dimension(20, 17));
+        labPen15.setPreferredSize(new java.awt.Dimension(50, 17));
+        panel15.add(labPen15);
 
         labCol15.setFont(new java.awt.Font("Formula1 Display Bold", 0, 14)); // NOI18N
         labCol15.setForeground(new java.awt.Color(255, 255, 255));
@@ -2578,14 +2585,6 @@ public class LiveTiming extends javax.swing.JFrame {
         labBox15.setPreferredSize(new java.awt.Dimension(50, 17));
         panel15.add(labBox15);
 
-        labPen15.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
-        labPen15.setForeground(new java.awt.Color(255, 255, 255));
-        labPen15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labPen15.setMaximumSize(new java.awt.Dimension(40, 17));
-        labPen15.setMinimumSize(new java.awt.Dimension(20, 17));
-        labPen15.setPreferredSize(new java.awt.Dimension(50, 17));
-        panel15.add(labPen15);
-
         panelTiming.add(panel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 421, 1210, 27));
 
         panel16.setBackground(new java.awt.Color(25, 25, 25));
@@ -2598,6 +2597,14 @@ public class LiveTiming extends javax.swing.JFrame {
         labPos16.setMinimumSize(new java.awt.Dimension(20, 17));
         labPos16.setPreferredSize(new java.awt.Dimension(20, 17));
         panel16.add(labPos16);
+
+        labPen16.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        labPen16.setForeground(new java.awt.Color(255, 255, 255));
+        labPen16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labPen16.setMaximumSize(new java.awt.Dimension(40, 18));
+        labPen16.setMinimumSize(new java.awt.Dimension(20, 17));
+        labPen16.setPreferredSize(new java.awt.Dimension(50, 17));
+        panel16.add(labPen16);
 
         labCol16.setFont(new java.awt.Font("Formula1 Display Bold", 0, 14)); // NOI18N
         labCol16.setForeground(new java.awt.Color(255, 255, 255));
@@ -2703,14 +2710,6 @@ public class LiveTiming extends javax.swing.JFrame {
         labBox16.setPreferredSize(new java.awt.Dimension(50, 17));
         panel16.add(labBox16);
 
-        labPen16.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
-        labPen16.setForeground(new java.awt.Color(255, 255, 255));
-        labPen16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labPen16.setMaximumSize(new java.awt.Dimension(40, 17));
-        labPen16.setMinimumSize(new java.awt.Dimension(20, 17));
-        labPen16.setPreferredSize(new java.awt.Dimension(50, 17));
-        panel16.add(labPen16);
-
         panelTiming.add(panel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 448, 1210, 27));
 
         panel17.setBackground(new java.awt.Color(19, 19, 19));
@@ -2723,6 +2722,14 @@ public class LiveTiming extends javax.swing.JFrame {
         labPos17.setMinimumSize(new java.awt.Dimension(20, 17));
         labPos17.setPreferredSize(new java.awt.Dimension(20, 17));
         panel17.add(labPos17);
+
+        labPen17.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        labPen17.setForeground(new java.awt.Color(255, 255, 255));
+        labPen17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labPen17.setMaximumSize(new java.awt.Dimension(40, 18));
+        labPen17.setMinimumSize(new java.awt.Dimension(20, 17));
+        labPen17.setPreferredSize(new java.awt.Dimension(50, 17));
+        panel17.add(labPen17);
 
         labCol17.setFont(new java.awt.Font("Formula1 Display Bold", 0, 14)); // NOI18N
         labCol17.setForeground(new java.awt.Color(255, 255, 255));
@@ -2828,14 +2835,6 @@ public class LiveTiming extends javax.swing.JFrame {
         labBox17.setPreferredSize(new java.awt.Dimension(50, 17));
         panel17.add(labBox17);
 
-        labPen17.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
-        labPen17.setForeground(new java.awt.Color(255, 255, 255));
-        labPen17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labPen17.setMaximumSize(new java.awt.Dimension(40, 17));
-        labPen17.setMinimumSize(new java.awt.Dimension(20, 17));
-        labPen17.setPreferredSize(new java.awt.Dimension(50, 17));
-        panel17.add(labPen17);
-
         panelTiming.add(panel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 475, 1210, 27));
 
         panel18.setBackground(new java.awt.Color(25, 25, 25));
@@ -2848,6 +2847,14 @@ public class LiveTiming extends javax.swing.JFrame {
         labPos18.setMinimumSize(new java.awt.Dimension(20, 17));
         labPos18.setPreferredSize(new java.awt.Dimension(20, 17));
         panel18.add(labPos18);
+
+        labPen18.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        labPen18.setForeground(new java.awt.Color(255, 255, 255));
+        labPen18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labPen18.setMaximumSize(new java.awt.Dimension(40, 18));
+        labPen18.setMinimumSize(new java.awt.Dimension(20, 17));
+        labPen18.setPreferredSize(new java.awt.Dimension(50, 17));
+        panel18.add(labPen18);
 
         labCol18.setFont(new java.awt.Font("Formula1 Display Bold", 0, 14)); // NOI18N
         labCol18.setForeground(new java.awt.Color(255, 255, 255));
@@ -2953,14 +2960,6 @@ public class LiveTiming extends javax.swing.JFrame {
         labBox18.setPreferredSize(new java.awt.Dimension(50, 17));
         panel18.add(labBox18);
 
-        labPen18.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
-        labPen18.setForeground(new java.awt.Color(255, 255, 255));
-        labPen18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labPen18.setMaximumSize(new java.awt.Dimension(40, 17));
-        labPen18.setMinimumSize(new java.awt.Dimension(20, 17));
-        labPen18.setPreferredSize(new java.awt.Dimension(50, 17));
-        panel18.add(labPen18);
-
         panelTiming.add(panel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 502, 1210, 27));
 
         panel19.setBackground(new java.awt.Color(19, 19, 19));
@@ -2973,6 +2972,14 @@ public class LiveTiming extends javax.swing.JFrame {
         labPos19.setMinimumSize(new java.awt.Dimension(20, 17));
         labPos19.setPreferredSize(new java.awt.Dimension(20, 17));
         panel19.add(labPos19);
+
+        labPen19.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        labPen19.setForeground(new java.awt.Color(255, 255, 255));
+        labPen19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labPen19.setMaximumSize(new java.awt.Dimension(40, 18));
+        labPen19.setMinimumSize(new java.awt.Dimension(20, 17));
+        labPen19.setPreferredSize(new java.awt.Dimension(50, 17));
+        panel19.add(labPen19);
 
         labCol19.setFont(new java.awt.Font("Formula1 Display Bold", 0, 14)); // NOI18N
         labCol19.setForeground(new java.awt.Color(255, 255, 255));
@@ -3078,14 +3085,6 @@ public class LiveTiming extends javax.swing.JFrame {
         labBox19.setPreferredSize(new java.awt.Dimension(50, 17));
         panel19.add(labBox19);
 
-        labPen19.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
-        labPen19.setForeground(new java.awt.Color(255, 255, 255));
-        labPen19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labPen19.setMaximumSize(new java.awt.Dimension(40, 17));
-        labPen19.setMinimumSize(new java.awt.Dimension(20, 17));
-        labPen19.setPreferredSize(new java.awt.Dimension(50, 17));
-        panel19.add(labPen19);
-
         panelTiming.add(panel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 529, 1210, 27));
 
         panel20.setBackground(new java.awt.Color(25, 25, 25));
@@ -3098,6 +3097,14 @@ public class LiveTiming extends javax.swing.JFrame {
         labPos20.setMinimumSize(new java.awt.Dimension(20, 17));
         labPos20.setPreferredSize(new java.awt.Dimension(20, 17));
         panel20.add(labPos20);
+
+        labPen20.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        labPen20.setForeground(new java.awt.Color(255, 255, 255));
+        labPen20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labPen20.setMaximumSize(new java.awt.Dimension(40, 18));
+        labPen20.setMinimumSize(new java.awt.Dimension(20, 17));
+        labPen20.setPreferredSize(new java.awt.Dimension(50, 25));
+        panel20.add(labPen20);
 
         labCol20.setFont(new java.awt.Font("Formula1 Display Bold", 0, 14)); // NOI18N
         labCol20.setForeground(new java.awt.Color(255, 255, 255));
@@ -3202,14 +3209,6 @@ public class LiveTiming extends javax.swing.JFrame {
         labBox20.setMinimumSize(new java.awt.Dimension(20, 17));
         labBox20.setPreferredSize(new java.awt.Dimension(50, 17));
         panel20.add(labBox20);
-
-        labPen20.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
-        labPen20.setForeground(new java.awt.Color(255, 255, 255));
-        labPen20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labPen20.setMaximumSize(new java.awt.Dimension(40, 17));
-        labPen20.setMinimumSize(new java.awt.Dimension(20, 17));
-        labPen20.setPreferredSize(new java.awt.Dimension(50, 17));
-        panel20.add(labPen20);
 
         panelTiming.add(panel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 556, 1210, 27));
 

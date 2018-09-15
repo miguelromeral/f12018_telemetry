@@ -405,6 +405,6 @@ public class CarStatusData {
         if(!race){
             return fuelInTank / stimated;
         }
-        return (fuelInTank / stimated) - ((float) laps + (distanceCovered / distance));
+        return (fuelInTank / stimated) - (float) laps + (distanceCovered / distance);
     }
 }

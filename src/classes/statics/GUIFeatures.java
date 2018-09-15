@@ -98,6 +98,43 @@ public class GUIFeatures {
         }
     }
     
+    
+    public static void setConstructorImage(JLabel label, int sh, int sv, int track) {
+        try {
+            label.setText("");
+            String con = null;
+            switch(track){
+                case 0: con =  "mercedes"; break;
+                case 1: con =  "ferrari";break;
+                case 2: con =  "redbull";break;
+                case 3: con =  "williams";break;
+                case 4: con =  "forceindia";break;
+                case 5: con =  "renault";break;
+                case 6: con =  "tororosso";break;
+                case 7: con =  "haas";break;
+                case 8: con =  "mclaren";break;
+                case 9: con =  "sauber";break;
+                
+                case 10: case 11: case 12: 
+                case 13: case 14: case 15: 
+                     con = "c2"; break;
+            
+                case 16: case 17: case 18:
+                case 19: case 20: case 21: 
+                case 38: case 39:
+                     con = "c1"; break;
+                
+                case 22: case 34: case 35:
+                case 36: case 37: case 40:
+                     con = "c3"; break;
+            }
+            if(con != null){
+                setImageIcon(label, sh, sv, "shields/"+con);
+            }
+        } catch (Exception e) {
+        }
+    }
+    
     public static Color getColorByTeam(int team){
         switch(team){
             case 0: return new Color(0, 210, 190);// Mercedes
@@ -110,6 +147,33 @@ public class GUIFeatures {
             case 7: return new Color(130, 130, 130);// Haas
             case 8: return new Color(255, 135, 0); // McLaren
             case 9: return new Color(155, 0, 0);// Sauber
+            
+            // Clase 2
+            case 10: return new Color(107, 132, 136); //  McLaren '88  
+            case 11: return new Color(107, 132, 136); //  McLaren '91  
+            case 12: return new Color(107, 132, 136); //  Williams '92  
+            case 13: return new Color(107, 132, 136); //  Ferrari '95  
+            case 14: return new Color(107, 132, 136); //  Williams '96  
+            case 15: return new Color(107, 132, 136); //  McLaren '98  
+            
+            // Clase 1
+            case 16: return new Color(45, 72, 65); //  Ferrari 2002  
+            case 17: return new Color(45, 72, 65); //  Ferarri 2004  
+            case 18: return new Color(45, 72, 65); //  Renault 2006  
+            case 19: return new Color(45, 72, 65); //  Ferrari 2007  
+            case 20: return new Color(45, 72, 65); //  McLaren 2008  
+            case 21: return new Color(45, 72, 65); //  RedBull 2010  
+            case 38: return new Color(45, 72, 65); //  Williams 2003  
+            case 39: return new Color(45, 72, 65); //  Brawn GP 2009  
+                
+            // Clase 3
+            case 22: return Color.white; //  Ferarri '76  
+            case 34: return Color.white; //  McLaren '76  
+            case 35: return Color.white; //  Lotus '72  
+            case 36: return Color.white; //  Ferrari '79  
+            case 37: return Color.white; //  McLaren '82  
+            case 40: return Color.white; //  Lotus '78  
+            
             default: return Color.white;
         }
     }

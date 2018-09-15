@@ -14,7 +14,9 @@ import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import static java.lang.Thread.sleep;
+import java.util.ArrayList;
 import javax.imageio.ImageIO;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.SwingUtilities;
@@ -30,12 +32,14 @@ public class CarStatus_Thread extends Thread{
     Driver driver;
     CarStatus view;
     Paso paso;
+    boolean toContinue;
     
     public CarStatus_Thread(Controller controller, CarStatus view){
         this.controller = controller;
         this.view = view;
         paso = new Paso();
         controller.addPaso(paso);
+        toContinue = true;
     }
     
     public void setDriver(Driver d){
@@ -430,17 +434,22 @@ public class CarStatus_Thread extends Thread{
             view.lab_steer.setText("0%");
         }
     }
+     
+    public void endThread(){
+        toContinue = false;
+    }
     
     public void run(){
-        while (true)
+        while (toContinue)
         {
             paso.mirar();
+            
             
             Driver d = driver;
             PacketSessionData data = controller.session.data;
             CarStatusData car = (d == null ? null : d.carStatus);
             CarTelemetryData tel = (d == null ? null : d.carTelemetry);
-            
+
             setPanelRevsLight(tel);
             setPanelPedals(tel);
             setPanelSteer(tel);
@@ -455,7 +464,7 @@ public class CarStatus_Thread extends Thread{
             setTyreSurfaceTemperature(tel);
             setTyreInnerTemperature(tel);
             setTyrePressure(tel);
-                
+
             paso.cerrar();
             
         }

@@ -239,6 +239,12 @@ public class LiveTiming_Driver_Thread extends Thread{
         }
     }
     
+    private void printShieldImage(Driver d){
+        if(d != null && d.participant != null){
+            GUIFeatures.setConstructorImage(labs[14], labs[14].getHeight(), labs[14].getHeight(), d.participant.teamId);
+        }
+    }
+    
     private void printColorNameOnTrack(Driver d){
         if(d != null && d.lap != null){
             if(d.lap.pitStatus == 0){
@@ -362,6 +368,7 @@ public class LiveTiming_Driver_Thread extends Thread{
             printLapNumberData(d);
 
             printTyreImage(d, data);
+            printShieldImage(d);
             
             
             printDelta(d);

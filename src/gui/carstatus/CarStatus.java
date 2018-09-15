@@ -13,6 +13,7 @@ import java.awt.*;
 import java.awt.geom.Arc2D;
 import java.awt.geom.Area;
 import java.awt.geom.Ellipse2D;
+import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.plaf.basic.BasicProgressBarUI;
 
@@ -29,8 +30,10 @@ public class CarStatus extends javax.swing.JFrame {
         thread = new CarStatus_Thread(controller, this);
         thread.start();
         
+        
+        ArrayList<String> driversNames = controller.session.getAllNameParticipants();
         DefaultComboBoxModel dcbm = new DefaultComboBoxModel();
-        for(String p : controller.session.getAllNameParticipants()){
+        for(String p : driversNames){
             dcbm.addElement(p);
         }
         combo_driver.setModel(dcbm);
