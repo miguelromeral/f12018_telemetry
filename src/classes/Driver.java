@@ -26,7 +26,13 @@ public class Driver {
     public CarMotionData carMotion;
     public LapData lap;
     public HashMap<Integer, Float> previousLaps;
-    public HashMap<Integer, Long> miniSectors;
+    // #LAP --> (lapDistance / X , Time)
+    public HashMap<Integer, HashMap<Integer, Long>> miniSectors;
+    // #STINT --> (lapInit , Tyre)
+    public ArrayList<HashMap<Integer, Short>> stints;
+    public int lastPitStopLap;
+    public static int MINISECTOR_GAP = 100;
+    
     public HashMap<Integer, Float> fuelUsed;
     public Session session;
     
@@ -43,10 +49,56 @@ public class Driver {
         initializeSectores();
     }
     
-    public void setPreviousGapTimes(float distance){
-        int index = (int) (distance / 250);
-        if(miniSectors.get(index) == null){
-            miniSectors.put(index, System.currentTimeMillis());
+    public void setStint(){
+        if(lap != null && carStatus != null){
+            if(lap.currentLapNum == 1){
+                if(stints.isEmpty()){
+                    HashMap<Integer, Short> st = new HashMap<>();
+                    stints.add(st);
+                    st.put(0, carStatus.tyreCompound);
+                }
+            }else{
+                if(lap.driverStatus == 3 && lap.pitStatus == 1 && lap.currentLapNum != lastPitStopLap){
+                    HashMap<Integer, Short> st = new HashMap<>();
+                    stints.add(st);
+                    st.put(lap.currentLapNum - 1, carStatus.tyreCompound);
+                    lastPitStopLap = lap.currentLapNum;
+                }
+            }
+        }
+        
+        
+        if (participant.aiControlled == 0){
+            System.out.println("-------------");
+            System.out.println("Stints:");
+            
+            for(int i = 0; i<stints.size(); i++){
+                HashMap<Integer, Short> st = stints.get(i);
+                
+                System.out.println("    "+(i));
+                for(Integer key : st.keySet()) {
+                    System.out.println("        Lap: "+key);
+                    System.out.println("        Compound: "+st.get(key));
+                }
+            }
+        }
+    }
+    
+    public void setPreviousGapTimes(float lapDistance, int lapNum){
+        if(lapDistance > 0f || lapNum > 0){
+            
+            if(miniSectors.get(lapNum) == null){
+                HashMap<Integer, Long> newLap = new HashMap<>();
+                newLap.put(0, System.currentTimeMillis());
+                miniSectors.put(lapNum, newLap);
+            }else{
+                int index = (int) (lapDistance / MINISECTOR_GAP);
+                
+                if(miniSectors.get(lapNum).get(index) == null){
+                    miniSectors.get(lapNum).put(index, System.currentTimeMillis());
+                }
+            }
+            
         }
     }
     
@@ -64,18 +116,6 @@ public class Driver {
         }
     }
     
-    /**
-     * Get how much +/- laps the fuel remain.
-     * @return 
-     */
-    public float getExcessFuelUsed(){
-        if(fuelUsed != null && !fuelUsed.isEmpty()){
-            float min = fuelUsed.get(0);
-            
-        }
-        return 0f;
-    }
-    
     public void initializeSectores(){
         bestS1 = Float.POSITIVE_INFINITY;
         bestS2 = Float.POSITIVE_INFINITY;
@@ -85,6 +125,7 @@ public class Driver {
         lastS3 = Float.POSITIVE_INFINITY;
         previousLaps = new HashMap<>();
         miniSectors = new HashMap<>();
+        stints = new ArrayList<>();
         fuelUsed = new HashMap<>();
     }
     
@@ -123,7 +164,8 @@ public class Driver {
     public void setNewLap(LapData newLap){
         lap = newLap;
         
-        setPreviousGapTimes(lap.totalDistance);
+        setPreviousGapTimes(lap.lapDistance, lap.currentLapNum);
+        setStint();
         setFuelUsed();
         if(lap.getSector() != 1 && lap.sector1Time != 0f){
             lastS1 = lap.sector1Time;

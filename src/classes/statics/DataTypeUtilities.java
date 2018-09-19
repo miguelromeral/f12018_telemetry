@@ -46,16 +46,6 @@ public abstract class DataTypeUtilities {
         return i;
     }
     
-    public static int getSameLastMiniSector(Driver f, Driver s){
-        ArrayList<Integer> ks = new ArrayList<>(s.miniSectors.keySet());
-        Collections.reverse(ks);
-        for(int ind : ks){
-            if (f.miniSectors.get(ind) != null){
-                return ind;
-            }
-        }
-        return -1;
-    }
     
     public static float getDeltaBetween(Session session, int first, int second){
         Driver f = session.getDriverByPosition(first);
@@ -63,26 +53,34 @@ public abstract class DataTypeUtilities {
         
         if(f != null && s != null && f.lap != null && s.lap != null){
             int lapf = f.lap.currentLapNum;
+            float distancef = f.lap.lapDistance;
             int laps = s.lap.currentLapNum;
+            float distances = s.lap.lapDistance;
             
             
-            if(lapf == laps || lapf == laps + 1){
+            if (lapf == laps || (lapf == laps + 1 && distancef < distances)){
+            
+                
                 
                 if(!f.miniSectors.isEmpty() && !s.miniSectors.isEmpty()){
                     
-                    int index = getSameLastMiniSector(f, s);
+                    
+                    // Last one of the seconds, is the slowest
+                    int index = (int) distances / Driver.MINISECTOR_GAP;
 
-                    if (index != -1) {
-                        long timef = f.miniSectors.get(index);
-                        long times = s.miniSectors.get(index);
-                        
-                        
-                        long diff = times - timef;
-
-                        return (float) (diff / 1000f);
-                    } else {
+                    // We get the CURRENT LAP of SECOND, is the last.
+                    if(f.miniSectors.get(laps) == null || f.miniSectors.get(laps).get(index) == null){
                         return Float.POSITIVE_INFINITY;
                     }
+                    
+                    long timef = f.miniSectors.get(laps).get(index);
+                    long times = s.miniSectors.get(laps).get(index);
+                    
+
+                    long diff = times - timef;
+
+                    return (float) (diff / 1000f);
+                    
                         
                 } else {
                     return Float.POSITIVE_INFINITY;
@@ -90,7 +88,7 @@ public abstract class DataTypeUtilities {
                 
                 
             }else{
-                return 5000f + (lapf - laps - 1);
+                return 5000f + (lapf - laps);
             }
             
         }else{

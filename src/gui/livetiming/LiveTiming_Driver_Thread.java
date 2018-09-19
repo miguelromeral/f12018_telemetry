@@ -5,6 +5,7 @@ import packets.session.PacketSessionData;
 import classes.statics.DataTypeUtilities;
 import classes.Driver;
 import classes.Paso;
+import classes.Session;
 import classes.statics.GUIFeatures;
 import java.awt.Color;
 import javax.swing.JLabel;
@@ -316,7 +317,7 @@ public class LiveTiming_Driver_Thread extends Thread{
                         break;
                     case 6: labs[4].setText("OUT");
                         break;
-                    default: labs[4].setText("Default");
+                    default: labs[4].setText("");
                 }
             
         }else{
@@ -348,6 +349,15 @@ public class LiveTiming_Driver_Thread extends Thread{
         }
     }
     
+    private void printPitStatus(Driver d){
+        if(d != null && d.lap != null){
+            labs[13].setText(d.lap.getPitStatus());
+            labs[13].setForeground(Color.red);
+        }else{
+            labs[13].setText("");
+        }
+    }
+    
     public void run(){
         while(keep){
             paso.mirar();
@@ -373,13 +383,8 @@ public class LiveTiming_Driver_Thread extends Thread{
             
             printDelta(d);
             
-            if(d != null && d.lap != null){
-                
-                labs[13].setText(d.lap.getPitStatus());
-                
-                //labs[14].setText(driver.lap.penalties+"");
-
-            }
+            printPitStatus(d);
+            
             
             
             paso.cerrar();

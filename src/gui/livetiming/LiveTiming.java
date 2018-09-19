@@ -106,8 +106,8 @@ public class LiveTiming extends javax.swing.JFrame {
         panel0 = new javax.swing.JPanel();
         labPos0 = new javax.swing.JLabel();
         labCol0 = new javax.swing.JLabel();
-        labNum = new javax.swing.JLabel();
         labPen0 = new javax.swing.JLabel();
+        labNum = new javax.swing.JLabel();
         labName0 = new javax.swing.JLabel();
         labTime0 = new javax.swing.JLabel();
         labS10 = new javax.swing.JLabel();
@@ -608,6 +608,13 @@ public class LiveTiming extends javax.swing.JFrame {
         labCol0.setPreferredSize(new java.awt.Dimension(50, 17));
         panel0.add(labCol0);
 
+        labPen0.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        labPen0.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labPen0.setMaximumSize(new java.awt.Dimension(40, 17));
+        labPen0.setMinimumSize(new java.awt.Dimension(20, 17));
+        labPen0.setPreferredSize(new java.awt.Dimension(50, 17));
+        panel0.add(labPen0);
+
         labNum.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         labNum.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labNum.setText("#");
@@ -615,13 +622,6 @@ public class LiveTiming extends javax.swing.JFrame {
         labNum.setMinimumSize(new java.awt.Dimension(20, 17));
         labNum.setPreferredSize(new java.awt.Dimension(50, 17));
         panel0.add(labNum);
-
-        labPen0.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        labPen0.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labPen0.setMaximumSize(new java.awt.Dimension(40, 17));
-        labPen0.setMinimumSize(new java.awt.Dimension(20, 17));
-        labPen0.setPreferredSize(new java.awt.Dimension(50, 17));
-        panel0.add(labPen0);
 
         labName0.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         labName0.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
