@@ -259,28 +259,76 @@ public class LiveTiming_Driver_Thread extends Thread{
     private void printDelta(Driver d){
         // Aquí hacer la distincion entre qué delta queremos mostrar.
         if(d != null && d.lap != null){
+            
+            String option = tcontroller.getDeltaData();
+            
             if(tcontroller.controller.session.data.sessionType == 10 ||
                     tcontroller.controller.session.data.sessionType == 11){
-                switch(0){
-                    case 0: // Delta to 1st.
+                if(option.equals(LiveTiming.DELTA_1ST)){
                         labs[8].setText(" "+
                                 DataTypeUtilities.getFormattedDelta(
                                 DataTypeUtilities.getDeltaBetween(tcontroller.controller.session, 1, d.lap.carPosition)));
-                        break;
-                    case 1: // Delta to next.
-                        break;
-                    default:
+                }else if(option.equals(LiveTiming.DELTA_USER)){
+                    
+                        Driver user = tcontroller.controller.session.getUserDriver();
+                        if(user != null &&
+                                //!user.equals(d) &&
+                                user.lap != null){
+                            
+                            int userpos = user.lap.carPosition;
+                            int mypos = d.lap.carPosition;
+                            int max = Math.max(userpos, mypos);
+                            int min = Math.min(userpos, mypos);
+                            labs[8].setText(" "+
+                                    DataTypeUtilities.getFormattedDelta(
+                                    DataTypeUtilities.getDeltaBetween(tcontroller.controller.session, min, max)));
+                        }
+                }else if(option.equals(LiveTiming.DELTA_NEXT)){
+                    
+                    
+                        int mypos = d.lap.carPosition;
+                        if(mypos == 1){
+                            labs[8].setText(" "+
+                                    DataTypeUtilities.getFormattedDelta(
+                                    DataTypeUtilities.getDeltaBetween(tcontroller.controller.session, 1, 1)));
+                        }else{
+                            labs[8].setText(" "+
+                                    DataTypeUtilities.getFormattedDelta(
+                                    DataTypeUtilities.getDeltaBetween(tcontroller.controller.session, mypos - 1, mypos)));
+                        }
+                }else{
                         labs[8].setText("");
                 }
             }else{
-                switch(0){
-                    case 0: // Delta to 1st.
+                if(option.equals(LiveTiming.DELTA_1ST)){
                         labs[8].setText(DataTypeUtilities.getFormattedDeltaQualifying(
                                 DataTypeUtilities.getDeltaQualifying(tcontroller.controller.session, 1, d.lap.carPosition)));
-                        break;
-                    case 1: // Delta to next.
-                        break;
-                    default:
+                }else if(option.equals(LiveTiming.DELTA_USER)){
+                        Driver user = tcontroller.controller.session.getUserDriver();
+                        if(user != null &&
+                                //!user.equals(d) &&
+                                user.lap != null){
+                            
+                            int userpos = user.lap.carPosition;
+                            int mypos = d.lap.carPosition;
+                            int max = Math.max(userpos, mypos);
+                            int min = Math.min(userpos, mypos);
+                            labs[8].setText(" "+
+                                    DataTypeUtilities.getFormattedDeltaQualifying(
+                                    DataTypeUtilities.getDeltaQualifying(tcontroller.controller.session, min, max)));
+                        }
+                }else if(option.equals(LiveTiming.DELTA_NEXT)){
+                        int mypos = d.lap.carPosition;
+                        if(mypos == 1){
+                            labs[8].setText(" "+
+                                    DataTypeUtilities.getFormattedDeltaQualifying(
+                                    DataTypeUtilities.getDeltaQualifying(tcontroller.controller.session, 1, 1)));
+                        }else{
+                            labs[8].setText(" "+
+                                    DataTypeUtilities.getFormattedDeltaQualifying(
+                                    DataTypeUtilities.getDeltaQualifying(tcontroller.controller.session, mypos - 1, mypos)));
+                        }
+                }else{
                         labs[8].setText("");
                 }
             }
@@ -327,20 +375,17 @@ public class LiveTiming_Driver_Thread extends Thread{
     
     private void printSectorTimes(Driver d){
         if(d != null && d.lap.resultStatus != 6){
-            switch(tcontroller.getOptionData()){
-                case "Latest": 
-                    printLastSector1Data(d);
-                    printLastSector2Data(d);
-                    printLastSector3Data(d);
-                    break;
-                case "Current":
-                    printCurrentSector1Data(d);
-                    printCurrentSector2Data(d);
-                    printCurrentSector3Data(d);
-                    break;
-                case "Personal Best":
-                    printPersonalBest(d);
-                    break;
+            String option = tcontroller.getOptionData();
+            if (option.equals(LiveTiming.LATEST)){
+                printLastSector1Data(d);
+                printLastSector2Data(d);
+                printLastSector3Data(d);
+            } else if (option.equals(LiveTiming.CURRENT)){
+                printCurrentSector1Data(d);
+                printCurrentSector2Data(d);
+                printCurrentSector3Data(d);
+            } else if (option.equals(LiveTiming.BEST)){
+                printPersonalBest(d);
             }
         }else{
             labs[5].setText("");

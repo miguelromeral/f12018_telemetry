@@ -1,6 +1,7 @@
 package gui.livetiming;
 
 import classes.Controller;
+import javax.swing.ButtonGroup;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -10,7 +11,19 @@ import javax.swing.JPanel;
  */
 public class LiveTiming extends javax.swing.JFrame {
 
+    public static String LATEST = "LATEST";
+    public static String CURRENT = "CURRENT";
+    public static String BEST = "BEST";
+    public static String DELTA_1ST = "1ST";
+    public static String DELTA_NEXT = "NEXT";
+    public static String DELTA_USER = "USER";
+    
     LiveTiming_Thread thread;
+    String sectorsOption = LATEST;
+    String deltaOption = DELTA_1ST;
+    ButtonGroup groupOptions;
+    ButtonGroup deltaOptions;
+    
     
     JLabel[][] labels;
     
@@ -19,7 +32,15 @@ public class LiveTiming extends javax.swing.JFrame {
         thread = new LiveTiming_Thread(controller, this);
         thread.start();
         
-        //GUIFeatures.getTyreImage(labTyre1, labTyre1.getHeight(), 8);
+        
+        groupOptions = new ButtonGroup();
+        groupOptions.add(rbViewBest);
+        groupOptions.add(rbViewCurrent);
+        groupOptions.add(rbViewLatest);
+        deltaOptions = new ButtonGroup();
+        deltaOptions.add(rbGap1st);
+        deltaOptions.add(rbGapNext);
+        deltaOptions.add(rbGapUser);
         
         setPanels();
     }
@@ -76,9 +97,6 @@ public class LiveTiming extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel4 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         panelSession = new javax.swing.JPanel();
         lab_weather = new javax.swing.JLabel();
@@ -101,7 +119,6 @@ public class LiveTiming extends javax.swing.JFrame {
         space6 = new javax.swing.JLabel();
         lab_remaining = new javax.swing.JLabel();
         space7 = new javax.swing.JLabel();
-        combo_data = new javax.swing.JComboBox<>();
         panelTiming = new javax.swing.JPanel();
         panel0 = new javax.swing.JPanel();
         labPos0 = new javax.swing.JLabel();
@@ -439,12 +456,15 @@ public class LiveTiming extends javax.swing.JFrame {
         labLap20 = new javax.swing.JLabel();
         labTyre20 = new javax.swing.JLabel();
         labBox20 = new javax.swing.JLabel();
-
-        jLabel4.setText("jLabel4");
-
-        jLabel6.setText("jLabel6");
-
-        jTextField1.setText("jTextField1");
+        jMenuBar1 = new javax.swing.JMenuBar();
+        manuView = new javax.swing.JMenu();
+        rbViewLatest = new javax.swing.JRadioButtonMenuItem();
+        rbViewCurrent = new javax.swing.JRadioButtonMenuItem();
+        rbViewBest = new javax.swing.JRadioButtonMenuItem();
+        menuGap = new javax.swing.JMenu();
+        rbGap1st = new javax.swing.JRadioButtonMenuItem();
+        rbGapNext = new javax.swing.JRadioButtonMenuItem();
+        rbGapUser = new javax.swing.JRadioButtonMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Live Timing");
@@ -578,12 +598,6 @@ public class LiveTiming extends javax.swing.JFrame {
         space7.setMinimumSize(new java.awt.Dimension(50, 0));
         space7.setPreferredSize(new java.awt.Dimension(10, 0));
         panelSession.add(space7);
-
-        combo_data.setBackground(new java.awt.Color(153, 0, 0));
-        combo_data.setFont(new java.awt.Font("Formula1 Display Wide", 0, 12)); // NOI18N
-        combo_data.setForeground(new java.awt.Color(255, 255, 255));
-        combo_data.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Latest", "Current", "Personal Best" }));
-        panelSession.add(combo_data);
 
         panelTiming.setBackground(new java.awt.Color(19, 19, 19));
         panelTiming.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Timing", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(204, 204, 204))); // NOI18N
@@ -3233,6 +3247,84 @@ public class LiveTiming extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jMenuBar1.setBackground(new java.awt.Color(102, 102, 102));
+
+        manuView.setForeground(new java.awt.Color(255, 255, 255));
+        manuView.setText("Sectors Time");
+        manuView.setFont(new java.awt.Font("Formula1 Display Regular", 0, 12)); // NOI18N
+
+        rbViewLatest.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
+        rbViewLatest.setFont(new java.awt.Font("Formula1 Display Regular", 0, 12)); // NOI18N
+        rbViewLatest.setSelected(true);
+        rbViewLatest.setText("Latest");
+        rbViewLatest.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbViewLatestActionPerformed(evt);
+            }
+        });
+        manuView.add(rbViewLatest);
+
+        rbViewCurrent.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
+        rbViewCurrent.setFont(new java.awt.Font("Formula1 Display Regular", 0, 12)); // NOI18N
+        rbViewCurrent.setText("Current");
+        rbViewCurrent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbViewCurrentActionPerformed(evt);
+            }
+        });
+        manuView.add(rbViewCurrent);
+
+        rbViewBest.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_D, java.awt.event.InputEvent.CTRL_MASK));
+        rbViewBest.setFont(new java.awt.Font("Formula1 Display Regular", 0, 12)); // NOI18N
+        rbViewBest.setText("Best");
+        rbViewBest.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbViewBestActionPerformed(evt);
+            }
+        });
+        manuView.add(rbViewBest);
+
+        jMenuBar1.add(manuView);
+
+        menuGap.setForeground(new java.awt.Color(255, 255, 255));
+        menuGap.setText("Delta");
+        menuGap.setFont(new java.awt.Font("Formula1 Display Regular", 0, 12)); // NOI18N
+
+        rbGap1st.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Z, java.awt.event.InputEvent.CTRL_MASK));
+        rbGap1st.setFont(new java.awt.Font("Formula1 Display Regular", 0, 12)); // NOI18N
+        rbGap1st.setSelected(true);
+        rbGap1st.setText("To 1st");
+        rbGap1st.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbGap1stActionPerformed(evt);
+            }
+        });
+        menuGap.add(rbGap1st);
+
+        rbGapNext.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_X, java.awt.event.InputEvent.CTRL_MASK));
+        rbGapNext.setFont(new java.awt.Font("Formula1 Display Regular", 0, 12)); // NOI18N
+        rbGapNext.setText("To next");
+        rbGapNext.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbGapNextActionPerformed(evt);
+            }
+        });
+        menuGap.add(rbGapNext);
+
+        rbGapUser.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
+        rbGapUser.setFont(new java.awt.Font("Formula1 Display Regular", 0, 12)); // NOI18N
+        rbGapUser.setText("User Delta");
+        rbGapUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbGapUserActionPerformed(evt);
+            }
+        });
+        menuGap.add(rbGapUser);
+
+        jMenuBar1.add(menuGap);
+
+        setJMenuBar(jMenuBar1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -3258,15 +3350,42 @@ public class LiveTiming extends javax.swing.JFrame {
         thread.killOtherThreads();
     }//GEN-LAST:event_formWindowClosing
 
+    private void rbViewLatestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbViewLatestActionPerformed
+        sectorsOption = LATEST;
+        thread.paso.abrir();
+    }//GEN-LAST:event_rbViewLatestActionPerformed
+
+    private void rbViewCurrentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbViewCurrentActionPerformed
+        sectorsOption = CURRENT;
+        thread.paso.abrir();
+    }//GEN-LAST:event_rbViewCurrentActionPerformed
+
+    private void rbViewBestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbViewBestActionPerformed
+        sectorsOption = BEST;
+        thread.paso.abrir();
+    }//GEN-LAST:event_rbViewBestActionPerformed
+
+    private void rbGap1stActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbGap1stActionPerformed
+        deltaOption = DELTA_1ST;
+        thread.paso.abrir();
+    }//GEN-LAST:event_rbGap1stActionPerformed
+
+    private void rbGapNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbGapNextActionPerformed
+        deltaOption = DELTA_NEXT;
+        thread.paso.abrir();
+    }//GEN-LAST:event_rbGapNextActionPerformed
+
+    private void rbGapUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbGapUserActionPerformed
+        deltaOption = DELTA_USER;
+        thread.paso.abrir();
+    }//GEN-LAST:event_rbGapUserActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JComboBox<String> combo_data;
     public javax.swing.JLabel jLabel12;
     public javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel6;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel labBest0;
     private javax.swing.JLabel labBest1;
     private javax.swing.JLabel labBest10;
@@ -3591,6 +3710,8 @@ public class LiveTiming extends javax.swing.JFrame {
     public javax.swing.JLabel lab_trackTemperature;
     public javax.swing.JLabel lab_weather;
     public javax.swing.JLabel lab_weather_text;
+    private javax.swing.JMenu manuView;
+    private javax.swing.JMenu menuGap;
     private javax.swing.JPanel panel0;
     private javax.swing.JPanel panel1;
     private javax.swing.JPanel panel10;
@@ -3614,6 +3735,12 @@ public class LiveTiming extends javax.swing.JFrame {
     private javax.swing.JPanel panel9;
     private javax.swing.JPanel panelSession;
     public javax.swing.JPanel panelTiming;
+    private javax.swing.JRadioButtonMenuItem rbGap1st;
+    private javax.swing.JRadioButtonMenuItem rbGapNext;
+    private javax.swing.JRadioButtonMenuItem rbGapUser;
+    private javax.swing.JRadioButtonMenuItem rbViewBest;
+    private javax.swing.JRadioButtonMenuItem rbViewCurrent;
+    private javax.swing.JRadioButtonMenuItem rbViewLatest;
     private javax.swing.JLabel space;
     private javax.swing.JLabel space1;
     private javax.swing.JLabel space2;

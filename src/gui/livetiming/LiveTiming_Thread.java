@@ -64,7 +64,11 @@ public class LiveTiming_Thread extends Thread{
     }
     
     public String getOptionData(){
-        return (String) view.combo_data.getSelectedItem();
+        return view.sectorsOption;
+    }
+    
+    public String getDeltaData(){
+        return view.deltaOption;
     }
     
     private void printBestSectors(){

@@ -56,8 +56,16 @@ public class Driver {
                     HashMap<Integer, Short> st = new HashMap<>();
                     stints.add(st);
                     st.put(0, carStatus.tyreCompound);
+                    lastPitStopLap = 1;
                 }
             }else{
+                if(stints.isEmpty()){
+                    HashMap<Integer, Short> st = new HashMap<>();
+                    stints.add(st);
+                    st.put((int) lap.currentLapNum, carStatus.tyreCompound);
+                    lastPitStopLap = lap.currentLapNum;
+                }
+                
                 if(lap.driverStatus == 3 && lap.pitStatus == 1 && lap.currentLapNum != lastPitStopLap){
                     HashMap<Integer, Short> st = new HashMap<>();
                     stints.add(st);
@@ -66,7 +74,7 @@ public class Driver {
                 }
             }
         }
-        
+        /*
         
         if (participant.aiControlled == 0){
             System.out.println("-------------");
@@ -81,7 +89,29 @@ public class Driver {
                     System.out.println("        Compound: "+st.get(key));
                 }
             }
+        }*/
+    }
+    
+    public int getTyreAges(int stint, int currentLap){
+        if(stints.isEmpty() || stint > stints.size()){
+            return -1;
         }
+        HashMap<Integer, Short> mystint = stints.get(stint);
+        int initlap = 0;
+        int lastlap = 0;
+        for (int key : mystint.keySet()) {
+            initlap = key;
+        }
+        // This stint is not the last one.
+        if(stint + 1 < stints.size()){
+            HashMap<Integer, Short> next = stints.get(stint + 1);
+            for (int key : next.keySet()) {
+                lastlap = key;
+            }
+            return lastlap - initlap;
+        }
+        // This is the last stint
+        return currentLap - initlap;
     }
     
     public void setPreviousGapTimes(float lapDistance, int lapNum){
