@@ -1270,5 +1270,7 @@ class MyItemListener implements ItemListener {
         if (evt.getStateChange() == ItemEvent.SELECTED) {
             thread.setDriver(thread.controller.session.getDriverByName(item));
         }
+        
+        thread.paso.abrir();
     }
 }

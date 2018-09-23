@@ -66,7 +66,7 @@ public class Driver {
                     lastPitStopLap = lap.currentLapNum;
                 }
                 
-                if(lap.driverStatus == 3 && lap.pitStatus == 1 && lap.currentLapNum != lastPitStopLap){
+                if(lap.driverStatus == 3 && lap.pitStatus == 0 && lap.currentLapNum != lastPitStopLap){
                     HashMap<Integer, Short> st = new HashMap<>();
                     stints.add(st);
                     st.put(lap.currentLapNum - 1, carStatus.tyreCompound);
@@ -74,7 +74,6 @@ public class Driver {
                 }
             }
         }
-        /*
         
         if (participant.aiControlled == 0){
             System.out.println("-------------");
@@ -89,7 +88,7 @@ public class Driver {
                     System.out.println("        Compound: "+st.get(key));
                 }
             }
-        }*/
+        }
     }
     
     public int getTyreAges(int stint, int currentLap){

@@ -21,7 +21,7 @@ public class Stints extends javax.swing.JFrame {
     
     public Stints(Controller controller) {
         initComponents();
-        
+        /*
         boolean race = false;
         if(controller.session.data != null){
             int type = controller.session.data.sessionType;
@@ -35,40 +35,40 @@ public class Stints extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "You must be on a race to see the tyres usage.", "Not a race detected", 
                         JOptionPane.WARNING_MESSAGE);
             return;
-        }else{
+        }else{*/
             thread = new Stints_Thread(controller, this);
             thread.start();
 
             setPanels();
-        }
+       // }
     }
     
     private void setPanels(){
         labels = new JLabel[20][15];
-        setOnePanel(labels[0], labPos1, labCol1, labNum1, labName1, lab_1_stint_1, lab_1_stint_2, lab_1_stint_3, lab_1_stint_4, lab_1_stint_5, lab_1_stint_6, lab_1_stint_7, lab_1_stint_8, labPen1);
-        setOnePanel(labels[1], labPos2, labCol2, labNum2, labName2, lab_2_stint_1, lab_2_stint_2, lab_2_stint_3, lab_2_stint_4, lab_2_stint_5, lab_2_stint_6, lab_2_stint_7, lab_2_stint_8, labPen2);
-        setOnePanel(labels[2], labPos3, labCol3, labNum3, labName3, lab_3_stint_1, lab_3_stint_2, lab_3_stint_3, lab_3_stint_4, lab_3_stint_5, lab_3_stint_6, lab_3_stint_7, lab_3_stint_8,  labPen3);
-        setOnePanel(labels[3], labPos4, labCol4, labNum4, labName4, lab_4_stint_1, lab_4_stint_2, lab_4_stint_3, lab_4_stint_4, lab_4_stint_5, lab_4_stint_6, lab_4_stint_7, lab_4_stint_8, labPen4);
-        setOnePanel(labels[4], labPos5, labCol5, labNum5, labName5, lab_5_stint_1, lab_5_stint_2, lab_5_stint_3, lab_5_stint_4, lab_5_stint_5, lab_5_stint_6, lab_5_stint_7, lab_5_stint_8,  labPen5);
-        setOnePanel(labels[5], labPos6, labCol6, labNum6, labName6, lab_6_stint_1, lab_6_stint_2, lab_6_stint_3, lab_6_stint_4, lab_6_stint_5, lab_6_stint_6, lab_6_stint_7, lab_6_stint_8,  labPen6);
-        setOnePanel(labels[6], labPos7, labCol7, labNum7, labName7, lab_7_stint_1, lab_7_stint_2, lab_7_stint_3, lab_7_stint_4, lab_7_stint_5, lab_7_stint_6, lab_7_stint_7, lab_7_stint_8, labPen7);
-        setOnePanel(labels[7], labPos8, labCol8, labNum8, labName8, lab_8_stint_1, lab_8_stint_2, lab_8_stint_3, lab_8_stint_4, lab_8_stint_5, lab_8_stint_6, lab_8_stint_7, lab_8_stint_8, labPen8);
-        setOnePanel(labels[8], labPos9, labCol9, labNum9, labName9, lab_9_stint_1, lab_9_stint_2, lab_9_stint_3, lab_9_stint_4, lab_9_stint_5, lab_9_stint_6, lab_9_stint_7, lab_9_stint_8, labPen9);
-        setOnePanel(labels[9], labPos10, labCol10, labNum10, labName10, lab_10_stint_1, lab_10_stint_2, lab_10_stint_3, lab_10_stint_4, lab_10_stint_5, lab_10_stint_6, lab_10_stint_7, lab_10_stint_8, labPen10);
-        setOnePanel(labels[10], labPos11, labCol11, labNum11, labName11, lab_11_stint_1, lab_11_stint_2, lab_11_stint_3, lab_11_stint_4, lab_11_stint_5, lab_11_stint_6, lab_11_stint_7, lab_11_stint_8, labPen11);
-        setOnePanel(labels[11], labPos12, labCol12, labNum12, labName12, lab_12_stint_1, lab_12_stint_2, lab_12_stint_3, lab_12_stint_4, lab_12_stint_5, lab_12_stint_6, lab_12_stint_7, lab_12_stint_8, labPen12);
-        setOnePanel(labels[12], labPos13, labCol13, labNum13, labName13, lab_13_stint_1, lab_13_stint_2, lab_13_stint_3, lab_13_stint_4, lab_13_stint_5, lab_13_stint_6, lab_13_stint_7, lab_13_stint_8,  labPen13);
-        setOnePanel(labels[13], labPos14, labCol14, labNum14, labName14, lab_14_stint_1, lab_14_stint_2, lab_14_stint_3, lab_14_stint_4, lab_14_stint_5, lab_14_stint_6, lab_14_stint_7, lab_14_stint_8, labPen14);
-        setOnePanel(labels[14], labPos15, labCol15, labNum15, labName15, lab_15_stint_1, lab_15_stint_2, lab_15_stint_3, lab_15_stint_4, lab_15_stint_5, lab_15_stint_6, lab_15_stint_7, lab_15_stint_8,  labPen15);
-        setOnePanel(labels[15], labPos16, labCol16, labNum16, labName16, lab_16_stint_1, lab_16_stint_2, lab_16_stint_3, lab_16_stint_4, lab_16_stint_5, lab_16_stint_6, lab_16_stint_7, lab_16_stint_8, labPen16);
-        setOnePanel(labels[16], labPos17, labCol17, labNum17, labName17, lab_17_stint_1, lab_17_stint_2, lab_17_stint_3, lab_17_stint_4, lab_17_stint_5, lab_17_stint_6, lab_17_stint_7, lab_17_stint_8, labPen17);
-        setOnePanel(labels[17], labPos18, labCol18, labNum18, labName18, lab_18_stint_1, lab_18_stint_2, lab_18_stint_3, lab_18_stint_4, lab_18_stint_5, lab_18_stint_6, lab_18_stint_7, lab_18_stint_8, labPen18);
-        setOnePanel(labels[18], labPos19, labCol19, labNum19, labName19, lab_19_stint_1, lab_19_stint_2, lab_19_stint_3, lab_19_stint_4, lab_19_stint_5, lab_19_stint_6, lab_19_stint_7, lab_19_stint_8,  labPen19);
-        setOnePanel(labels[19], labPos20, labCol20, labNum20, labName20, lab_20_stint_1, lab_20_stint_2, lab_20_stint_3, lab_20_stint_4, lab_20_stint_5, lab_20_stint_6, lab_20_stint_7, lab_20_stint_8,  labPen20);
+        setOnePanel(labels[0], labPos1, labCol1, labNum1, labName1, lab_1_stint_1, lab_1_stint_2, lab_1_stint_3, lab_1_stint_4, lab_1_stint_5, lab_1_stint_6, lab_1_stint_7, lab_1_stint_8, labPen1, labStops1);
+        setOnePanel(labels[1], labPos2, labCol2, labNum2, labName2, lab_2_stint_1, lab_2_stint_2, lab_2_stint_3, lab_2_stint_4, lab_2_stint_5, lab_2_stint_6, lab_2_stint_7, lab_2_stint_8, labPen2, labStops2);
+        setOnePanel(labels[2], labPos3, labCol3, labNum3, labName3, lab_3_stint_1, lab_3_stint_2, lab_3_stint_3, lab_3_stint_4, lab_3_stint_5, lab_3_stint_6, lab_3_stint_7, lab_3_stint_8,  labPen3, labStops3);
+        setOnePanel(labels[3], labPos4, labCol4, labNum4, labName4, lab_4_stint_1, lab_4_stint_2, lab_4_stint_3, lab_4_stint_4, lab_4_stint_5, lab_4_stint_6, lab_4_stint_7, lab_4_stint_8, labPen4, labStops4);
+        setOnePanel(labels[4], labPos5, labCol5, labNum5, labName5, lab_5_stint_1, lab_5_stint_2, lab_5_stint_3, lab_5_stint_4, lab_5_stint_5, lab_5_stint_6, lab_5_stint_7, lab_5_stint_8,  labPen5, labStops5);
+        setOnePanel(labels[5], labPos6, labCol6, labNum6, labName6, lab_6_stint_1, lab_6_stint_2, lab_6_stint_3, lab_6_stint_4, lab_6_stint_5, lab_6_stint_6, lab_6_stint_7, lab_6_stint_8,  labPen6, labStops6);
+        setOnePanel(labels[6], labPos7, labCol7, labNum7, labName7, lab_7_stint_1, lab_7_stint_2, lab_7_stint_3, lab_7_stint_4, lab_7_stint_5, lab_7_stint_6, lab_7_stint_7, lab_7_stint_8, labPen7, labStops7);
+        setOnePanel(labels[7], labPos8, labCol8, labNum8, labName8, lab_8_stint_1, lab_8_stint_2, lab_8_stint_3, lab_8_stint_4, lab_8_stint_5, lab_8_stint_6, lab_8_stint_7, lab_8_stint_8, labPen8, labStops8);
+        setOnePanel(labels[8], labPos9, labCol9, labNum9, labName9, lab_9_stint_1, lab_9_stint_2, lab_9_stint_3, lab_9_stint_4, lab_9_stint_5, lab_9_stint_6, lab_9_stint_7, lab_9_stint_8, labPen9, labStops9);
+        setOnePanel(labels[9], labPos10, labCol10, labNum10, labName10, lab_10_stint_1, lab_10_stint_2, lab_10_stint_3, lab_10_stint_4, lab_10_stint_5, lab_10_stint_6, lab_10_stint_7, lab_10_stint_8, labPen10, labStops10);
+        setOnePanel(labels[10], labPos11, labCol11, labNum11, labName11, lab_11_stint_1, lab_11_stint_2, lab_11_stint_3, lab_11_stint_4, lab_11_stint_5, lab_11_stint_6, lab_11_stint_7, lab_11_stint_8, labPen11, labStops11);
+        setOnePanel(labels[11], labPos12, labCol12, labNum12, labName12, lab_12_stint_1, lab_12_stint_2, lab_12_stint_3, lab_12_stint_4, lab_12_stint_5, lab_12_stint_6, lab_12_stint_7, lab_12_stint_8, labPen12, labStops12);
+        setOnePanel(labels[12], labPos13, labCol13, labNum13, labName13, lab_13_stint_1, lab_13_stint_2, lab_13_stint_3, lab_13_stint_4, lab_13_stint_5, lab_13_stint_6, lab_13_stint_7, lab_13_stint_8,  labPen13, labStops13);
+        setOnePanel(labels[13], labPos14, labCol14, labNum14, labName14, lab_14_stint_1, lab_14_stint_2, lab_14_stint_3, lab_14_stint_4, lab_14_stint_5, lab_14_stint_6, lab_14_stint_7, lab_14_stint_8, labPen14, labStops14);
+        setOnePanel(labels[14], labPos15, labCol15, labNum15, labName15, lab_15_stint_1, lab_15_stint_2, lab_15_stint_3, lab_15_stint_4, lab_15_stint_5, lab_15_stint_6, lab_15_stint_7, lab_15_stint_8,  labPen15, labStops15);
+        setOnePanel(labels[15], labPos16, labCol16, labNum16, labName16, lab_16_stint_1, lab_16_stint_2, lab_16_stint_3, lab_16_stint_4, lab_16_stint_5, lab_16_stint_6, lab_16_stint_7, lab_16_stint_8, labPen16, labStops16);
+        setOnePanel(labels[16], labPos17, labCol17, labNum17, labName17, lab_17_stint_1, lab_17_stint_2, lab_17_stint_3, lab_17_stint_4, lab_17_stint_5, lab_17_stint_6, lab_17_stint_7, lab_17_stint_8, labPen17, labStops17);
+        setOnePanel(labels[17], labPos18, labCol18, labNum18, labName18, lab_18_stint_1, lab_18_stint_2, lab_18_stint_3, lab_18_stint_4, lab_18_stint_5, lab_18_stint_6, lab_18_stint_7, lab_18_stint_8, labPen18, labStops18);
+        setOnePanel(labels[18], labPos19, labCol19, labNum19, labName19, lab_19_stint_1, lab_19_stint_2, lab_19_stint_3, lab_19_stint_4, lab_19_stint_5, lab_19_stint_6, lab_19_stint_7, lab_19_stint_8,  labPen19, labStops19);
+        setOnePanel(labels[19], labPos20, labCol20, labNum20, labName20, lab_20_stint_1, lab_20_stint_2, lab_20_stint_3, lab_20_stint_4, lab_20_stint_5, lab_20_stint_6, lab_20_stint_7, lab_20_stint_8,  labPen20,labStops20);
     }
     
     private void setOnePanel(JLabel[] label, JLabel pos, JLabel col, JLabel num, JLabel name, JLabel s1, JLabel s2, JLabel s3, JLabel s4,
-            JLabel s5, JLabel s6, JLabel s7, JLabel s8, JLabel pen){
+            JLabel s5, JLabel s6, JLabel s7, JLabel s8, JLabel pen, JLabel stops){
         label[0] = pos;
         label[1] = col;
         label[2] = num;
@@ -82,6 +82,7 @@ public class Stints extends javax.swing.JFrame {
         label[10] = s7;
         label[11] = s8;
         label[12] = pen;
+        label[13] = stops;
     }
 
     /**
@@ -101,6 +102,7 @@ public class Stints extends javax.swing.JFrame {
         labPen0 = new javax.swing.JLabel();
         labNum = new javax.swing.JLabel();
         labName0 = new javax.swing.JLabel();
+        labNum21 = new javax.swing.JLabel();
         labTime0 = new javax.swing.JLabel();
         labS10 = new javax.swing.JLabel();
         labS20 = new javax.swing.JLabel();
@@ -115,6 +117,7 @@ public class Stints extends javax.swing.JFrame {
         labCol1 = new javax.swing.JLabel();
         labNum1 = new javax.swing.JLabel();
         labName1 = new javax.swing.JLabel();
+        labStops1 = new javax.swing.JLabel();
         lab_1_stint_1 = new javax.swing.JLabel();
         lab_1_stint_2 = new javax.swing.JLabel();
         lab_1_stint_3 = new javax.swing.JLabel();
@@ -129,6 +132,7 @@ public class Stints extends javax.swing.JFrame {
         labCol2 = new javax.swing.JLabel();
         labNum2 = new javax.swing.JLabel();
         labName2 = new javax.swing.JLabel();
+        labStops2 = new javax.swing.JLabel();
         lab_2_stint_1 = new javax.swing.JLabel();
         lab_2_stint_2 = new javax.swing.JLabel();
         lab_2_stint_3 = new javax.swing.JLabel();
@@ -143,6 +147,7 @@ public class Stints extends javax.swing.JFrame {
         labCol3 = new javax.swing.JLabel();
         labNum3 = new javax.swing.JLabel();
         labName3 = new javax.swing.JLabel();
+        labStops3 = new javax.swing.JLabel();
         lab_3_stint_1 = new javax.swing.JLabel();
         lab_3_stint_2 = new javax.swing.JLabel();
         lab_3_stint_3 = new javax.swing.JLabel();
@@ -157,6 +162,7 @@ public class Stints extends javax.swing.JFrame {
         labCol4 = new javax.swing.JLabel();
         labNum4 = new javax.swing.JLabel();
         labName4 = new javax.swing.JLabel();
+        labStops4 = new javax.swing.JLabel();
         lab_4_stint_1 = new javax.swing.JLabel();
         lab_4_stint_2 = new javax.swing.JLabel();
         lab_4_stint_3 = new javax.swing.JLabel();
@@ -171,6 +177,7 @@ public class Stints extends javax.swing.JFrame {
         labCol5 = new javax.swing.JLabel();
         labNum5 = new javax.swing.JLabel();
         labName5 = new javax.swing.JLabel();
+        labStops5 = new javax.swing.JLabel();
         lab_5_stint_1 = new javax.swing.JLabel();
         lab_5_stint_2 = new javax.swing.JLabel();
         lab_5_stint_3 = new javax.swing.JLabel();
@@ -185,6 +192,7 @@ public class Stints extends javax.swing.JFrame {
         labCol6 = new javax.swing.JLabel();
         labNum6 = new javax.swing.JLabel();
         labName6 = new javax.swing.JLabel();
+        labStops6 = new javax.swing.JLabel();
         lab_6_stint_1 = new javax.swing.JLabel();
         lab_6_stint_2 = new javax.swing.JLabel();
         lab_6_stint_3 = new javax.swing.JLabel();
@@ -199,6 +207,7 @@ public class Stints extends javax.swing.JFrame {
         labCol7 = new javax.swing.JLabel();
         labNum7 = new javax.swing.JLabel();
         labName7 = new javax.swing.JLabel();
+        labStops7 = new javax.swing.JLabel();
         lab_7_stint_1 = new javax.swing.JLabel();
         lab_7_stint_2 = new javax.swing.JLabel();
         lab_7_stint_3 = new javax.swing.JLabel();
@@ -213,6 +222,7 @@ public class Stints extends javax.swing.JFrame {
         labCol8 = new javax.swing.JLabel();
         labNum8 = new javax.swing.JLabel();
         labName8 = new javax.swing.JLabel();
+        labStops8 = new javax.swing.JLabel();
         lab_8_stint_1 = new javax.swing.JLabel();
         lab_8_stint_2 = new javax.swing.JLabel();
         lab_8_stint_3 = new javax.swing.JLabel();
@@ -227,6 +237,7 @@ public class Stints extends javax.swing.JFrame {
         labCol9 = new javax.swing.JLabel();
         labNum9 = new javax.swing.JLabel();
         labName9 = new javax.swing.JLabel();
+        labStops9 = new javax.swing.JLabel();
         lab_9_stint_1 = new javax.swing.JLabel();
         lab_9_stint_2 = new javax.swing.JLabel();
         lab_9_stint_3 = new javax.swing.JLabel();
@@ -241,6 +252,7 @@ public class Stints extends javax.swing.JFrame {
         labCol10 = new javax.swing.JLabel();
         labNum10 = new javax.swing.JLabel();
         labName10 = new javax.swing.JLabel();
+        labStops10 = new javax.swing.JLabel();
         lab_10_stint_1 = new javax.swing.JLabel();
         lab_10_stint_2 = new javax.swing.JLabel();
         lab_10_stint_3 = new javax.swing.JLabel();
@@ -255,6 +267,7 @@ public class Stints extends javax.swing.JFrame {
         labCol11 = new javax.swing.JLabel();
         labNum11 = new javax.swing.JLabel();
         labName11 = new javax.swing.JLabel();
+        labStops11 = new javax.swing.JLabel();
         lab_11_stint_1 = new javax.swing.JLabel();
         lab_11_stint_2 = new javax.swing.JLabel();
         lab_11_stint_3 = new javax.swing.JLabel();
@@ -269,6 +282,7 @@ public class Stints extends javax.swing.JFrame {
         labCol12 = new javax.swing.JLabel();
         labNum12 = new javax.swing.JLabel();
         labName12 = new javax.swing.JLabel();
+        labStops12 = new javax.swing.JLabel();
         lab_12_stint_1 = new javax.swing.JLabel();
         lab_12_stint_2 = new javax.swing.JLabel();
         lab_12_stint_3 = new javax.swing.JLabel();
@@ -283,6 +297,7 @@ public class Stints extends javax.swing.JFrame {
         labCol13 = new javax.swing.JLabel();
         labNum13 = new javax.swing.JLabel();
         labName13 = new javax.swing.JLabel();
+        labStops13 = new javax.swing.JLabel();
         lab_13_stint_1 = new javax.swing.JLabel();
         lab_13_stint_2 = new javax.swing.JLabel();
         lab_13_stint_3 = new javax.swing.JLabel();
@@ -297,6 +312,7 @@ public class Stints extends javax.swing.JFrame {
         labCol14 = new javax.swing.JLabel();
         labNum14 = new javax.swing.JLabel();
         labName14 = new javax.swing.JLabel();
+        labStops14 = new javax.swing.JLabel();
         lab_14_stint_1 = new javax.swing.JLabel();
         lab_14_stint_2 = new javax.swing.JLabel();
         lab_14_stint_3 = new javax.swing.JLabel();
@@ -311,6 +327,7 @@ public class Stints extends javax.swing.JFrame {
         labCol15 = new javax.swing.JLabel();
         labNum15 = new javax.swing.JLabel();
         labName15 = new javax.swing.JLabel();
+        labStops15 = new javax.swing.JLabel();
         lab_15_stint_1 = new javax.swing.JLabel();
         lab_15_stint_2 = new javax.swing.JLabel();
         lab_15_stint_3 = new javax.swing.JLabel();
@@ -325,6 +342,7 @@ public class Stints extends javax.swing.JFrame {
         labCol16 = new javax.swing.JLabel();
         labNum16 = new javax.swing.JLabel();
         labName16 = new javax.swing.JLabel();
+        labStops16 = new javax.swing.JLabel();
         lab_16_stint_1 = new javax.swing.JLabel();
         lab_16_stint_2 = new javax.swing.JLabel();
         lab_16_stint_3 = new javax.swing.JLabel();
@@ -339,6 +357,7 @@ public class Stints extends javax.swing.JFrame {
         labCol17 = new javax.swing.JLabel();
         labNum17 = new javax.swing.JLabel();
         labName17 = new javax.swing.JLabel();
+        labStops17 = new javax.swing.JLabel();
         lab_17_stint_1 = new javax.swing.JLabel();
         lab_17_stint_2 = new javax.swing.JLabel();
         lab_17_stint_3 = new javax.swing.JLabel();
@@ -353,6 +372,7 @@ public class Stints extends javax.swing.JFrame {
         labCol18 = new javax.swing.JLabel();
         labNum18 = new javax.swing.JLabel();
         labName18 = new javax.swing.JLabel();
+        labStops18 = new javax.swing.JLabel();
         lab_18_stint_1 = new javax.swing.JLabel();
         lab_18_stint_2 = new javax.swing.JLabel();
         lab_18_stint_3 = new javax.swing.JLabel();
@@ -367,6 +387,7 @@ public class Stints extends javax.swing.JFrame {
         labCol19 = new javax.swing.JLabel();
         labNum19 = new javax.swing.JLabel();
         labName19 = new javax.swing.JLabel();
+        labStops19 = new javax.swing.JLabel();
         lab_19_stint_1 = new javax.swing.JLabel();
         lab_19_stint_2 = new javax.swing.JLabel();
         lab_19_stint_3 = new javax.swing.JLabel();
@@ -381,6 +402,7 @@ public class Stints extends javax.swing.JFrame {
         labCol20 = new javax.swing.JLabel();
         labNum20 = new javax.swing.JLabel();
         labName20 = new javax.swing.JLabel();
+        labStops20 = new javax.swing.JLabel();
         lab_20_stint_1 = new javax.swing.JLabel();
         lab_20_stint_2 = new javax.swing.JLabel();
         lab_20_stint_3 = new javax.swing.JLabel();
@@ -447,6 +469,14 @@ public class Stints extends javax.swing.JFrame {
         labName0.setMinimumSize(new java.awt.Dimension(20, 17));
         labName0.setPreferredSize(new java.awt.Dimension(50, 17));
         panel0.add(labName0);
+
+        labNum21.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        labNum21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labNum21.setText("STOPS");
+        labNum21.setMaximumSize(new java.awt.Dimension(50, 17));
+        labNum21.setMinimumSize(new java.awt.Dimension(20, 17));
+        labNum21.setPreferredSize(new java.awt.Dimension(50, 17));
+        panel0.add(labNum21);
 
         labTime0.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         labTime0.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -557,6 +587,14 @@ public class Stints extends javax.swing.JFrame {
         labName1.setPreferredSize(new java.awt.Dimension(50, 17));
         panel1.add(labName1);
 
+        labStops1.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
+        labStops1.setForeground(new java.awt.Color(255, 255, 0));
+        labStops1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labStops1.setMaximumSize(new java.awt.Dimension(50, 25));
+        labStops1.setMinimumSize(new java.awt.Dimension(20, 17));
+        labStops1.setPreferredSize(new java.awt.Dimension(50, 17));
+        panel1.add(labStops1);
+
         lab_1_stint_1.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         lab_1_stint_1.setForeground(new java.awt.Color(255, 255, 255));
         lab_1_stint_1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -665,6 +703,14 @@ public class Stints extends javax.swing.JFrame {
         labName2.setMinimumSize(new java.awt.Dimension(20, 17));
         labName2.setPreferredSize(new java.awt.Dimension(50, 17));
         panel2.add(labName2);
+
+        labStops2.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
+        labStops2.setForeground(new java.awt.Color(255, 255, 0));
+        labStops2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labStops2.setMaximumSize(new java.awt.Dimension(50, 25));
+        labStops2.setMinimumSize(new java.awt.Dimension(20, 17));
+        labStops2.setPreferredSize(new java.awt.Dimension(50, 17));
+        panel2.add(labStops2);
 
         lab_2_stint_1.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         lab_2_stint_1.setForeground(new java.awt.Color(255, 255, 255));
@@ -775,6 +821,14 @@ public class Stints extends javax.swing.JFrame {
         labName3.setPreferredSize(new java.awt.Dimension(50, 17));
         panel3.add(labName3);
 
+        labStops3.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
+        labStops3.setForeground(new java.awt.Color(255, 255, 0));
+        labStops3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labStops3.setMaximumSize(new java.awt.Dimension(50, 25));
+        labStops3.setMinimumSize(new java.awt.Dimension(20, 17));
+        labStops3.setPreferredSize(new java.awt.Dimension(50, 17));
+        panel3.add(labStops3);
+
         lab_3_stint_1.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         lab_3_stint_1.setForeground(new java.awt.Color(255, 255, 255));
         lab_3_stint_1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -883,6 +937,14 @@ public class Stints extends javax.swing.JFrame {
         labName4.setMinimumSize(new java.awt.Dimension(20, 17));
         labName4.setPreferredSize(new java.awt.Dimension(50, 17));
         panel4.add(labName4);
+
+        labStops4.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
+        labStops4.setForeground(new java.awt.Color(255, 255, 0));
+        labStops4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labStops4.setMaximumSize(new java.awt.Dimension(50, 25));
+        labStops4.setMinimumSize(new java.awt.Dimension(20, 17));
+        labStops4.setPreferredSize(new java.awt.Dimension(50, 17));
+        panel4.add(labStops4);
 
         lab_4_stint_1.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         lab_4_stint_1.setForeground(new java.awt.Color(255, 255, 255));
@@ -993,6 +1055,14 @@ public class Stints extends javax.swing.JFrame {
         labName5.setPreferredSize(new java.awt.Dimension(50, 17));
         panel5.add(labName5);
 
+        labStops5.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
+        labStops5.setForeground(new java.awt.Color(255, 255, 0));
+        labStops5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labStops5.setMaximumSize(new java.awt.Dimension(50, 25));
+        labStops5.setMinimumSize(new java.awt.Dimension(20, 17));
+        labStops5.setPreferredSize(new java.awt.Dimension(50, 17));
+        panel5.add(labStops5);
+
         lab_5_stint_1.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         lab_5_stint_1.setForeground(new java.awt.Color(255, 255, 255));
         lab_5_stint_1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -1101,6 +1171,14 @@ public class Stints extends javax.swing.JFrame {
         labName6.setMinimumSize(new java.awt.Dimension(20, 17));
         labName6.setPreferredSize(new java.awt.Dimension(50, 17));
         panel6.add(labName6);
+
+        labStops6.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
+        labStops6.setForeground(new java.awt.Color(255, 255, 0));
+        labStops6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labStops6.setMaximumSize(new java.awt.Dimension(50, 25));
+        labStops6.setMinimumSize(new java.awt.Dimension(20, 17));
+        labStops6.setPreferredSize(new java.awt.Dimension(50, 17));
+        panel6.add(labStops6);
 
         lab_6_stint_1.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         lab_6_stint_1.setForeground(new java.awt.Color(255, 255, 255));
@@ -1211,6 +1289,14 @@ public class Stints extends javax.swing.JFrame {
         labName7.setPreferredSize(new java.awt.Dimension(50, 17));
         panel7.add(labName7);
 
+        labStops7.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
+        labStops7.setForeground(new java.awt.Color(255, 255, 0));
+        labStops7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labStops7.setMaximumSize(new java.awt.Dimension(50, 25));
+        labStops7.setMinimumSize(new java.awt.Dimension(20, 17));
+        labStops7.setPreferredSize(new java.awt.Dimension(50, 17));
+        panel7.add(labStops7);
+
         lab_7_stint_1.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         lab_7_stint_1.setForeground(new java.awt.Color(255, 255, 255));
         lab_7_stint_1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -1319,6 +1405,14 @@ public class Stints extends javax.swing.JFrame {
         labName8.setMinimumSize(new java.awt.Dimension(20, 17));
         labName8.setPreferredSize(new java.awt.Dimension(50, 17));
         panel8.add(labName8);
+
+        labStops8.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
+        labStops8.setForeground(new java.awt.Color(255, 255, 0));
+        labStops8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labStops8.setMaximumSize(new java.awt.Dimension(50, 25));
+        labStops8.setMinimumSize(new java.awt.Dimension(20, 17));
+        labStops8.setPreferredSize(new java.awt.Dimension(50, 17));
+        panel8.add(labStops8);
 
         lab_8_stint_1.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         lab_8_stint_1.setForeground(new java.awt.Color(255, 255, 255));
@@ -1429,6 +1523,14 @@ public class Stints extends javax.swing.JFrame {
         labName9.setPreferredSize(new java.awt.Dimension(50, 17));
         panel9.add(labName9);
 
+        labStops9.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
+        labStops9.setForeground(new java.awt.Color(255, 255, 0));
+        labStops9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labStops9.setMaximumSize(new java.awt.Dimension(50, 25));
+        labStops9.setMinimumSize(new java.awt.Dimension(20, 17));
+        labStops9.setPreferredSize(new java.awt.Dimension(50, 17));
+        panel9.add(labStops9);
+
         lab_9_stint_1.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         lab_9_stint_1.setForeground(new java.awt.Color(255, 255, 255));
         lab_9_stint_1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -1537,6 +1639,14 @@ public class Stints extends javax.swing.JFrame {
         labName10.setMinimumSize(new java.awt.Dimension(20, 17));
         labName10.setPreferredSize(new java.awt.Dimension(50, 17));
         panel10.add(labName10);
+
+        labStops10.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
+        labStops10.setForeground(new java.awt.Color(255, 255, 0));
+        labStops10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labStops10.setMaximumSize(new java.awt.Dimension(50, 25));
+        labStops10.setMinimumSize(new java.awt.Dimension(20, 17));
+        labStops10.setPreferredSize(new java.awt.Dimension(50, 17));
+        panel10.add(labStops10);
 
         lab_10_stint_1.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         lab_10_stint_1.setForeground(new java.awt.Color(255, 255, 255));
@@ -1647,6 +1757,14 @@ public class Stints extends javax.swing.JFrame {
         labName11.setPreferredSize(new java.awt.Dimension(50, 17));
         panel11.add(labName11);
 
+        labStops11.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
+        labStops11.setForeground(new java.awt.Color(255, 255, 0));
+        labStops11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labStops11.setMaximumSize(new java.awt.Dimension(50, 25));
+        labStops11.setMinimumSize(new java.awt.Dimension(20, 17));
+        labStops11.setPreferredSize(new java.awt.Dimension(50, 17));
+        panel11.add(labStops11);
+
         lab_11_stint_1.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         lab_11_stint_1.setForeground(new java.awt.Color(255, 255, 255));
         lab_11_stint_1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -1755,6 +1873,14 @@ public class Stints extends javax.swing.JFrame {
         labName12.setMinimumSize(new java.awt.Dimension(20, 17));
         labName12.setPreferredSize(new java.awt.Dimension(50, 17));
         panel12.add(labName12);
+
+        labStops12.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
+        labStops12.setForeground(new java.awt.Color(255, 255, 0));
+        labStops12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labStops12.setMaximumSize(new java.awt.Dimension(50, 25));
+        labStops12.setMinimumSize(new java.awt.Dimension(20, 17));
+        labStops12.setPreferredSize(new java.awt.Dimension(50, 17));
+        panel12.add(labStops12);
 
         lab_12_stint_1.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         lab_12_stint_1.setForeground(new java.awt.Color(255, 255, 255));
@@ -1865,6 +1991,14 @@ public class Stints extends javax.swing.JFrame {
         labName13.setPreferredSize(new java.awt.Dimension(50, 17));
         panel13.add(labName13);
 
+        labStops13.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
+        labStops13.setForeground(new java.awt.Color(255, 255, 0));
+        labStops13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labStops13.setMaximumSize(new java.awt.Dimension(50, 25));
+        labStops13.setMinimumSize(new java.awt.Dimension(20, 17));
+        labStops13.setPreferredSize(new java.awt.Dimension(50, 17));
+        panel13.add(labStops13);
+
         lab_13_stint_1.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         lab_13_stint_1.setForeground(new java.awt.Color(255, 255, 255));
         lab_13_stint_1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -1973,6 +2107,14 @@ public class Stints extends javax.swing.JFrame {
         labName14.setMinimumSize(new java.awt.Dimension(20, 17));
         labName14.setPreferredSize(new java.awt.Dimension(50, 17));
         panel14.add(labName14);
+
+        labStops14.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
+        labStops14.setForeground(new java.awt.Color(255, 255, 0));
+        labStops14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labStops14.setMaximumSize(new java.awt.Dimension(50, 25));
+        labStops14.setMinimumSize(new java.awt.Dimension(20, 17));
+        labStops14.setPreferredSize(new java.awt.Dimension(50, 17));
+        panel14.add(labStops14);
 
         lab_14_stint_1.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         lab_14_stint_1.setForeground(new java.awt.Color(255, 255, 255));
@@ -2083,6 +2225,14 @@ public class Stints extends javax.swing.JFrame {
         labName15.setPreferredSize(new java.awt.Dimension(50, 17));
         panel15.add(labName15);
 
+        labStops15.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
+        labStops15.setForeground(new java.awt.Color(255, 255, 0));
+        labStops15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labStops15.setMaximumSize(new java.awt.Dimension(50, 25));
+        labStops15.setMinimumSize(new java.awt.Dimension(20, 17));
+        labStops15.setPreferredSize(new java.awt.Dimension(50, 17));
+        panel15.add(labStops15);
+
         lab_15_stint_1.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         lab_15_stint_1.setForeground(new java.awt.Color(255, 255, 255));
         lab_15_stint_1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -2191,6 +2341,14 @@ public class Stints extends javax.swing.JFrame {
         labName16.setMinimumSize(new java.awt.Dimension(20, 17));
         labName16.setPreferredSize(new java.awt.Dimension(50, 17));
         panel16.add(labName16);
+
+        labStops16.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
+        labStops16.setForeground(new java.awt.Color(255, 255, 0));
+        labStops16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labStops16.setMaximumSize(new java.awt.Dimension(50, 25));
+        labStops16.setMinimumSize(new java.awt.Dimension(20, 17));
+        labStops16.setPreferredSize(new java.awt.Dimension(50, 17));
+        panel16.add(labStops16);
 
         lab_16_stint_1.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         lab_16_stint_1.setForeground(new java.awt.Color(255, 255, 255));
@@ -2301,6 +2459,14 @@ public class Stints extends javax.swing.JFrame {
         labName17.setPreferredSize(new java.awt.Dimension(50, 17));
         panel17.add(labName17);
 
+        labStops17.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
+        labStops17.setForeground(new java.awt.Color(255, 255, 0));
+        labStops17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labStops17.setMaximumSize(new java.awt.Dimension(50, 25));
+        labStops17.setMinimumSize(new java.awt.Dimension(20, 17));
+        labStops17.setPreferredSize(new java.awt.Dimension(50, 17));
+        panel17.add(labStops17);
+
         lab_17_stint_1.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         lab_17_stint_1.setForeground(new java.awt.Color(255, 255, 255));
         lab_17_stint_1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -2409,6 +2575,14 @@ public class Stints extends javax.swing.JFrame {
         labName18.setMinimumSize(new java.awt.Dimension(20, 17));
         labName18.setPreferredSize(new java.awt.Dimension(50, 17));
         panel18.add(labName18);
+
+        labStops18.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
+        labStops18.setForeground(new java.awt.Color(255, 255, 0));
+        labStops18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labStops18.setMaximumSize(new java.awt.Dimension(50, 25));
+        labStops18.setMinimumSize(new java.awt.Dimension(20, 17));
+        labStops18.setPreferredSize(new java.awt.Dimension(50, 17));
+        panel18.add(labStops18);
 
         lab_18_stint_1.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         lab_18_stint_1.setForeground(new java.awt.Color(255, 255, 255));
@@ -2519,6 +2693,14 @@ public class Stints extends javax.swing.JFrame {
         labName19.setPreferredSize(new java.awt.Dimension(50, 17));
         panel19.add(labName19);
 
+        labStops19.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
+        labStops19.setForeground(new java.awt.Color(255, 255, 0));
+        labStops19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labStops19.setMaximumSize(new java.awt.Dimension(50, 25));
+        labStops19.setMinimumSize(new java.awt.Dimension(20, 17));
+        labStops19.setPreferredSize(new java.awt.Dimension(50, 17));
+        panel19.add(labStops19);
+
         lab_19_stint_1.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         lab_19_stint_1.setForeground(new java.awt.Color(255, 255, 255));
         lab_19_stint_1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -2627,6 +2809,14 @@ public class Stints extends javax.swing.JFrame {
         labName20.setMinimumSize(new java.awt.Dimension(20, 17));
         labName20.setPreferredSize(new java.awt.Dimension(50, 17));
         panel20.add(labName20);
+
+        labStops20.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
+        labStops20.setForeground(new java.awt.Color(255, 255, 0));
+        labStops20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labStops20.setMaximumSize(new java.awt.Dimension(50, 25));
+        labStops20.setMinimumSize(new java.awt.Dimension(20, 17));
+        labStops20.setPreferredSize(new java.awt.Dimension(50, 17));
+        panel20.add(labStops20);
 
         lab_20_stint_1.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         lab_20_stint_1.setForeground(new java.awt.Color(255, 255, 255));
@@ -2800,6 +2990,7 @@ public class Stints extends javax.swing.JFrame {
     private javax.swing.JLabel labNum19;
     private javax.swing.JLabel labNum2;
     private javax.swing.JLabel labNum20;
+    private javax.swing.JLabel labNum21;
     private javax.swing.JLabel labNum3;
     private javax.swing.JLabel labNum4;
     private javax.swing.JLabel labNum5;
@@ -2852,6 +3043,26 @@ public class Stints extends javax.swing.JFrame {
     private javax.swing.JLabel labS10;
     private javax.swing.JLabel labS20;
     private javax.swing.JLabel labS30;
+    private javax.swing.JLabel labStops1;
+    private javax.swing.JLabel labStops10;
+    private javax.swing.JLabel labStops11;
+    private javax.swing.JLabel labStops12;
+    private javax.swing.JLabel labStops13;
+    private javax.swing.JLabel labStops14;
+    private javax.swing.JLabel labStops15;
+    private javax.swing.JLabel labStops16;
+    private javax.swing.JLabel labStops17;
+    private javax.swing.JLabel labStops18;
+    private javax.swing.JLabel labStops19;
+    private javax.swing.JLabel labStops2;
+    private javax.swing.JLabel labStops20;
+    private javax.swing.JLabel labStops3;
+    private javax.swing.JLabel labStops4;
+    private javax.swing.JLabel labStops5;
+    private javax.swing.JLabel labStops6;
+    private javax.swing.JLabel labStops7;
+    private javax.swing.JLabel labStops8;
+    private javax.swing.JLabel labStops9;
     private javax.swing.JLabel labTime0;
     private javax.swing.JLabel lab_10_stint_1;
     private javax.swing.JLabel lab_10_stint_2;

@@ -94,6 +94,7 @@ public class Stints_Thread extends Thread{
             setLabelsStint(null, labs[9], data, driver, 0);
             setLabelsStint(null, labs[10], data, driver, 0);
             setLabelsStint(null, labs[11], data, driver, 0);
+            labs[13].setText("");
             return;
         }
         ArrayList<HashMap<Integer, Short>> stints = driver.stints;
@@ -108,6 +109,7 @@ public class Stints_Thread extends Thread{
                 //System.out.println("-->");
             }
         }
+        labs[13].setText(""+(stints.size() - 1));
     }
     
     private void setLabelsStint(HashMap<Integer, Short> stint, JLabel lab, PacketSessionData data, Driver d, int numStint){

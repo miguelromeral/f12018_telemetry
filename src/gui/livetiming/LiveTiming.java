@@ -836,7 +836,7 @@ public class LiveTiming extends javax.swing.JFrame {
         labTyre1.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         labTyre1.setForeground(new java.awt.Color(255, 255, 255));
         labTyre1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labTyre1.setMaximumSize(new java.awt.Dimension(40, 17));
+        labTyre1.setMaximumSize(new java.awt.Dimension(40, 25));
         labTyre1.setMinimumSize(new java.awt.Dimension(20, 17));
         labTyre1.setPreferredSize(new java.awt.Dimension(50, 17));
         panel1.add(labTyre1);
@@ -961,7 +961,7 @@ public class LiveTiming extends javax.swing.JFrame {
         labTyre2.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         labTyre2.setForeground(new java.awt.Color(255, 255, 255));
         labTyre2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labTyre2.setMaximumSize(new java.awt.Dimension(40, 17));
+        labTyre2.setMaximumSize(new java.awt.Dimension(40, 25));
         labTyre2.setMinimumSize(new java.awt.Dimension(20, 17));
         labTyre2.setPreferredSize(new java.awt.Dimension(50, 17));
         panel2.add(labTyre2);
@@ -1086,7 +1086,7 @@ public class LiveTiming extends javax.swing.JFrame {
         labTyre3.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         labTyre3.setForeground(new java.awt.Color(255, 255, 255));
         labTyre3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labTyre3.setMaximumSize(new java.awt.Dimension(40, 17));
+        labTyre3.setMaximumSize(new java.awt.Dimension(40, 25));
         labTyre3.setMinimumSize(new java.awt.Dimension(20, 17));
         labTyre3.setPreferredSize(new java.awt.Dimension(50, 17));
         panel3.add(labTyre3);
@@ -1211,7 +1211,7 @@ public class LiveTiming extends javax.swing.JFrame {
         labTyre4.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         labTyre4.setForeground(new java.awt.Color(255, 255, 255));
         labTyre4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labTyre4.setMaximumSize(new java.awt.Dimension(40, 17));
+        labTyre4.setMaximumSize(new java.awt.Dimension(40, 25));
         labTyre4.setMinimumSize(new java.awt.Dimension(20, 17));
         labTyre4.setPreferredSize(new java.awt.Dimension(50, 17));
         panel4.add(labTyre4);
@@ -1336,7 +1336,7 @@ public class LiveTiming extends javax.swing.JFrame {
         labTyre5.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         labTyre5.setForeground(new java.awt.Color(255, 255, 255));
         labTyre5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labTyre5.setMaximumSize(new java.awt.Dimension(40, 17));
+        labTyre5.setMaximumSize(new java.awt.Dimension(40, 25));
         labTyre5.setMinimumSize(new java.awt.Dimension(20, 17));
         labTyre5.setPreferredSize(new java.awt.Dimension(50, 17));
         panel5.add(labTyre5);
@@ -1461,7 +1461,7 @@ public class LiveTiming extends javax.swing.JFrame {
         labTyre6.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         labTyre6.setForeground(new java.awt.Color(255, 255, 255));
         labTyre6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labTyre6.setMaximumSize(new java.awt.Dimension(40, 17));
+        labTyre6.setMaximumSize(new java.awt.Dimension(40, 25));
         labTyre6.setMinimumSize(new java.awt.Dimension(20, 17));
         labTyre6.setPreferredSize(new java.awt.Dimension(50, 17));
         panel6.add(labTyre6);
@@ -1586,7 +1586,7 @@ public class LiveTiming extends javax.swing.JFrame {
         labTyre7.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         labTyre7.setForeground(new java.awt.Color(255, 255, 255));
         labTyre7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labTyre7.setMaximumSize(new java.awt.Dimension(40, 17));
+        labTyre7.setMaximumSize(new java.awt.Dimension(40, 25));
         labTyre7.setMinimumSize(new java.awt.Dimension(20, 17));
         labTyre7.setPreferredSize(new java.awt.Dimension(50, 17));
         panel7.add(labTyre7);
@@ -1711,7 +1711,7 @@ public class LiveTiming extends javax.swing.JFrame {
         labTyre8.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         labTyre8.setForeground(new java.awt.Color(255, 255, 255));
         labTyre8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labTyre8.setMaximumSize(new java.awt.Dimension(40, 17));
+        labTyre8.setMaximumSize(new java.awt.Dimension(40, 25));
         labTyre8.setMinimumSize(new java.awt.Dimension(20, 17));
         labTyre8.setPreferredSize(new java.awt.Dimension(50, 17));
         panel8.add(labTyre8);
@@ -1836,7 +1836,7 @@ public class LiveTiming extends javax.swing.JFrame {
         labTyre9.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         labTyre9.setForeground(new java.awt.Color(255, 255, 255));
         labTyre9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labTyre9.setMaximumSize(new java.awt.Dimension(40, 17));
+        labTyre9.setMaximumSize(new java.awt.Dimension(40, 25));
         labTyre9.setMinimumSize(new java.awt.Dimension(20, 17));
         labTyre9.setPreferredSize(new java.awt.Dimension(50, 17));
         panel9.add(labTyre9);
@@ -1961,7 +1961,7 @@ public class LiveTiming extends javax.swing.JFrame {
         labTyre10.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         labTyre10.setForeground(new java.awt.Color(255, 255, 255));
         labTyre10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labTyre10.setMaximumSize(new java.awt.Dimension(40, 17));
+        labTyre10.setMaximumSize(new java.awt.Dimension(40, 25));
         labTyre10.setMinimumSize(new java.awt.Dimension(20, 17));
         labTyre10.setPreferredSize(new java.awt.Dimension(50, 17));
         panel10.add(labTyre10);
@@ -2086,7 +2086,7 @@ public class LiveTiming extends javax.swing.JFrame {
         labTyre11.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         labTyre11.setForeground(new java.awt.Color(255, 255, 255));
         labTyre11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labTyre11.setMaximumSize(new java.awt.Dimension(40, 17));
+        labTyre11.setMaximumSize(new java.awt.Dimension(40, 25));
         labTyre11.setMinimumSize(new java.awt.Dimension(20, 17));
         labTyre11.setPreferredSize(new java.awt.Dimension(50, 17));
         panel11.add(labTyre11);
@@ -2211,7 +2211,7 @@ public class LiveTiming extends javax.swing.JFrame {
         labTyre12.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         labTyre12.setForeground(new java.awt.Color(255, 255, 255));
         labTyre12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labTyre12.setMaximumSize(new java.awt.Dimension(40, 17));
+        labTyre12.setMaximumSize(new java.awt.Dimension(40, 25));
         labTyre12.setMinimumSize(new java.awt.Dimension(20, 17));
         labTyre12.setPreferredSize(new java.awt.Dimension(50, 17));
         panel12.add(labTyre12);
@@ -2336,7 +2336,7 @@ public class LiveTiming extends javax.swing.JFrame {
         labTyre13.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         labTyre13.setForeground(new java.awt.Color(255, 255, 255));
         labTyre13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labTyre13.setMaximumSize(new java.awt.Dimension(40, 17));
+        labTyre13.setMaximumSize(new java.awt.Dimension(40, 25));
         labTyre13.setMinimumSize(new java.awt.Dimension(20, 17));
         labTyre13.setPreferredSize(new java.awt.Dimension(50, 17));
         panel13.add(labTyre13);
@@ -2461,7 +2461,7 @@ public class LiveTiming extends javax.swing.JFrame {
         labTyre14.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         labTyre14.setForeground(new java.awt.Color(255, 255, 255));
         labTyre14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labTyre14.setMaximumSize(new java.awt.Dimension(40, 17));
+        labTyre14.setMaximumSize(new java.awt.Dimension(40, 25));
         labTyre14.setMinimumSize(new java.awt.Dimension(20, 17));
         labTyre14.setPreferredSize(new java.awt.Dimension(50, 17));
         panel14.add(labTyre14);
@@ -2586,7 +2586,7 @@ public class LiveTiming extends javax.swing.JFrame {
         labTyre15.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         labTyre15.setForeground(new java.awt.Color(255, 255, 255));
         labTyre15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labTyre15.setMaximumSize(new java.awt.Dimension(40, 17));
+        labTyre15.setMaximumSize(new java.awt.Dimension(40, 25));
         labTyre15.setMinimumSize(new java.awt.Dimension(20, 17));
         labTyre15.setPreferredSize(new java.awt.Dimension(50, 17));
         panel15.add(labTyre15);
@@ -2711,7 +2711,7 @@ public class LiveTiming extends javax.swing.JFrame {
         labTyre16.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         labTyre16.setForeground(new java.awt.Color(255, 255, 255));
         labTyre16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labTyre16.setMaximumSize(new java.awt.Dimension(40, 17));
+        labTyre16.setMaximumSize(new java.awt.Dimension(40, 25));
         labTyre16.setMinimumSize(new java.awt.Dimension(20, 17));
         labTyre16.setPreferredSize(new java.awt.Dimension(50, 17));
         panel16.add(labTyre16);
@@ -2836,7 +2836,7 @@ public class LiveTiming extends javax.swing.JFrame {
         labTyre17.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         labTyre17.setForeground(new java.awt.Color(255, 255, 255));
         labTyre17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labTyre17.setMaximumSize(new java.awt.Dimension(40, 17));
+        labTyre17.setMaximumSize(new java.awt.Dimension(40, 25));
         labTyre17.setMinimumSize(new java.awt.Dimension(20, 17));
         labTyre17.setPreferredSize(new java.awt.Dimension(50, 17));
         panel17.add(labTyre17);
@@ -2961,7 +2961,7 @@ public class LiveTiming extends javax.swing.JFrame {
         labTyre18.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         labTyre18.setForeground(new java.awt.Color(255, 255, 255));
         labTyre18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labTyre18.setMaximumSize(new java.awt.Dimension(40, 17));
+        labTyre18.setMaximumSize(new java.awt.Dimension(40, 25));
         labTyre18.setMinimumSize(new java.awt.Dimension(20, 17));
         labTyre18.setPreferredSize(new java.awt.Dimension(50, 17));
         panel18.add(labTyre18);
@@ -3086,7 +3086,7 @@ public class LiveTiming extends javax.swing.JFrame {
         labTyre19.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         labTyre19.setForeground(new java.awt.Color(255, 255, 255));
         labTyre19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labTyre19.setMaximumSize(new java.awt.Dimension(40, 17));
+        labTyre19.setMaximumSize(new java.awt.Dimension(40, 25));
         labTyre19.setMinimumSize(new java.awt.Dimension(20, 17));
         labTyre19.setPreferredSize(new java.awt.Dimension(50, 17));
         panel19.add(labTyre19);
@@ -3211,7 +3211,7 @@ public class LiveTiming extends javax.swing.JFrame {
         labTyre20.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         labTyre20.setForeground(new java.awt.Color(255, 255, 255));
         labTyre20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labTyre20.setMaximumSize(new java.awt.Dimension(40, 17));
+        labTyre20.setMaximumSize(new java.awt.Dimension(40, 25));
         labTyre20.setMinimumSize(new java.awt.Dimension(20, 17));
         labTyre20.setPreferredSize(new java.awt.Dimension(50, 17));
         panel20.add(labTyre20);
